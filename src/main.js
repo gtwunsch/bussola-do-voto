@@ -145,7 +145,7 @@ function quiz() {
         <button class="btn btn-g" id="bN">👎 Não, sou contra</button>
         <button class="btn btn-p" id="bS">👍 Sim, sou a favor</button>
       </div>
-      <button class="btn btn-t skip" id="bP">Pular esta pergunta →</button>
+      <button class="btn btn-t skip" id="bP">Me abster neste tema →</button>
     </div>
   </div>`
   if (showBanner) document.getElementById('verAgora').onclick = () => { S.shownBanner = true; results() }
@@ -198,8 +198,9 @@ function ceapHTML(pid) {
 }
 function seloHTML(pid) {
   const reg = (D.registros[S.casa] || {})[pid]
+  if (reg && reg.status === 'histórico') return `<div class="tcell"><b class="lbl">Registros públicos (verificado em ${esc(reg.verificadoEm.split('-').reverse().join('/'))})</b><span class="selo info">ℹ️ histórico — casos encerrados</span><div class="sm" style="margin-top:6px">${esc(reg.desc)} · <a href="${esc(reg.fonte)}" target="_blank" rel="noopener">fonte ↗</a></div></div>`
   if (reg) return `<div class="tcell"><b class="lbl">Registros públicos (verificado em ${esc(reg.verificadoEm.split('-').reverse().join('/'))})</b><span class="selo alerta">⚠️ ${esc(reg.status)}</span><div class="sm" style="margin-top:6px">${esc(reg.desc)} · <a href="${esc(reg.fonte)}" target="_blank" rel="noopener">fonte ↗</a></div></div>`
-  return `<div class="tcell"><b class="lbl">Registros públicos (verificado em 09/06/2026)</b><span class="selo ok">✅ nenhum registro encontrado</span><div class="sm" style="margin-top:6px">nas fontes verificadas (réu, condenação ou inquérito no STF/STJ); ausência de registro não é atestado — confira sempre as fontes oficiais</div></div>`
+  return `<div class="tcell"><b class="lbl">Registros públicos (verificado em 09/06/2026)</b><span class="selo ok">✅ sem processos ativos encontrados</span><div class="sm" style="margin-top:6px">nas fontes verificadas (réu, condenação, denúncia ou inquérito no STF/STJ); não é atestado de idoneidade — confira sempre as fontes oficiais</div></div>`
 }
 
 function results() {
@@ -243,7 +244,7 @@ function results() {
       <p>· Cada pergunta corresponde a uma votação nominal real em plenário. Sua resposta é comparada ao voto registrado de cada parlamentar — direto das APIs oficiais da <a href="https://dadosabertos.camara.leg.br" target="_blank" rel="noopener">Câmara</a> e do <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener">Senado</a>. Abstenções, obstruções e ausências não contam nem a favor nem contra.</p>
       <p>· <b>Nota de uso da cota (0–10)</b>: calculada só com dados oficiais de despesas CEAP (jun/2025–mai/2026): nota = 10 − 4×(percentil do gasto total entre os deputados) − 4×(percentil do % gasto em categorias sensíveis: combustíveis, divulgação do mandato, locações/fretamentos, hospedagem, táxi) − 2×(se combustível acima do percentil 90). É uma régua comparativa objetiva, não uma acusação: gastar a cota é legal; a nota apenas compara padrões.</p>
       <p>· <b>Presença</b>: Câmara = relatório oficial de presença em sessões deliberativas do plenário (Ato da Mesa 191/2017) somado de 2023 a 2026; o % considera ausências justificadas e não justificadas — licenças médicas e missões oficiais contam como justificadas. Senado = presença nas ${D.senado.votacoes.length} votações nominais analisadas (não há relatório oficial consolidado por API).</p>
-      <p>· <b>Registros públicos</b>: ⚠️ aparece apenas para réu, condenado ou inquérito formal no STF/STJ confirmado em fonte oficial ou grande imprensa citando o processo, com link. ✅ significa apenas "nada encontrado nas fontes verificadas" em 09/06/2026 — não é atestado de idoneidade. Este site não acusa ninguém: confira sempre a fonte primária.</p>
+      <p>· <b>Registros públicos</b>: ⚠️ = processo ATIVO (réu, condenação, denúncia pendente ou inquérito formal no STF/STJ), confirmado em fonte oficial ou grande imprensa citando o caso. ℹ️ = histórico relevante já ENCERRADO (arquivado, prescrito ou absolvição), com desfecho explícito — arquivamento também é fato público. ✅ = nada ativo encontrado nas fontes verificadas em 09/06/2026; não é atestado de idoneidade. No Senado a varredura cobre ativos e históricos; na Câmara, históricos ainda parcialmente. Este site não acusa ninguém: confira sempre a fonte primária.</p>
       <p>· Votações usadas: ${c.votacoes.map(v => `<a href="${esc(v.linkFonte)}" target="_blank" rel="noopener">${esc(v.proposicao)}</a>`).join(' · ')}.</p>
     </div>
     <div class="row" style="justify-content:center"><button class="btn btn-o" id="re2">↺ Recomeçar do zero</button></div>
@@ -260,7 +261,7 @@ function results() {
 function card(r, i, cfg, c) {
   const pct = Math.round(r.score * 100)
   const ini = r.p.nome.split(' ').map(x => x[0]).slice(0, 2).join('')
-  const reg = (D.registros[S.casa] || {})[r.p.id]
+  const regAll = (D.registros[S.casa] || {})[r.p.id]; const reg = regAll && regAll.status !== 'histórico' ? regAll : null
   const newsQ = encodeURIComponent('"' + r.p.nome + '" ' + cfg.singular)
   return `
   <div class="pcard">
