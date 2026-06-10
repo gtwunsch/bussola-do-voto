@@ -434,6 +434,15 @@ async function syncRespostas() {
     if (data) { for (const r of data) if (!ANS[r.casa][r.votacao_id]) ANS[r.casa][r.votacao_id] = r.resposta; saveLocal() }
   } catch (e) { /* offline */ }
 }
+function traduzErro(t) {
+  if (/security purposes|rate limit|Too many/i.test(t)) return 'limite de e-mails atingido — aguarde alguns minutos e tente de novo'
+  if (/Invalid login/i.test(t)) return 'e-mail ou senha incorretos'
+  if (/at least 6/i.test(t)) return 'a senha precisa ter pelo menos 6 caracteres'
+  if (/already registered/i.test(t)) return 'este e-mail já tem conta — use "entrar" ou "esqueci a senha"'
+  if (/invalid.*email|email.*invalid/i.test(t)) return 'e-mail inválido'
+  if (/Database error/i.test(t)) return 'erro interno ao criar a conta — tente novamente'
+  return t
+}
 function fecharAuth() { const o = document.getElementById('ovl'); if (o) o.remove() }
 function abrirAuth(modo) {
   fecharAuth()
@@ -463,15 +472,24 @@ function abrirAuth(modo) {
     try {
       if (modo === 'entrar') {
         const { error } = await sb.auth.signInWithPassword({ email: em, password: pw })
-        if (error) return msg(error.message.includes('Invalid') ? 'e-mail ou senha incorretos' : error.message, 1)
+        if (error) {
+          if (error.message.includes('not confirmed')) {
+            msg('seu e-mail ainda não foi confirmado — procure o e-mail (confira o spam) e clique no link.', 1)
+            const el = document.getElementById('aMsg')
+            el.innerHTML += ' <a href="#" id="aRe">reenviar confirmação</a>'
+            document.getElementById('aRe').onclick = async ev => { ev.preventDefault(); await sb.auth.resend({ type: 'signup', email: em, options: { emailRedirectTo: location.origin } }); msg('confirmação reenviada — confira sua caixa de entrada e o spam.') }
+            return
+          }
+          return msg(traduzErro(error.message), 1)
+        }
         fecharAuth()
       } else if (modo === 'criar') {
-        const { data, error } = await sb.auth.signUp({ email: em, password: pw })
-        if (error) return msg(error.message, 1)
-        if (data.session) fecharAuth(); else msg('conta criada! confira seu e-mail para confirmar o cadastro.')
+        const { data, error } = await sb.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: location.origin } })
+        if (error) return msg(traduzErro(error.message), 1)
+        if (data.session) fecharAuth(); else msg('conta criada! enviamos um link de CONFIRMAÇÃO para ' + em + ' (confira o spam). Clique nele e depois volte aqui para entrar.')
       } else if (modo === 'esqueci') {
         const { error } = await sb.auth.resetPasswordForEmail(em, { redirectTo: location.origin })
-        if (error) return msg(error.message, 1)
+        if (error) return msg(traduzErro(error.message), 1)
         msg('enviamos um link de recuperação para o seu e-mail.')
       } else if (modo === 'nova') {
         const { error } = await sb.auth.updateUser({ password: pw })
