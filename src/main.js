@@ -75,34 +75,32 @@ const norm = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toU
 const ceapCalc = {}, ceapsCalc = {}
 let ceapMed = {}, ceapsMed = {}
 function median(arr) { if (!arr.length) return 0; const s = [...arr].sort((a, b) => a - b); const md = Math.floor(s.length / 2); return s.length % 2 ? s[md] : (s[md - 1] + s[md]) / 2 }
-function shareSens(d, senado) { let s = 0; for (const k of Object.keys(d.c)) if (senado ? sensS(k) : SENSIVEIS.includes(k)) s += d.c[k]; return d.t > 0 ? s / d.t : 0 }
+function sensAbs(d, senado) { let s = 0; for (const k of Object.keys(d.c)) if (senado ? sensS(k) : SENSIVEIS.includes(k)) s += d.c[k]; return s }
 const prank = (arr, v) => arr.length > 1 ? arr.filter(x => x <= v).length / arr.length : 0.5
 function prepCeap() {
   const ids = Object.keys(D.ceap).filter(k => !k.startsWith('_') && D.ceap[k] && typeof D.ceap[k].t === 'number')
   const tot = ids.map(id => D.ceap[id].t).sort((a, b) => a - b)
-  const shr = ids.map(id => shareSens(D.ceap[id], false)).sort((a, b) => a - b)
-  const comb = ids.map(id => (D.ceap[id].c['3'] || 0)).sort((a, b) => a - b)
-  const p90comb = comb[Math.floor(0.9 * (comb.length - 1))] || 0
+  const sab = ids.map(id => sensAbs(D.ceap[id], false)).sort((a, b) => a - b)
   const cats = new Set(); ids.forEach(id => Object.keys(D.ceap[id].c).forEach(c => cats.add(c)))
-  ceapMed = { _t: median(tot) }
+  ceapMed = { _t: median(tot), _s: median(sab) }
   for (const c of cats) ceapMed[c] = median(ids.map(id => D.ceap[id].c[c] || 0))
   for (const id of ids) {
-    const d = D.ceap[id], rT = prank(tot, d.t), sh = shareSens(d, false), rS = prank(shr, sh), fl = (d.c['3'] || 0) > p90comb
-    const nota = Math.max(0, Math.min(10, 10 - 4 * rT - 4 * rS - 2 * (fl ? 1 : 0)))
-    ceapCalc[id] = { nota: Math.round(nota * 10) / 10, total: d.t, rT: Math.round(rT * 100), sens: Math.round(sh * 100), rS: Math.round(rS * 100), fl, top: Object.entries(d.c).sort((a, b) => b[1] - a[1]).slice(0, 4) }
+    const d = D.ceap[id], rT = prank(tot, d.t), sa = sensAbs(d, false), rS = prank(sab, sa)
+    const nota = Math.max(0, Math.min(10, 10 - 5 * rT - 5 * rS))
+    ceapCalc[id] = { nota: Math.round(nota * 10) / 10, total: d.t, rT: Math.round(rT * 100), sa, rS: Math.round(rS * 100), top: Object.entries(d.c).sort((a, b) => b[1] - a[1]).slice(0, 4) }
   }
 }
 function prepCeaps() {
   const ks = Object.keys(D.ceaps).filter(k => !k.startsWith('_') && D.ceaps[k] && typeof D.ceaps[k].t === 'number')
   const tot = ks.map(k => D.ceaps[k].t).sort((a, b) => a - b)
-  const shr = ks.map(k => shareSens(D.ceaps[k], true)).sort((a, b) => a - b)
+  const sab = ks.map(k => sensAbs(D.ceaps[k], true)).sort((a, b) => a - b)
   const cats = new Set(); ks.forEach(k => Object.keys(D.ceaps[k].c).forEach(c => cats.add(c)))
-  ceapsMed = { _t: median(tot) }
+  ceapsMed = { _t: median(tot), _s: median(sab) }
   for (const c of cats) ceapsMed[c] = median(ks.map(k => D.ceaps[k].c[c] || 0))
   for (const k of ks) {
-    const d = D.ceaps[k], rT = prank(tot, d.t), sh = shareSens(d, true), rS = prank(shr, sh)
+    const d = D.ceaps[k], rT = prank(tot, d.t), sa = sensAbs(d, true), rS = prank(sab, sa)
     const nota = Math.max(0, Math.min(10, 10 - 5 * rT - 5 * rS))
-    ceapsCalc[norm(k)] = { nota: Math.round(nota * 10) / 10, total: d.t, rT: Math.round(rT * 100), sens: Math.round(sh * 100), rS: Math.round(rS * 100), fl: false, top: Object.entries(d.c).sort((a, b) => b[1] - a[1]).slice(0, 4) }
+    ceapsCalc[norm(k)] = { nota: Math.round(nota * 10) / 10, total: d.t, rT: Math.round(rT * 100), sa, rS: Math.round(rS * 100), top: Object.entries(d.c).sort((a, b) => b[1] - a[1]).slice(0, 4) }
   }
 }
 function ceapsLookup(nome) {
@@ -288,7 +286,7 @@ function results() {
     <div class="meth">
       <h3>Como funciona (metodologia e fontes)</h3>
       <p>· Cada pergunta corresponde a uma votação nominal real em plenário. Sua resposta é comparada ao voto registrado de cada parlamentar — direto das APIs oficiais da <a href="https://dadosabertos.camara.leg.br" target="_blank" rel="noopener">Câmara</a> e do <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener">Senado</a>. Abstenções, obstruções e ausências não contam nem a favor nem contra.</p>
-      <p>· <b>Nota de uso da cota (0–10)</b>: dados oficiais de jun/2025 a mai/2026. Câmara (CEAP, via API oficial): nota = 10 − 4×percentil(gasto total) − 4×percentil(% em categorias sensíveis: combustíveis, divulgação, locações/fretamentos, hospedagem, táxi) − 2×(combustível acima do percentil 90). Senado (CEAPS, via CSV oficial de transparência): nota = 10 − 5×percentil(gasto total) − 5×percentil(% em divulgação + locomoção/hospedagem/combustíveis). O cartão de cada parlamentar mostra o comparativo com a mediana da Casa por categoria. É régua comparativa objetiva, não acusação: gastar a cota é legal.</p>
+      <p>· <b>Nota de uso da cota (0–10)</b>: dados oficiais de jun/2025 a mai/2026 (Câmara: CEAP via API oficial; Senado: CEAPS via CSV oficial de transparência). Fórmula nas duas Casas: nota = 10 − 5×percentil(gasto total entre colegas da Casa) − 5×percentil(gasto ABSOLUTO em categorias sensíveis — Câmara: combustíveis, divulgação, locações/fretamentos, hospedagem, táxi; Senado: divulgação + locomoção/hospedagem/combustíveis). Usamos valores absolutos comparados aos colegas, não frações: quem gasta pouco no total não é punido pela composição do pouco que gasta. O cartão mostra o comparativo com a mediana da Casa, categoria por categoria. Régua comparativa objetiva, não acusação: gastar a cota é legal.</p>
       <p>· <b>Presença</b>: Câmara = relatório oficial de presença em sessões deliberativas do plenário (Ato da Mesa 191/2017) somado de 2023 a 2026; o % considera ausências justificadas e não justificadas — licenças médicas e missões oficiais contam como justificadas. Senado = presença nas ${D.senado.votacoes.length} votações nominais analisadas (não há relatório oficial consolidado por API).</p>
       <p>· <b>Registros públicos</b>: ⚠️ = processo ATIVO (réu, condenação, denúncia pendente ou inquérito formal no STF/STJ), confirmado em fonte oficial ou grande imprensa citando o caso. ℹ️ = histórico relevante já ENCERRADO (arquivado, prescrito ou absolvição), com desfecho explícito — arquivamento também é fato público. ✅ = nada ativo encontrado nas fontes verificadas em 09/06/2026; não é atestado de idoneidade. No Senado a varredura cobre ativos e históricos; na Câmara, históricos ainda parcialmente. Este site não acusa ninguém: confira sempre a fonte primária.</p>
       <p>· Votações usadas: ${c.votacoes.map(v => `<a href="${esc(v.linkFonte)}" target="_blank" rel="noopener">${esc(v.proposicao)}</a>`).join(' · ')}.</p>
