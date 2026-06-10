@@ -24,6 +24,19 @@ async function carregar() {
   D.senado = { parlamentares: sd, votacoes: PERG.senado.map(p => ({ ...sv.find(v => v.id === p.id), pergunta: p.q, tema: p.t, central: !!p.c, arg: sa[p.id] })), votos: svo }
   D.presenca.camara = cp; D.presenca.senado = sp
   D.registros = reg
+  try {
+    const [cx, cvx] = await Promise.all([j('/dados/camara_votacoes_extra.json'), j('/dados/camara_votos_extra.json')])
+    for (const v of cx) D.camara.votacoes.push({ ...v, central: !!v.central })
+    Object.assign(D.camara.votos, cvx)
+  } catch (e) { /* sem extras ainda */ }
+  try {
+    const [sx, svx] = await Promise.all([j('/dados/senado_votacoes_extra.json'), j('/dados/senado_votos_extra.json')])
+    for (const v of sx) D.senado.votacoes.push({ ...v, central: !!v.central })
+    Object.assign(D.senado.votos, svx)
+  } catch (e) { /* sem extras ainda */ }
+  const divid = v => { const mm = String(v.placar || '').match(/(\d+)\s*x\s*(\d+)/); if (!mm) return 0; const a = +mm[1], b = +mm[2]; return Math.min(a, b) / ((a + b) || 1) }
+  const ordena = (x, y) => ((y.central ? 1 : 0) - (x.central ? 1 : 0)) || (divid(y) - divid(x))
+  D.camara.votacoes.sort(ordena); D.senado.votacoes.sort(ordena)
   // CEAP (dinâmico — pode ainda estar em coleta)
   try {
     const r = await fetch(SUPA + '/rest/v1/bussola_dados?chave=in.(ceap,ceaps)&select=chave,valor', { headers: { apikey: SUPA_KEY, Authorization: 'Bearer ' + SUPA_KEY } })
@@ -117,7 +130,7 @@ const brl = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR')
 
 // ---------- app ----------
 const UFS = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
-const S = { casa: null, uf: '', i: 0, ans: {}, shownBanner: false, filtUF: false, filtP: '', filtQ: '', shown: 30 }
+const S = { casa: null, uf: '', i: 0, ans: {}, shownBanner: false, filtUF: false, filtP: '', filtQ: '', shown: 30, sel: [] }
 const app = document.getElementById('app')
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
 const cfgs = {
@@ -147,8 +160,21 @@ function home() {
       <select id="uf"><option value="">Seu estado (opcional)</option>${UFS.map(u => `<option ${S.uf === u ? 'selected' : ''}>${u}</option>`).join('')}</select>
       <button class="btn btn-p" id="start" disabled>Começar →</button>
     </div>
+    <div class="sec" style="margin-top:38px">Ou veja direto um parlamentar</div>
+    <input id="busca" placeholder="Busque pelo nome do deputado ou senador…" style="font:inherit;width:100%;max-width:420px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line)">
+    <div id="bres" class="plist" style="margin-top:10px;max-width:420px"></div>
     <div class="note">ℹ️ Deputados federais e senadores são eleitos por estado, mas votam leis que valem para o país inteiro — vale a pena conhecê-los. Vereadores e deputados estaduais chegam numa próxima versão.</div>
   </div>`
+  document.getElementById('busca').oninput = e => {
+    const q = e.target.value.toLowerCase().trim(); const out = document.getElementById('bres')
+    if (q.length < 2) { out.innerHTML = ''; return }
+    const hits = []
+    for (const casa of ['camara', 'senado']) for (const p of D[casa].parlamentares) {
+      if (p.nome.toLowerCase().includes(q)) hits.push({ casa, p })
+      if (hits.length >= 8) break
+    }
+    out.innerHTML = hits.map(h => `<div class="pcard"><div class="phead" onclick="location.hash='#/p/${h.casa}/${h.p.id}'"><img class="ava" src="${cfgs[h.casa].foto(h.p.id)}" onerror="this.style.visibility='hidden'"><div class="pinfo"><div class="n">${esc(h.p.nome)}</div><div class="m">${esc(h.p.partido)} · ${esc(h.p.uf)} · ${h.casa === 'camara' ? 'deputado' : 'senador'}</div></div><span class="chev">→</span></div></div>`).join('')
+  }
   document.getElementById('pk-camara').onclick = () => pick('camara')
   document.getElementById('pk-senado').onclick = () => pick('senado')
   document.getElementById('start').onclick = () => { S.uf = document.getElementById('uf').value; S.ans = ANS[S.casa]; const vs = D[S.casa].votacoes; S.i = vs.findIndex(v => !S.ans[v.id]); if (S.i < 0) S.i = vs.length; S.shownBanner = false; quiz(); scrollTo({ top: 0 }) }
@@ -314,8 +340,15 @@ function results() {
   renderList()
   document.getElementById('listwrap').onclick = e => {
     const mb = e.target.closest('#mais'); if (mb) { S.shown += 30; renderList(); return }
+    const act = e.target.closest('[data-act]')
+    if (act) {
+      const id = String(act.dataset.id)
+      if (act.dataset.act === 'pagina') { location.hash = '#/p/' + S.casa + '/' + id; return }
+      if (act.dataset.act === 'cmpx') { const ix = S.sel.indexOf(id); if (ix >= 0) S.sel.splice(ix, 1); else if (S.sel.length < 3) S.sel.push(id); renderList(); cmpBar(); return }
+    }
     const h = e.target.closest('.phead'); if (h) h.parentElement.classList.toggle('open')
   }
+  cmpBar()
   const cont = document.getElementById('cont'); if (cont) cont.onclick = quiz
   const fUF = document.getElementById('fUF'); if (fUF) fUF.onclick = () => { S.filtUF = !S.filtUF; S.shown = 30; results() }
   document.getElementById('fP').onchange = e => { S.filtP = e.target.value; S.shown = 30; results() }
@@ -338,6 +371,10 @@ function card(r, i, cfg, c) {
       <span class="chev">▾</span>
     </div>
     <div class="pbody">
+      <div class="row" style="margin:0 0 14px;gap:8px">
+        <button class="chip" data-act="pagina" data-id="${r.p.id}">🔗 página e link para compartilhar</button>
+        <button class="chip ${S.sel.includes(String(r.p.id)) ? 'on' : ''}" data-act="cmpx" data-id="${r.p.id}">⚖ ${S.sel.includes(String(r.p.id)) ? 'na comparação' : 'comparar'}</button>
+      </div>
       <div class="secmini">🔎 Transparência</div>
       <div class="tgrid" style="margin-top:0">
         ${ceapHTML(r.p)}
@@ -361,7 +398,8 @@ function card(r, i, cfg, c) {
 }
 
 document.getElementById('logo').onclick = () => home()
-carregar().then(() => { initAuth(); home() }).catch(e => { app.innerHTML = `<div class="empty">Erro ao carregar dados (${esc(e.message)}). Recarregue a página.</div>` })
+window.addEventListener('hashchange', () => rota())
+carregar().then(() => { initAuth(); if (!rota()) home() }).catch(e => { app.innerHTML = `<div class="empty">Erro ao carregar dados (${esc(e.message)}). Recarregue a página.</div>` })
 
 // ---------- conta (e-mail e senha) ----------
 function resetCasa() {
@@ -462,4 +500,62 @@ function minhas() {
     const b = e.target.closest('button.chip[data-v]'); if (!b) return
     setAns(b.dataset.c, b.dataset.v, b.dataset.r || null); minhas()
   }
+}
+
+// ---------- página do parlamentar / comparador ----------
+function rota() {
+  const mm = location.hash.match(/^#\/p\/(camara|senado)\/(\d+)$/)
+  if (mm) { paginaParlamentar(mm[1], mm[2]); return true }
+  return false
+}
+const VOTOICO = v => v === 'Sim' ? '👍 Sim' : v === 'Não' ? '👎 Não' : v === undefined ? '— sem registro' : '○ ' + v
+function paginaParlamentar(casa, id) {
+  S.casa = casa; S.ans = ANS[casa]
+  const c = D[casa], cfg = cfgs[casa]
+  const p = c.parlamentares.find(x => String(x.id) === String(id))
+  if (!p) { home(); return }
+  scrollTo({ top: 0 })
+  const linhas = c.votacoes.map(v => {
+    const raw = c.votos[v.id] ? c.votos[v.id][String(p.id)] : undefined
+    const ans = S.ans[v.id]
+    const ic = (ans === 'S' || ans === 'N') ? (voteN(raw) ? (voteN(raw) === ans ? '<span class="ic ok">✓</span>' : '<span class="ic no">✕</span>') : '<span class="ic nn">—</span>') : '<span class="ic nn">·</span>'
+    return `<div class="ci">${ic}<div><div class="tt">${esc(v.titulo)} <span style="color:var(--mut);font-weight:400">· ${esc(v.tema || '')}</span></div><div class="dd">${cfg.singular}: <b>${VOTOICO(raw)}</b>${(ans === 'S' || ans === 'N') ? ' · você: ' + (ans === 'S' ? 'a favor' : 'contra') : ''} · ${esc(v.placar)} · <a href="${esc(v.linkFonte)}" target="_blank" rel="noopener">fonte ↗</a></div></div></div>`
+  }).join('')
+  app.innerHTML = `<div class="fade">
+    <div class="row" style="margin-top:20px"><button class="btn btn-o" id="volt">← Voltar</button><button class="btn btn-o" id="copia">🔗 Copiar link desta página</button></div>
+    <div class="pcard" style="margin-top:16px"><div class="phead" style="cursor:default">
+      <img class="ava" style="width:64px;height:64px" src="${cfg.foto(p.id)}" onerror="this.style.visibility='hidden'">
+      <div class="pinfo"><div class="n" style="font-size:20px;white-space:normal">${esc(p.nome)}</div><div class="m">${esc(p.partido)} · ${esc(p.uf)} · ${cfg.singular}</div></div>
+    </div></div>
+    <div class="sec">Transparência</div>
+    <div class="tgrid" style="margin-top:0">${ceapHTML(p)}${presHTML(String(p.id))}${seloHTML(String(p.id))}
+      <div class="tcell wide"><b class="lbl">Confira na fonte</b><div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:4px"><a href="${cfg.perfil(p.id)}" target="_blank" rel="noopener">🏛️ ${cfg.perfilLabel} ↗</a><a href="https://news.google.com/search?q=${encodeURIComponent('"' + p.nome + '" ' + cfg.singular)}" target="_blank" rel="noopener">📰 Notícias ↗</a></div></div>
+    </div>
+    <div class="sec">Como votou (todas as ${c.votacoes.length} votações analisadas)</div>
+    <div class="cmp">${linhas}</div>
+  </div>`
+  document.getElementById('volt').onclick = () => { history.length > 1 ? history.back() : (location.hash = '', home()) }
+  document.getElementById('copia').onclick = async () => { try { await navigator.clipboard.writeText(location.href); document.getElementById('copia').textContent = '✓ copiado!' } catch (e) {} }
+}
+function cmpBar() {
+  let bar = document.getElementById('cmpbar')
+  if (S.sel.length < 1) { if (bar) bar.remove(); return }
+  if (!bar) { bar = document.createElement('div'); bar.id = 'cmpbar'; document.body.appendChild(bar) }
+  bar.innerHTML = `<span>⚖ ${S.sel.length} selecionado${S.sel.length > 1 ? 's' : ''}</span>${S.sel.length >= 2 ? '<button class="btn btn-p" id="cmpGo" style="padding:8px 18px">Comparar</button>' : '<span style="color:var(--mut);font-size:12.5px">escolha mais um</span>'}<button class="btn btn-t" id="cmpZera" style="padding:8px">limpar</button>`
+  const go = document.getElementById('cmpGo'); if (go) go.onclick = comparar
+  document.getElementById('cmpZera').onclick = () => { S.sel = []; cmpBar(); if (document.getElementById('listwrap')) results() }
+}
+function comparar() {
+  const c = D[S.casa], cfg = cfgs[S.casa]
+  const ps = S.sel.map(id => c.parlamentares.find(x => String(x.id) === id)).filter(Boolean)
+  scrollTo({ top: 0 })
+  const cab = `<tr><th style="text-align:left">Votação</th><th>Você</th>${ps.map(p => `<th><img class="ava" style="width:34px;height:34px;display:block;margin:0 auto 4px" src="${cfg.foto(p.id)}" onerror="this.style.display='none'">${esc(p.nome.split(' ')[0])}<div style="font-weight:400;color:var(--mut);font-size:11px">${esc(p.partido)}-${esc(p.uf)}</div></th>`).join('')}</tr>`
+  const linhas = c.votacoes.map(v => {
+    const ans = S.ans[v.id]
+    return `<tr><td style="text-align:left">${esc(v.titulo)}${v.central ? ' <span style="color:var(--amber)">★</span>' : ''}</td><td>${ans === 'S' ? '👍' : ans === 'N' ? '👎' : ans === 'A' ? '🤍' : '·'}</td>${ps.map(p => { const raw = c.votos[v.id] ? c.votos[v.id][String(p.id)] : undefined; const pv = voteN(raw); const hit = (ans === 'S' || ans === 'N') && pv ? (pv === ans ? ' style="background:var(--teal-soft)"' : ' style="background:var(--warm-soft)"') : ''; return `<td${hit}>${raw === 'Sim' ? '👍' : raw === 'Não' ? '👎' : raw === undefined ? '—' : '○'}</td>` }).join('')}</tr>`
+  }).join('')
+  app.innerHTML = `<div class="fade"><div class="row" style="margin-top:20px"><button class="btn btn-o" id="volt2">← Voltar ao resultado</button></div>
+    <div class="rhead"><h2>Comparação lado a lado</h2><p>👍 a favor · 👎 contra · ○ abstenção/obstrução · — ausente/sem registro · fundo verde = votou como você · ★ tema central. </p></div>
+    <div style="overflow-x:auto;background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:10px"><table class="cmptab">${cab}${linhas}</table></div></div>`
+  document.getElementById('volt2').onclick = results
 }
