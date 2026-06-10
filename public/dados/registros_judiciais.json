@@ -1,1 +1,637 @@
-{"camara":{"204570":{"nome":"Pastor Gil","status":"condenado","desc":"Condenado pelo STF a 5 anos e 6 meses por corrupção em emendas (mar/2026)","fonte":"https://noticias.stf.jus.br/postsnoticias/stf-condena-sete-reus-por-desvio-de-emendas-parlamentares-destinadas-a-municipio-do-maranhao/","verificadoEm":"2026-06-09"},"178908":{"nome":"Delegado Éder Mauro","status":"condenado","desc":"Condenado pelo STF (2020) por difamação agravada: vídeo adulterado de Jean Wyllys","fonte":"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=449809&ori=1","verificadoEm":"2026-06-09"},"204441":{"nome":"Otoni de Paula","status":"réu","desc":"Réu no STF por ofensas e coação contra o ministro Alexandre de Moraes","fonte":"https://www.cnnbrasil.com.br/politica/stf-recebe-denuncia-da-pgr-contra-deputado-otoni-de-paula-por-ofensas-a-moraes/","verificadoEm":"2026-06-09"},"204515":{"verificadoEm":"2026-06-10","itens":[{"st":"encerrado","tipo":"inquérito","ano":2023,"desc":"Investigado por suposta 'rachadinha' (peculato) em seu gabinete (Inq 4949), com base em áudios divulgados por ex-assessor.","desfecho":"acordo de não persecução penal com a PGR homologado pelo STF, com devolução de R$ 157,8 mil; arquivamento condicionado ao cumprimento integral","defesa":"Nega ter confessado 'rachadinha' e afirma que o acordo não implica admissão de culpa.","fonte":"https://noticias.stf.jus.br/postsnoticias/stf-homologa-acordo-entre-deputado-andre-janones-e-pgr-sobre-rachadinha/"},{"st":"ativo","tipo":"réu","ano":2024,"desc":"Queixa-crime de Jair Bolsonaro por injúria, em razão de publicações em rede social, recebida pelo Plenário do STF.","desfecho":"ação penal por injúria em curso; imputação de calúnia foi rejeitada pelo STF","defesa":"","fonte":"https://noticias.stf.jus.br/postsnoticias/stf-recebe-queixa-crime-de-jair-bolsonaro-contra-andre-janones-por-crime-de-injuria/"}]},"220633":{"verificadoEm":"2026-06-10","itens":[{"st":"ativo","tipo":"réu","ano":2023,"desc":"Réu por corrupção passiva, crimes contra a flora e organização criminosa (Operação Akuanduba), por suposta legalização de madeira extraída ilegalmente.","desfecho":"ação penal em curso no STF (rel. Alexandre de Moraes); condição de réu confirmada no STF em setembro de 2025","defesa":"Nega irregularidades em sua gestão no Ministério do Meio Ambiente e questiona o acesso da defesa às provas.","fonte":"https://www.otempo.com.br/politica/judiciario/2025/9/5/ricardo-salles-vira-reu-no-stf-em-acao-que-apura-exportacao-ilegal-de-madeira"},{"st":"encerrado","tipo":"réu","ano":2016,"desc":"Ação de improbidade do MP-SP sobre alterações no plano de manejo da Várzea do Tietê quando secretário estadual de Meio Ambiente.","desfecho":"condenado em 1ª instância em 2018; absolvido pelo TJ-SP em março de 2021, por 4 votos a 1","defesa":"Sustentou que as alterações tiveram fundamento técnico e científico.","fonte":"https://www.conjur.com.br/2021-mar-04/ministro-absolvido-tj-sp-acao-improbidade-administrativa/"}]},"74646":{"verificadoEm":"2026-06-10","itens":[{"st":"encerrado","tipo":"inquérito","ano":2024,"desc":"Inquérito sobre suposta propina da construtora OAS em Minas Gerais, aberto a partir de delação de Léo Pinheiro.","desfecho":"arquivado pela 2ª Turma do STF em fevereiro de 2024, por ausência de elementos mínimos","defesa":"Negou recebimento de qualquer vantagem indevida.","fonte":"https://www.conjur.com.br/2024-fev-27/stf-arquiva-investigacao-contra-aecio-neves-por-suposta-propina-da-oas/"},{"st":"ativo","tipo":"réu","ano":2021,"desc":"Réu por corrupção passiva e obstrução de Justiça no caso JBS, por solicitar R$ 2 milhões a Joesley Batista.","desfecho":"denúncia recebida em 2021; ação penal em curso","defesa":"Sustenta que o valor era empréstimo pessoal, não propina.","fonte":"https://www.metropoles.com/brasil/aecio-neves-vira-reu-por-corrupcao-e-obstrucao-a-justica-no-caso-jbs"},{"st":"encerrado","tipo":"citação em delação","ano":2017,"desc":"Citado em delações da Odebrecht por suposto repasse de R$ 21 milhões na campanha presidencial de 2014; inquérito aberto em 2017.","desfecho":"inquérito arquivado pela 2ª Turma do STF em agosto de 2021, por falta de provas e excesso de prazo","defesa":"Defesa classificou as acusações como 'falsas narrativas feitas sem provas' por delatores.","fonte":"https://www.poder360.com.br/justica/stf-arquiva-inquerito-sobre-supostas-propinas-da-odebrecht-a-aecio-neves/"},{"st":"encerrado","tipo":"inquérito","ano":2016,"desc":"Inquéritos sobre supostos desvios de recursos de Furnas, abertos com base em delação de Delcídio do Amaral.","desfecho":"arquivados pelo STF em 2018 e 2021, por falta de corroboração das delações","defesa":"Sempre negou envolvimento com desvios em Furnas.","fonte":"https://www.otempo.com.br/politica/judiciario/stf-determina-arquivamento-de-inquerito-contra-aecio-neves-por-falta-de-provas-1.3339118"}]},"178886":{"verificadoEm":"2026-06-10","itens":[{"st":"ativo","tipo":"denúncia","ano":2025,"desc":"Denunciado pela PGR por corrupção passiva, peculato, lavagem e fraude em licitação: emendas via Codevasf para Vitorino Freire (MA).","desfecho":"em curso; pediu demissão do Ministério das Comunicações em abr/2025; decisão da 1ª Turma do STF sobre recebimento da denúncia não confirmada publicamente até jun/2026","defesa":"Reafirmou 'total inocência' e disse confiar na rejeição da denúncia por 'manifesta ausência de provas'.","fonte":"https://agenciabrasil.ebc.com.br/geral/noticia/2025-04/pgr-denuncia-ministro-das-comunicacoes-por-desvio-de-emendas"},{"st":"ativo","tipo":"inquérito","ano":2024,"desc":"Indiciado pela PF por organização criminosa, lavagem, corrupção passiva, falsidade ideológica e fraude em licitação no caso das emendas.","desfecho":"indiciamento em jun/2024 deu origem à denúncia da PGR em abr/2025","defesa":"Negou irregularidades e disse que as obras beneficiaram a população local.","fonte":"https://www.otempo.com.br/politica/judiciario/2025/4/8/pgr-denuncia-ministro-juscelino-filho-por-supostos-desvios-em-emendas-quando-era-deputado"}]},"220568":{"nome":"Gustavo Gayer","status":"inquérito","desc":"Indiciado pela PF em inquérito no STF por desvio de cota parlamentar (2025)","fonte":"https://www.gazetadopovo.com.br/republica/pf-operacao-gustavo-gayer-suspeita-desvio-cota-parlamentar/","verificadoEm":"2026-06-09"},"204550":{"nome":"Júnior Mano","status":"inquérito","desc":"Indiciado pela PF em inquérito no STF por venda de emendas (Operação Underhand)","fonte":"https://www.opovo.com.br/noticias/politica/2026/03/13/pf-envia-ao-stf-provas-em-caso-de-emendas-de-junior-mano.html","verificadoEm":"2026-06-09"},"178854":{"verificadoEm":"2026-06-10","itens":[{"st":"ativo","tipo":"inquérito","ano":2024,"desc":"Inquérito no STF (Operação Overclean) sobre suposto desvio de emendas e fraudes em licitações ligadas a Campo Formoso (BA).","desfecho":"em curso no STF (rel. Nunes Marques); buscas da PF em jul/2025; ministro rejeitou pedidos de medidas contra o deputado por considerar frágeis os elementos","defesa":"Defesa nega qualquer envolvimento e afirma que não há provas consistentes.","fonte":"https://www.dgabc.com.br/Noticia/4246109/operacao-overclean-pf-faz-buscas-em-18-enderecos-e-mira-elmar-nascimento-por-desvio-de-emendas"}]},"204460":{"nome":"Carlos Jordy","status":"inquérito","desc":"Alvo de inquérito no STF sobre o 8 de janeiro; buscas da PF (jan/2024)","fonte":"https://agenciabrasil.ebc.com.br/justica/noticia/2024-01/oposicao-reclama-no-stf-de-buscas-da-pf-contra-carlos-jordy","verificadoEm":"2026-06-09"},"220611":{"nome":"General Pazuello","status":"inquérito","desc":"Inquérito no STF por conduta na crise de oxigênio de Manaus (pandemia)","fonte":"https://www.poder360.com.br/justica/pgr-pede-ao-stf-que-inquerito-contra-pazuello-seja-enviado-a-1a-instancia/","verificadoEm":"2026-06-09"},"141518":{"verificadoEm":"2026-06-10","itens":[{"st":"ativo","tipo":"inquérito","ano":2018,"desc":"Inquérito sobre suposta captação ilícita de clientes para ações trabalhistas com listas de trabalhadores obtidas em sindicatos.","desfecho":"em curso no STF (rel. André Mendonça); retomado em dezembro de 2025 após dois anos parado","defesa":"","fonte":"https://www.poder360.com.br/poder-justica/stf-destrava-investigacao-contra-paulinho-da-forca-apos-2-anos/"},{"st":"encerrado","tipo":"condenação","ano":2021,"desc":"Condenado pela 1ª Turma do STF a 10 anos e 2 meses por desvio de recursos do BNDES, lavagem e associação criminosa.","desfecho":"condenação revertida pelo Plenário do STF em novembro de 2023; absolvido","defesa":"Defesa sempre sustentou inocência e recorreu ao Plenário, que o absolveu.","fonte":"https://agenciabrasil.ebc.com.br/justica/noticia/2023-11/plenario-do-stf-reverte-condenacao-de-ex-deputado-paulinho-da-forca"}]},"204425":{"verificadoEm":"2026-06-10","itens":[{"st":"ativo","tipo":"investigação TCE/TCU","ano":2024,"desc":"Representação do MP junto ao TCU sobre uso da cota parlamentar para abastecer veículos de familiares (R$ 105 mil, 2022-2023).","desfecho":"representação protocolada em jan/2024; sem desfecho público conhecido até jun/2026","defesa":"Negou irregularidades e atribuiu o problema a falhas contábeis do posto de combustível.","fonte":"https://static.poder360.com.br/2024/01/Representacao-MPTCU-silvio-costa-Filho-11.jan_.2024.pdf"},{"st":"encerrado","tipo":"réu","ano":2013,"desc":"Acusado pelo MPPE em caso de contratações de shows com notas fiscais irregulares ('shows fantasmas') quando deputado estadual.","desfecho":"absolvido pelo TJPE em fevereiro de 2014","defesa":"Sempre negou as acusações e disse confiar na Justiça.","fonte":"https://portal.tjpe.jus.br/documents/10180/964411/TJPE+na+M%C3%ADdia.+Ter%C3%A7a-feira+-+25.02.2014.pdf/ffd80afb-218a-4133-a9c5-c8c05c9a427f?t=1393327973750&download=true"}]},"160541":{"verificadoEm":"2026-06-10","itens":[{"st":"citação","tipo":"citação em CPI","ano":2025,"desc":"Buscas da PF sobre emendas do 'orçamento secreto' (dez/2025) miraram ex-assessora de Lira na presidência da Câmara.","desfecho":"Lira não figurava como alvo formal das buscas; investigação em curso contra terceiros","defesa":"","fonte":"https://agenciabrasil.ebc.com.br/justica/noticia/2025-12/buscas-na-camara-tem-como-alvo-ex-assessora-de-lira"},{"st":"encerrado","tipo":"denúncia","ano":2023,"desc":"Denúncia da PGR por corrupção passiva (Inq 3515, caso CBTU), derivada de delação de Alberto Youssef.","desfecho":"denúncia rejeitada por unanimidade pela 1ª Turma do STF em 2023","defesa":"Defesa sustentou que a acusação se baseava apenas em delação, sem provas autônomas.","fonte":"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=508535&ori=1"},{"st":"encerrado","tipo":"inquérito","ano":2023,"desc":"Inquérito 'Quadrilhão do PP' por suposta organização criminosa de parlamentares do partido na Lava Jato.","desfecho":"denúncia rejeitada e inquérito arquivado pelo STF em 2023","defesa":"Negou integrar qualquer organização criminosa.","fonte":"https://www.cnnbrasil.com.br/politica/stf-arquiva-inquerito-do-quadrilhao-do-pp-que-tinha-lira-como-investigado/"},{"st":"encerrado","tipo":"denúncia","ano":2022,"desc":"Denúncia por corrupção passiva ligada a R$ 106 mil apreendidos com assessor em 2019.","desfecho":"denúncia rejeitada pelo Plenário do STF em fevereiro de 2022","defesa":"Negou relação com o dinheiro apreendido e qualquer recebimento de propina.","fonte":"https://www.conjur.com.br/2022-fev-10/stf-forma-maioria-negar-denuncia-arthur-lira-corrupcao/"},{"st":"encerrado","tipo":"citação em delação","ano":2015,"desc":"Citado em delações da Lava Jato (Alberto Youssef), originando os inquéritos 3989, 3994 e 4631 no STF.","desfecho":"todas as denúncias derivadas foram rejeitadas pelo STF até 2023, por falta de provas além da delação","defesa":"Defesa afirmou que as imputações se apoiavam exclusivamente em relatos de delatores.","fonte":"https://www.poder360.com.br/justica/1a-turma-do-stf-rejeita-denuncia-contra-lira-por-corrupcao/"},{"st":"encerrado","tipo":"réu","ano":2007,"desc":"Acusado de peculato e lavagem ('rachadinha') na Assembleia de Alagoas, Operação Taturana, fatos de 2003-2006.","desfecho":"absolvido sumariamente pela Justiça de Alagoas em 2021; MP-AL anunciou recurso","defesa":"Sempre negou desvios e apontou nulidades na denúncia.","fonte":"https://www.cnnbrasil.com.br/politica/juiz-absolve-sumariamente-arthur-lira-de-comandar-rachadinha-em-alagoas/"}]}},"senado":{"739":{"verificadoEm":"2026-06-10","itens":[{"st":"ativo","tipo":"inquérito","ano":2025,"desc":"Inquérito no STF (Operação Compliance Zero, caso Banco Master) sobre suposto uso do mandato em favor do banco em troca de vantagens.","desfecho":"em curso (rel. André Mendonça); buscas da PF em maio de 2026; medidas cautelares impostas e posteriormente revogadas","defesa":"Repudia 'qualquer insinuação de ilegalidade', nega recebimento de 'mesada' e afirma colaborar com as investigações.","fonte":"https://www.otempo.com.br/politica/judiciario/2026/5/7/defesa-de-ciro-nogueira-questiona-operacao-da-pf-e-nega-mesada-ligada-ao-caso-master"},{"st":"ativo","tipo":"investigação TCE/TCU","ano":2025,"desc":"Autuação fiscal da Receita Federal sobre valores apontados como propina da J&F e da UTC (Lava Jato), estimada em R$ 6,2 milhões em 2018.","desfecho":"CARF manteve a multa em dezembro de 2025 (acórdão publicado em maio de 2026), com redução do cálculo; defesa anunciou recurso administrativo e judicial","defesa":"Alega nulidade da autuação e falta de lastro probatório, lembrando que o STF rejeitou as denúncias criminais correlatas.","fonte":"https://www.cnnbrasil.com.br/politica/carf-mantem-multa-a-ciro-nogueira-por-propina-investigada-na-lava-jato/"},{"st":"encerrado","tipo":"denúncia","ano":2020,"desc":"Denúncia da PGR por corrupção e lavagem por suposto recebimento de propina da Odebrecht, derivada de delações de executivos da empreiteira.","desfecho":"rejeitada pelo STF em outubro de 2023, com manifestação da própria PGR pela rejeição por falta de elementos","defesa":"Negou recebimento de valores e apontou ausência de provas além das delações.","fonte":"https://www.cnnbrasil.com.br/politica/stf-rejeita-denuncia-contra-senador-ciro-nogueira/"},{"st":"encerrado","tipo":"inquérito","ano":2021,"desc":"Inquérito 4631 (Lava Jato), com citações de delatores a supostas vantagens indevidas ao senador.","desfecho":"arquivado em relação ao senador por decisão do ministro Edson Fachin em março de 2021","defesa":"","fonte":"https://www.correiobraziliense.com.br/politica/2021/07/4938909-prestes-a-ingressar-no-governo-ciro-nogueira-responde-a-tres-inqueritos-no-stf.html"},{"st":"encerrado","tipo":"denúncia","ano":2021,"desc":"Denúncia por corrupção, junto com o deputado Eduardo da Fonte, por suposta propina da Odebrecht ligada à atuação parlamentar.","desfecho":"rejeitada pelo STF em 2021, conforme noticiado pelo próprio tribunal","defesa":"","fonte":"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=471547&ori=1"},{"st":"encerrado","tipo":"citação em delação","ano":2016,"desc":"Citado na delação de Ricardo Pessoa (UTC) por suposto pedido de R$ 2 milhões em 2014; PGR denunciou por corrupção passiva e lavagem (Inq 4074).","desfecho":"denúncia rejeitada pela 2ª Turma do STF em 14/08/2018, por 3 a 1, por delação não corroborada por provas","defesa":"Sustentou que a acusação se baseava apenas na palavra do delator.","fonte":"https://noticias.stf.jus.br/postsnoticias/2a-turma-rejeita-denuncia-contra-senador-ciro-nogueira-e-ricardo-pessoa/"}]},"5895":{"status":"réu","desc":"Réu no STF por calúnia contra o senador Vanderlan Cardoso (PET 8401, denúncia recebida em dez/2023); ação em curso.","fonte":"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=521370&ori=1","verificadoEm":"2026-06-09"},"5942":{"verificadoEm":"2026-06-10","itens":[{"st":"ativo","tipo":"inquérito","ano":2023,"desc":"Investigado no STF (PET 12404) por suposta obstrução e divulgação de dados sigilosos, após relatar plano envolvendo agentes contra o ministro Alexandre de Moraes.","desfecho":"em curso; indiciado pela PF em agosto de 2025; medidas cautelares impostas e revogadas; sem denúncia recebida até junho de 2026","defesa":"Nega crimes, afirma ter recusado o plano que relatou e diz ser alvo de censura e perseguição.","fonte":"https://www.metropoles.com/colunas/manoela-alcantara/pgr-se-manifesta-pelo-fim-das-medidas-cautelares-contra-marcos-do-val"}]},"6331":{"status":"réu","desc":"Réu no STF por calúnia contra o ministro Gilmar Mendes (denúncia recebida em jul/2024; 1ª Turma manteve em out/2025).","fonte":"https://agenciabrasil.ebc.com.br/justica/noticia/2025-10/stf-mantem-decisao-que-torna-moro-reu-por-calunia-contra-gilmar-mendes","verificadoEm":"2026-06-09"},"4770":{"status":"condenado","desc":"Condenado em 2ª instância por peculato (TJDFT, 2022; 4 anos e 8 meses); recursos pendentes, sem trânsito em julgado.","fonte":"https://www.tjdft.jus.br/institucional/imprensa/noticias/2022/maio/turma-aumenta-pena-de-condenacao-de-senador-por-peculato-desvio-de-computadores","verificadoEm":"2026-06-09"},"3806":{"status":"inquérito","desc":"Apuração no STF (2024, rel. Cármen Lúcia, sob sigilo) sobre suposta grilagem em terra indígena no Pará; nega irregularidades.","fonte":"https://www.cartacapital.com.br/politica/lider-da-bancada-evangelica-no-senado-entra-na-mira-do-stf-por-grilagem/","verificadoEm":"2026-06-09"},"5990":{"status":"inquérito","desc":"Apuração no STF (rel. Flávio Dino) sobre emendas à Fundação Oásis/Lagoinha, ampliada em mar/2026; nega irregularidades.","fonte":"https://agenciabrasil.ebc.com.br/politica/noticia/2026-03/senador-reafirma-que-nao-cometeu-irregularidades-com-emendas","verificadoEm":"2026-06-09"},"70":{"verificadoEm":"2026-06-10","itens":[{"st":"encerrado","tipo":"inquérito","ano":2025,"desc":"Último inquérito remanescente contra o senador no STF, derivado das investigações da Lava Jato.","desfecho":"arquivado pelo STF em fevereiro de 2025; ao longo dos anos, cerca de 40 procedimentos contra o senador foram arquivados ou rejeitados","defesa":"Defesa sempre sustentou que as investigações se apoiavam apenas em delações sem provas.","fonte":"https://www.conjur.com.br/2025-fev-26/ultimo-inquerito-contra-renan-calheiros-e-arquivado-no-stf/"},{"st":"encerrado","tipo":"denúncia","ano":2017,"desc":"Denúncia da PGR por organização criminosa ('quadrilhão do MDB' do Senado), com Jader Barbalho, Romero Jucá, José Sarney e outros.","desfecho":"rejeitada pelo Plenário do STF em agosto de 2023, a pedido da própria PGR, por ausência de justa causa","defesa":"Negou integrar organização criminosa.","fonte":"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=512311&tip=UN"},{"st":"encerrado","tipo":"citação em delação","ano":2016,"desc":"Citado nas delações de Sérgio Machado (Transpetro) e de executivos da Odebrecht, que originaram inquéritos no STF.","desfecho":"inquéritos derivados foram sendo arquivados ao longo dos anos; o último em fevereiro de 2025","defesa":"Classificou as delações como inconsistentes e sem provas.","fonte":"https://www.gazetadopovo.com.br/republica/renan-calheiros-investigacoes-inqueritos-stf-cpi-da-covid/"},{"st":"encerrado","tipo":"réu","ano":2016,"desc":"Denúncia por peculato (caso Mônica Veloso, fatos de 2007): suposto uso de verba indenizatória com notas fiscais frias para pensão.","desfecho":"absolvido por unanimidade pela 2ª Turma do STF em dezembro de 2018; também absolvido em ação de improbidade pelo TRF-1 em novembro de 2018","defesa":"Sempre negou desvio e sustentou a regularidade das despesas.","fonte":"https://www.gazetadopovo.com.br/politica/republica/depois-de-11-anos-renan-e-absolvido-pela-2-turma-do-stf-no-caso-monica-veloso-4zdfow992exulhslotstrfpno/"}]},"470":{"status":"histórico","desc":"Inquérito do flagrante de dinheiro na cueca e verbas da pandemia (2020) arquivado pelo STF em fev/2026, a pedido da PGR.","fonte":"https://www.poder360.com.br/poder-justica/dino-arquiva-investigacao-contra-senador-do-dinheiro-na-cueca/","verificadoEm":"2026-06-09"},"4994":{"status":"histórico","desc":"Denúncia por caixa 2 (INQ 4418) rejeitada pelo STF em 2021; inquérito INQ 4429 arquivado em 2018; sem condenação.","fonte":"https://www.conjur.com.br/2021-ago-31/stf-aceita-contrarrazoes-pgr-rejeita-denuncia-eduardo-braga/","verificadoEm":"2026-06-09"},"5525":{"status":"histórico","desc":"Inquérito no STF (INQ 4429) arquivado em 2018; alvo na Operação Maus Caminhos, remetida à 1ª instância; sem condenação.","fonte":"https://portalamazonia.com/noticias/politica/ministro-do-stf-arquiva-inquerito-que-envolve-eduardo-braga-e-omar-aziz","verificadoEm":"2026-06-09"},"35":{"status":"histórico","desc":"Inquérito no STF (com Renan Calheiros) arquivado em mar/2023 a pedido da PGR, por falta de provas.","fonte":"https://agenciabrasil.ebc.com.br/justica/noticia/2023-03/stf-arquiva-inquerito-contra-renan-calheiros-e-jader-barbalho","verificadoEm":"2026-06-09"},"5894":{"status":"histórico","desc":"Caso 'rachadinha' (peculato e lavagem alegados): provas anuladas pelo STJ; arquivado definitivamente em 2024, recurso do MP negado.","fonte":"https://www.cartacapital.com.br/politica/o-que-aconteceu-com-o-caso-da-rachadinha-de-flavio-bolsonaro-suposto-candidato-em-2026/","verificadoEm":"2026-06-09"},"3830":{"verificadoEm":"2026-06-10","itens":[{"st":"encerrado","tipo":"investigação TCE/TCU","ano":2017,"desc":"Ações no TSE pedindo cassação do mandato por suspeita de notas fiscais falsas na prestação de contas da campanha de 2014.","desfecho":"arquivamento mantido por unanimidade pelo Plenário do TSE em fevereiro de 2021","defesa":"Negou irregularidades na prestação de contas.","fonte":"https://agenciabrasil.ebc.com.br/justica/noticia/2021-02/tse-arquiva-processos-que-pediam-cassacao-do-mandato-de-alcolumbre"},{"st":"encerrado","tipo":"inquérito","ano":2017,"desc":"Dois inquéritos no STF sobre supostos crimes eleitorais na campanha de 2014, abertos a partir de representação do PMDB do Amapá.","desfecho":"arquivados pelo STF em julho de 2019, a pedido da PGR, por falta de lastro probatório mínimo","defesa":"Negou os supostos crimes eleitorais.","fonte":"https://agenciabrasil.ebc.com.br/politica/noticia/2019-07/stf-arquiva-inqueritos-sobre-suposto-crime-eleitoral-de-alcolumbre"}]}},"_meta":{"criterio":"ativos (réu/condenado/inquérito/denúncia pendente) + histórico relevante encerrado (arquivado/prescrito/absolvido), sempre com fonte; Câmara: varredura de históricos ainda parcial","fontesGerais":["https://noticias.stf.jus.br/postsnoticias/stf-condena-sete-reus-por-desvio-de-emendas-parlamentares-destinadas-a-municipio-do-maranhao/","https://www.gazetadopovo.com.br/vida-e-cidadania/4-a-cada-5-processos-contra-deputados-no-stf-miram-direita/","https://www.congressoemfoco.com.br/noticia/6992/pl-tem-35-deputados-reus-em-acao-penal-ou-investigados-um-terco-da-bancada","https://www.congressoemfoco.com.br/noticia/117341/1-turma-do-stf-condena-deputados-por-desvio-de-emendas-parlamentares","https://agenciabrasil.ebc.com.br/justica/noticia/2025-12/stf-encerra-julgamento-da-trama-golpista-com-29-condenados"],"verificadoEm":"2026-06-09","limitacoes":"Método: cruzamento de compilações jornalísticas (Congresso em Foco 2024; levantamento de advogados da Câmara via Gazeta do Povo, jul/2025) com verificação caso a caso em fontes de 2024-2026; não houve consulta processual direta aos sistemas do STF/STJ. Levantamentos indicam ~34 deputados com processos/inquéritos no STF (muitos sob sigilo ou sem nomes publicados) — ausência neste arquivo NÃO significa ficha limpa, apenas 'nenhum registro encontrado nas fontes verificadas'. Casos EXCLUÍDOS por dúvida ou arquivamento: Izalci Lucas (condenação por peculato no TJDFT com decisões conflitantes no STJ; status atual incerto), Alberto Fraga (condenação de 1ª instância em 2018, absolvições posteriores em casos correlatos), André Fernandes e Clarissa Tércio (inquéritos do 8/1 com pedido de arquivamento da PGR/arquivados), Zé Trovão e General Girão (status atual dos inquéritos do 8/1 não confirmado), Mecias de Jesus (condenação por improbidade é cível; PF apenas pediu abertura de inquérito), Sérgio Petecão (sem confirmação atual), Bia Kicis/Nikolas Ferreira/Luiz Lima (menções a investigações sem confirmação de inquérito individual ativo), Daniela do Waguinho (investigações miram o marido). Absolvidos/arquivados e por isso NÃO marcados: Arthur Lira, Renan Calheiros, Flávio Bolsonaro, Vander Loubet, Irajá, Paulinho da Força (caso BNDES revertido pelo Plenário em 2023; mantido aqui apenas o inquérito de 2018). Fora das listas de exercício (cassados/licenciados/presos), não incluídos: Carla Zambelli, Alexandre Ramagem, Eduardo Bolsonaro, Chiquinho Brazão, Glauber Braga, Josimar Maranhãozinho. Casos antigos sem notícia recente (Aécio Neves 2021, Kajuru 2023, Jordy 2024) podem ter evoluído sem cobertura encontrada.","senado":{"criterio":"ativos (réu/condenado/inquérito/denúncia) + histórico relevante arquivado/prescrito/absolvido","fontes":["portal.stf.jus.br / noticias.stf.jus.br","agenciabrasil.ebc.com.br","conjur.com.br","poder360.com.br","cnnbrasil.com.br","metropoles.com","cartacapital.com.br","tjdft.jus.br","portalamazonia.com","mpf.mp.br"],"limitacoes":"Verificação por imprensa e portais oficiais em 09/06/2026; processos em segredo de justiça podem não constar. Zequinha Marinho e Carlos Viana: apurações no STF documentadas pela imprensa, sem número público de inquérito. Izalci Lucas: condenação de 2ª instância (2022) sem notícia posterior de trânsito em julgado ou reversão. Chico Rodrigues: arquivado no STF, mas desdobramentos sem foro seguem na JF-RR. Excluídos por falta de fonte sólida de caso formal: Davi Alcolumbre, Dr. Hiran, Jayme Campos, Veneziano Vital do Rêgo (28 processos arquivados em 2018, quando deputado), entre outros. Fernando Collor e Romero Jucá não integram a lista de senadores em exercício."},"v3_piloto":{"politica":"Apenas fatos processuais com fonte; absolvições e arquivamentos têm o mesmo peso de inclusão que acusações; sem adjetivos ou juízo de valor; versão da defesa incluída quando publicada; identificação confirmada por mandato/cargo/UF.","duvidas":["Silvio Costa Filho consta na lista da Câmara (id 204425) embora licenciado para exercer o cargo de ministro de Portos e Aeroportos.","Citação do nome 'Silvio Costa' na CPI do Crime Organizado/Banco Master (2026) refere-se ao pai, Silvio Costa (ex-deputado) — NÃO incluída no registro do filho.","Desfecho da representação do MP-TCU (combustível, 2024) não localizado publicamente; mantida como 'ativo' por cautela.","Juscelino Filho (178886): não foi possível confirmar publicamente se a 1ª Turma do STF recebeu a denúncia da PGR (abr/2025); item mantido como denúncia 'em curso', sem afirmar condição de réu.","Arthur Lira (160541): buscas da PF de dez/2025 sobre emendas miraram ex-assessora; Lira registrado apenas como 'citação' porque não era alvo formal.","Ciro Nogueira (739): item da multa fiscal (Receita/CARF) classificado sob 'investigação TCE/TCU' por ausência de tipo específico para órgão administrativo-fiscal; denúncia rejeitada com Eduardo da Fonte tem ano (2021) inferido da notícia oficial do STF, sem data exata confirmada.","Davi Alcolumbre (3830): citações genéricas em reportagens e em relatório da Transparência Internacional sobre emendas (2025) NÃO incluídas como itens, por falta de inquérito formal confirmado contra o senador.","Renan Calheiros (70): o total 'cerca de 40 procedimentos arquivados' é estimativa da imprensa (ConJur); itens individuais não listados um a um por falta de fontes específicas para cada arquivamento.","Não incluídos por dúvida de identificação ou ausência de procedimento formal: episódios domésticos/pessoais sem ação penal confirmada e citações de homônimos."]}}}
+{
+ "camara": {
+  "204570": {
+   "nome": "Pastor Gil",
+   "status": "condenado",
+   "desc": "Condenado pelo STF a 5 anos e 6 meses por corrupção em emendas (mar/2026)",
+   "fonte": "https://noticias.stf.jus.br/postsnoticias/stf-condena-sete-reus-por-desvio-de-emendas-parlamentares-destinadas-a-municipio-do-maranhao/",
+   "verificadoEm": "2026-06-09"
+  },
+  "178908": {
+   "nome": "Delegado Éder Mauro",
+   "status": "condenado",
+   "desc": "Condenado pelo STF (2020) por difamação agravada: vídeo adulterado de Jean Wyllys",
+   "fonte": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=449809&ori=1",
+   "verificadoEm": "2026-06-09"
+  },
+  "204441": {
+   "nome": "Otoni de Paula",
+   "status": "réu",
+   "desc": "Réu no STF por ofensas e coação contra o ministro Alexandre de Moraes",
+   "fonte": "https://www.cnnbrasil.com.br/politica/stf-recebe-denuncia-da-pgr-contra-deputado-otoni-de-paula-por-ofensas-a-moraes/",
+   "verificadoEm": "2026-06-09"
+  },
+  "204515": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2023,
+     "desc": "Investigado por suposta 'rachadinha' (peculato) em seu gabinete (Inq 4949), com base em áudios divulgados por ex-assessor.",
+     "desfecho": "acordo de não persecução penal com a PGR homologado pelo STF, com devolução de R$ 157,8 mil; arquivamento condicionado ao cumprimento integral",
+     "defesa": "Nega ter confessado 'rachadinha' e afirma que o acordo não implica admissão de culpa.",
+     "fonte": "https://noticias.stf.jus.br/postsnoticias/stf-homologa-acordo-entre-deputado-andre-janones-e-pgr-sobre-rachadinha/"
+    },
+    {
+     "st": "ativo",
+     "tipo": "réu",
+     "ano": 2024,
+     "desc": "Queixa-crime de Jair Bolsonaro por injúria, em razão de publicações em rede social, recebida pelo Plenário do STF.",
+     "desfecho": "ação penal por injúria em curso; imputação de calúnia foi rejeitada pelo STF",
+     "defesa": "",
+     "fonte": "https://noticias.stf.jus.br/postsnoticias/stf-recebe-queixa-crime-de-jair-bolsonaro-contra-andre-janones-por-crime-de-injuria/"
+    }
+   ]
+  },
+  "220633": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "réu",
+     "ano": 2023,
+     "desc": "Réu por corrupção passiva, crimes contra a flora e organização criminosa (Operação Akuanduba), por suposta legalização de madeira extraída ilegalmente.",
+     "desfecho": "ação penal em curso no STF (rel. Alexandre de Moraes); condição de réu confirmada no STF em setembro de 2025",
+     "defesa": "Nega irregularidades em sua gestão no Ministério do Meio Ambiente e questiona o acesso da defesa às provas.",
+     "fonte": "https://www.otempo.com.br/politica/judiciario/2025/9/5/ricardo-salles-vira-reu-no-stf-em-acao-que-apura-exportacao-ilegal-de-madeira"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "réu",
+     "ano": 2016,
+     "desc": "Ação de improbidade do MP-SP sobre alterações no plano de manejo da Várzea do Tietê quando secretário estadual de Meio Ambiente.",
+     "desfecho": "condenado em 1ª instância em 2018; absolvido pelo TJ-SP em março de 2021, por 4 votos a 1",
+     "defesa": "Sustentou que as alterações tiveram fundamento técnico e científico.",
+     "fonte": "https://www.conjur.com.br/2021-mar-04/ministro-absolvido-tj-sp-acao-improbidade-administrativa/"
+    }
+   ]
+  },
+  "74646": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2024,
+     "desc": "Inquérito sobre suposta propina da construtora OAS em Minas Gerais, aberto a partir de delação de Léo Pinheiro.",
+     "desfecho": "arquivado pela 2ª Turma do STF em fevereiro de 2024, por ausência de elementos mínimos",
+     "defesa": "Negou recebimento de qualquer vantagem indevida.",
+     "fonte": "https://www.conjur.com.br/2024-fev-27/stf-arquiva-investigacao-contra-aecio-neves-por-suposta-propina-da-oas/"
+    },
+    {
+     "st": "ativo",
+     "tipo": "réu",
+     "ano": 2021,
+     "desc": "Réu por corrupção passiva e obstrução de Justiça no caso JBS, por solicitar R$ 2 milhões a Joesley Batista.",
+     "desfecho": "denúncia recebida em 2021; ação penal em curso",
+     "defesa": "Sustenta que o valor era empréstimo pessoal, não propina.",
+     "fonte": "https://www.metropoles.com/brasil/aecio-neves-vira-reu-por-corrupcao-e-obstrucao-a-justica-no-caso-jbs"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "citação em delação",
+     "ano": 2017,
+     "desc": "Citado em delações da Odebrecht por suposto repasse de R$ 21 milhões na campanha presidencial de 2014; inquérito aberto em 2017.",
+     "desfecho": "inquérito arquivado pela 2ª Turma do STF em agosto de 2021, por falta de provas e excesso de prazo",
+     "defesa": "Defesa classificou as acusações como 'falsas narrativas feitas sem provas' por delatores.",
+     "fonte": "https://www.poder360.com.br/justica/stf-arquiva-inquerito-sobre-supostas-propinas-da-odebrecht-a-aecio-neves/"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2016,
+     "desc": "Inquéritos sobre supostos desvios de recursos de Furnas, abertos com base em delação de Delcídio do Amaral.",
+     "desfecho": "arquivados pelo STF em 2018 e 2021, por falta de corroboração das delações",
+     "defesa": "Sempre negou envolvimento com desvios em Furnas.",
+     "fonte": "https://www.otempo.com.br/politica/judiciario/stf-determina-arquivamento-de-inquerito-contra-aecio-neves-por-falta-de-provas-1.3339118"
+    }
+   ]
+  },
+  "178886": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "denúncia",
+     "ano": 2025,
+     "desc": "Denunciado pela PGR por corrupção passiva, peculato, lavagem e fraude em licitação: emendas via Codevasf para Vitorino Freire (MA).",
+     "desfecho": "em curso; pediu demissão do Ministério das Comunicações em abr/2025; decisão da 1ª Turma do STF sobre recebimento da denúncia não confirmada publicamente até jun/2026",
+     "defesa": "Reafirmou 'total inocência' e disse confiar na rejeição da denúncia por 'manifesta ausência de provas'.",
+     "fonte": "https://agenciabrasil.ebc.com.br/geral/noticia/2025-04/pgr-denuncia-ministro-das-comunicacoes-por-desvio-de-emendas"
+    },
+    {
+     "st": "ativo",
+     "tipo": "inquérito",
+     "ano": 2024,
+     "desc": "Indiciado pela PF por organização criminosa, lavagem, corrupção passiva, falsidade ideológica e fraude em licitação no caso das emendas.",
+     "desfecho": "indiciamento em jun/2024 deu origem à denúncia da PGR em abr/2025",
+     "defesa": "Negou irregularidades e disse que as obras beneficiaram a população local.",
+     "fonte": "https://www.otempo.com.br/politica/judiciario/2025/4/8/pgr-denuncia-ministro-juscelino-filho-por-supostos-desvios-em-emendas-quando-era-deputado"
+    }
+   ]
+  },
+  "220568": {
+   "nome": "Gustavo Gayer",
+   "status": "inquérito",
+   "desc": "Indiciado pela PF em inquérito no STF por desvio de cota parlamentar (2025)",
+   "fonte": "https://www.gazetadopovo.com.br/republica/pf-operacao-gustavo-gayer-suspeita-desvio-cota-parlamentar/",
+   "verificadoEm": "2026-06-09"
+  },
+  "204550": {
+   "nome": "Júnior Mano",
+   "status": "inquérito",
+   "desc": "Indiciado pela PF em inquérito no STF por venda de emendas (Operação Underhand)",
+   "fonte": "https://www.opovo.com.br/noticias/politica/2026/03/13/pf-envia-ao-stf-provas-em-caso-de-emendas-de-junior-mano.html",
+   "verificadoEm": "2026-06-09"
+  },
+  "178854": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "inquérito",
+     "ano": 2024,
+     "desc": "Inquérito no STF (Operação Overclean) sobre suposto desvio de emendas e fraudes em licitações ligadas a Campo Formoso (BA).",
+     "desfecho": "em curso no STF (rel. Nunes Marques); buscas da PF em jul/2025; ministro rejeitou pedidos de medidas contra o deputado por considerar frágeis os elementos",
+     "defesa": "Defesa nega qualquer envolvimento e afirma que não há provas consistentes.",
+     "fonte": "https://www.dgabc.com.br/Noticia/4246109/operacao-overclean-pf-faz-buscas-em-18-enderecos-e-mira-elmar-nascimento-por-desvio-de-emendas"
+    }
+   ]
+  },
+  "204460": {
+   "nome": "Carlos Jordy",
+   "status": "inquérito",
+   "desc": "Alvo de inquérito no STF sobre o 8 de janeiro; buscas da PF (jan/2024)",
+   "fonte": "https://agenciabrasil.ebc.com.br/justica/noticia/2024-01/oposicao-reclama-no-stf-de-buscas-da-pf-contra-carlos-jordy",
+   "verificadoEm": "2026-06-09"
+  },
+  "220611": {
+   "nome": "General Pazuello",
+   "status": "inquérito",
+   "desc": "Inquérito no STF por conduta na crise de oxigênio de Manaus (pandemia)",
+   "fonte": "https://www.poder360.com.br/justica/pgr-pede-ao-stf-que-inquerito-contra-pazuello-seja-enviado-a-1a-instancia/",
+   "verificadoEm": "2026-06-09"
+  },
+  "141518": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "inquérito",
+     "ano": 2018,
+     "desc": "Inquérito sobre suposta captação ilícita de clientes para ações trabalhistas com listas de trabalhadores obtidas em sindicatos.",
+     "desfecho": "em curso no STF (rel. André Mendonça); retomado em dezembro de 2025 após dois anos parado",
+     "defesa": "",
+     "fonte": "https://www.poder360.com.br/poder-justica/stf-destrava-investigacao-contra-paulinho-da-forca-apos-2-anos/"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "condenação",
+     "ano": 2021,
+     "desc": "Condenado pela 1ª Turma do STF a 10 anos e 2 meses por desvio de recursos do BNDES, lavagem e associação criminosa.",
+     "desfecho": "condenação revertida pelo Plenário do STF em novembro de 2023; absolvido",
+     "defesa": "Defesa sempre sustentou inocência e recorreu ao Plenário, que o absolveu.",
+     "fonte": "https://agenciabrasil.ebc.com.br/justica/noticia/2023-11/plenario-do-stf-reverte-condenacao-de-ex-deputado-paulinho-da-forca"
+    }
+   ]
+  },
+  "204425": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "investigação TCE/TCU",
+     "ano": 2024,
+     "desc": "Representação do MP junto ao TCU sobre uso da cota parlamentar para abastecer veículos de familiares (R$ 105 mil, 2022-2023).",
+     "desfecho": "representação protocolada em jan/2024; sem desfecho público conhecido até jun/2026",
+     "defesa": "Negou irregularidades e atribuiu o problema a falhas contábeis do posto de combustível.",
+     "fonte": "https://static.poder360.com.br/2024/01/Representacao-MPTCU-silvio-costa-Filho-11.jan_.2024.pdf"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "réu",
+     "ano": 2013,
+     "desc": "Acusado pelo MPPE em caso de contratações de shows com notas fiscais irregulares ('shows fantasmas') quando deputado estadual.",
+     "desfecho": "absolvido pelo TJPE em fevereiro de 2014",
+     "defesa": "Sempre negou as acusações e disse confiar na Justiça.",
+     "fonte": "https://portal.tjpe.jus.br/documents/10180/964411/TJPE+na+M%C3%ADdia.+Ter%C3%A7a-feira+-+25.02.2014.pdf/ffd80afb-218a-4133-a9c5-c8c05c9a427f?t=1393327973750&download=true"
+    }
+   ]
+  },
+  "160541": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "citação",
+     "tipo": "citação em CPI",
+     "ano": 2025,
+     "desc": "Buscas da PF sobre emendas do 'orçamento secreto' (dez/2025) miraram ex-assessora de Lira na presidência da Câmara.",
+     "desfecho": "Lira não figurava como alvo formal das buscas; investigação em curso contra terceiros",
+     "defesa": "",
+     "fonte": "https://agenciabrasil.ebc.com.br/justica/noticia/2025-12/buscas-na-camara-tem-como-alvo-ex-assessora-de-lira"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "denúncia",
+     "ano": 2023,
+     "desc": "Denúncia da PGR por corrupção passiva (Inq 3515, caso CBTU), derivada de delação de Alberto Youssef.",
+     "desfecho": "denúncia rejeitada por unanimidade pela 1ª Turma do STF em 2023",
+     "defesa": "Defesa sustentou que a acusação se baseava apenas em delação, sem provas autônomas.",
+     "fonte": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=508535&ori=1"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2023,
+     "desc": "Inquérito 'Quadrilhão do PP' por suposta organização criminosa de parlamentares do partido na Lava Jato.",
+     "desfecho": "denúncia rejeitada e inquérito arquivado pelo STF em 2023",
+     "defesa": "Negou integrar qualquer organização criminosa.",
+     "fonte": "https://www.cnnbrasil.com.br/politica/stf-arquiva-inquerito-do-quadrilhao-do-pp-que-tinha-lira-como-investigado/"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "denúncia",
+     "ano": 2022,
+     "desc": "Denúncia por corrupção passiva ligada a R$ 106 mil apreendidos com assessor em 2019.",
+     "desfecho": "denúncia rejeitada pelo Plenário do STF em fevereiro de 2022",
+     "defesa": "Negou relação com o dinheiro apreendido e qualquer recebimento de propina.",
+     "fonte": "https://www.conjur.com.br/2022-fev-10/stf-forma-maioria-negar-denuncia-arthur-lira-corrupcao/"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "citação em delação",
+     "ano": 2015,
+     "desc": "Citado em delações da Lava Jato (Alberto Youssef), originando os inquéritos 3989, 3994 e 4631 no STF.",
+     "desfecho": "todas as denúncias derivadas foram rejeitadas pelo STF até 2023, por falta de provas além da delação",
+     "defesa": "Defesa afirmou que as imputações se apoiavam exclusivamente em relatos de delatores.",
+     "fonte": "https://www.poder360.com.br/justica/1a-turma-do-stf-rejeita-denuncia-contra-lira-por-corrupcao/"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "réu",
+     "ano": 2007,
+     "desc": "Acusado de peculato e lavagem ('rachadinha') na Assembleia de Alagoas, Operação Taturana, fatos de 2003-2006.",
+     "desfecho": "absolvido sumariamente pela Justiça de Alagoas em 2021; MP-AL anunciou recurso",
+     "defesa": "Sempre negou desvios e apontou nulidades na denúncia.",
+     "fonte": "https://www.cnnbrasil.com.br/politica/juiz-absolve-sumariamente-arthur-lira-de-comandar-rachadinha-em-alagoas/"
+    }
+   ]
+  }
+ },
+ "senado": {
+  "739": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "inquérito",
+     "ano": 2025,
+     "desc": "Inquérito no STF (Operação Compliance Zero, caso Banco Master) sobre suposto uso do mandato em favor do banco em troca de vantagens.",
+     "desfecho": "em curso (rel. André Mendonça); buscas da PF em maio de 2026; medidas cautelares impostas e posteriormente revogadas",
+     "defesa": "Repudia 'qualquer insinuação de ilegalidade', nega recebimento de 'mesada' e afirma colaborar com as investigações.",
+     "fonte": "https://www.otempo.com.br/politica/judiciario/2026/5/7/defesa-de-ciro-nogueira-questiona-operacao-da-pf-e-nega-mesada-ligada-ao-caso-master"
+    },
+    {
+     "st": "ativo",
+     "tipo": "investigação TCE/TCU",
+     "ano": 2025,
+     "desc": "Autuação fiscal da Receita Federal sobre valores apontados como propina da J&F e da UTC (Lava Jato), estimada em R$ 6,2 milhões em 2018.",
+     "desfecho": "CARF manteve a multa em dezembro de 2025 (acórdão publicado em maio de 2026), com redução do cálculo; defesa anunciou recurso administrativo e judicial",
+     "defesa": "Alega nulidade da autuação e falta de lastro probatório, lembrando que o STF rejeitou as denúncias criminais correlatas.",
+     "fonte": "https://www.cnnbrasil.com.br/politica/carf-mantem-multa-a-ciro-nogueira-por-propina-investigada-na-lava-jato/"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "denúncia",
+     "ano": 2020,
+     "desc": "Denúncia da PGR por corrupção e lavagem por suposto recebimento de propina da Odebrecht, derivada de delações de executivos da empreiteira.",
+     "desfecho": "rejeitada pelo STF em outubro de 2023, com manifestação da própria PGR pela rejeição por falta de elementos",
+     "defesa": "Negou recebimento de valores e apontou ausência de provas além das delações.",
+     "fonte": "https://www.cnnbrasil.com.br/politica/stf-rejeita-denuncia-contra-senador-ciro-nogueira/"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2021,
+     "desc": "Inquérito 4631 (Lava Jato), com citações de delatores a supostas vantagens indevidas ao senador.",
+     "desfecho": "arquivado em relação ao senador por decisão do ministro Edson Fachin em março de 2021",
+     "defesa": "",
+     "fonte": "https://www.correiobraziliense.com.br/politica/2021/07/4938909-prestes-a-ingressar-no-governo-ciro-nogueira-responde-a-tres-inqueritos-no-stf.html"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "denúncia",
+     "ano": 2021,
+     "desc": "Denúncia por corrupção, junto com o deputado Eduardo da Fonte, por suposta propina da Odebrecht ligada à atuação parlamentar.",
+     "desfecho": "rejeitada pelo STF em 2021, conforme noticiado pelo próprio tribunal",
+     "defesa": "",
+     "fonte": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=471547&ori=1"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "citação em delação",
+     "ano": 2016,
+     "desc": "Citado na delação de Ricardo Pessoa (UTC) por suposto pedido de R$ 2 milhões em 2014; PGR denunciou por corrupção passiva e lavagem (Inq 4074).",
+     "desfecho": "denúncia rejeitada pela 2ª Turma do STF em 14/08/2018, por 3 a 1, por delação não corroborada por provas",
+     "defesa": "Sustentou que a acusação se baseava apenas na palavra do delator.",
+     "fonte": "https://noticias.stf.jus.br/postsnoticias/2a-turma-rejeita-denuncia-contra-senador-ciro-nogueira-e-ricardo-pessoa/"
+    }
+   ]
+  },
+  "5895": {
+   "status": "réu",
+   "desc": "Réu no STF por calúnia contra o senador Vanderlan Cardoso (PET 8401, denúncia recebida em dez/2023); ação em curso.",
+   "fonte": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=521370&ori=1",
+   "verificadoEm": "2026-06-09"
+  },
+  "5942": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "inquérito",
+     "ano": 2023,
+     "desc": "Investigado no STF (PET 12404) por suposta obstrução e divulgação de dados sigilosos, após relatar plano envolvendo agentes contra o ministro Alexandre de Moraes.",
+     "desfecho": "em curso; indiciado pela PF em agosto de 2025; medidas cautelares impostas e revogadas; sem denúncia recebida até junho de 2026",
+     "defesa": "Nega crimes, afirma ter recusado o plano que relatou e diz ser alvo de censura e perseguição.",
+     "fonte": "https://www.metropoles.com/colunas/manoela-alcantara/pgr-se-manifesta-pelo-fim-das-medidas-cautelares-contra-marcos-do-val"
+    }
+   ]
+  },
+  "6331": {
+   "status": "réu",
+   "desc": "Réu no STF por calúnia contra o ministro Gilmar Mendes (denúncia recebida em jul/2024; 1ª Turma manteve em out/2025).",
+   "fonte": "https://agenciabrasil.ebc.com.br/justica/noticia/2025-10/stf-mantem-decisao-que-torna-moro-reu-por-calunia-contra-gilmar-mendes",
+   "verificadoEm": "2026-06-09"
+  },
+  "4770": {
+   "status": "condenado",
+   "desc": "Condenado em 2ª instância por peculato (TJDFT, 2022; 4 anos e 8 meses); recursos pendentes, sem trânsito em julgado.",
+   "fonte": "https://www.tjdft.jus.br/institucional/imprensa/noticias/2022/maio/turma-aumenta-pena-de-condenacao-de-senador-por-peculato-desvio-de-computadores",
+   "verificadoEm": "2026-06-09"
+  },
+  "3806": {
+   "status": "inquérito",
+   "desc": "Apuração no STF (2024, rel. Cármen Lúcia, sob sigilo) sobre suposta grilagem em terra indígena no Pará; nega irregularidades.",
+   "fonte": "https://www.cartacapital.com.br/politica/lider-da-bancada-evangelica-no-senado-entra-na-mira-do-stf-por-grilagem/",
+   "verificadoEm": "2026-06-09"
+  },
+  "5990": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "investigação",
+     "ano": 2026,
+     "desc": "Apuração no STF (rel. Flávio Dino) sobre R$ 3,6 mi em emendas à Fundação Oásis, ligada à Igreja da Lagoinha (2019–2025); ampliada em mar/2026.",
+     "desfecho": "Em curso no STF (2026)",
+     "defesa": "Nega irregularidades e atribui as acusações a disputa eleitoral.",
+     "fonte": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-03/senador-reafirma-que-nao-cometeu-irregularidades-com-emendas"
+    }
+   ]
+  },
+  "70": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2025,
+     "desc": "Último inquérito remanescente contra o senador no STF, derivado das investigações da Lava Jato.",
+     "desfecho": "arquivado pelo STF em fevereiro de 2025; ao longo dos anos, cerca de 40 procedimentos contra o senador foram arquivados ou rejeitados",
+     "defesa": "Defesa sempre sustentou que as investigações se apoiavam apenas em delações sem provas.",
+     "fonte": "https://www.conjur.com.br/2025-fev-26/ultimo-inquerito-contra-renan-calheiros-e-arquivado-no-stf/"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "denúncia",
+     "ano": 2017,
+     "desc": "Denúncia da PGR por organização criminosa ('quadrilhão do MDB' do Senado), com Jader Barbalho, Romero Jucá, José Sarney e outros.",
+     "desfecho": "rejeitada pelo Plenário do STF em agosto de 2023, a pedido da própria PGR, por ausência de justa causa",
+     "defesa": "Negou integrar organização criminosa.",
+     "fonte": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=512311&tip=UN"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "citação em delação",
+     "ano": 2016,
+     "desc": "Citado nas delações de Sérgio Machado (Transpetro) e de executivos da Odebrecht, que originaram inquéritos no STF.",
+     "desfecho": "inquéritos derivados foram sendo arquivados ao longo dos anos; o último em fevereiro de 2025",
+     "defesa": "Classificou as delações como inconsistentes e sem provas.",
+     "fonte": "https://www.gazetadopovo.com.br/republica/renan-calheiros-investigacoes-inqueritos-stf-cpi-da-covid/"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "réu",
+     "ano": 2016,
+     "desc": "Denúncia por peculato (caso Mônica Veloso, fatos de 2007): suposto uso de verba indenizatória com notas fiscais frias para pensão.",
+     "desfecho": "absolvido por unanimidade pela 2ª Turma do STF em dezembro de 2018; também absolvido em ação de improbidade pelo TRF-1 em novembro de 2018",
+     "defesa": "Sempre negou desvio e sustentou a regularidade das despesas.",
+     "fonte": "https://www.gazetadopovo.com.br/politica/republica/depois-de-11-anos-renan-e-absolvido-pela-2-turma-do-stf-no-caso-monica-veloso-4zdfow992exulhslotstrfpno/"
+    }
+   ]
+  },
+  "470": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2020,
+     "desc": "Investigado na Operação Desvid-19 por suposto desvio de emendas da pandemia; flagrado com R$ 33.150 na cueca em busca da PF.",
+     "desfecho": "Arquivado no STF a pedido da PGR (fev/2026); apuração residual na Justiça Federal de Roraima",
+     "defesa": "Sempre negou irregularidades.",
+     "fonte": "https://www.poder360.com.br/poder-justica/dino-arquiva-investigacao-contra-senador-do-dinheiro-na-cueca/"
+    }
+   ]
+  },
+  "4994": {
+   "status": "histórico",
+   "desc": "Denúncia por caixa 2 (INQ 4418) rejeitada pelo STF em 2021; inquérito INQ 4429 arquivado em 2018; sem condenação.",
+   "fonte": "https://www.conjur.com.br/2021-ago-31/stf-aceita-contrarrazoes-pgr-rejeita-denuncia-eduardo-braga/",
+   "verificadoEm": "2026-06-09"
+  },
+  "5525": {
+   "status": "histórico",
+   "desc": "Inquérito no STF (INQ 4429) arquivado em 2018; alvo na Operação Maus Caminhos, remetida à 1ª instância; sem condenação.",
+   "fonte": "https://portalamazonia.com/noticias/politica/ministro-do-stf-arquiva-inquerito-que-envolve-eduardo-braga-e-omar-aziz",
+   "verificadoEm": "2026-06-09"
+  },
+  "35": {
+   "status": "histórico",
+   "desc": "Inquérito no STF (com Renan Calheiros) arquivado em mar/2023 a pedido da PGR, por falta de provas.",
+   "fonte": "https://agenciabrasil.ebc.com.br/justica/noticia/2023-03/stf-arquiva-inquerito-contra-renan-calheiros-e-jader-barbalho",
+   "verificadoEm": "2026-06-09"
+  },
+  "5894": {
+   "status": "histórico",
+   "desc": "Caso 'rachadinha' (peculato e lavagem alegados): provas anuladas pelo STJ; arquivado definitivamente em 2024, recurso do MP negado.",
+   "fonte": "https://www.cartacapital.com.br/politica/o-que-aconteceu-com-o-caso-da-rachadinha-de-flavio-bolsonaro-suposto-candidato-em-2026/",
+   "verificadoEm": "2026-06-09"
+  },
+  "3830": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "encerrado",
+     "tipo": "investigação TCE/TCU",
+     "ano": 2017,
+     "desc": "Ações no TSE pedindo cassação do mandato por suspeita de notas fiscais falsas na prestação de contas da campanha de 2014.",
+     "desfecho": "arquivamento mantido por unanimidade pelo Plenário do TSE em fevereiro de 2021",
+     "defesa": "Negou irregularidades na prestação de contas.",
+     "fonte": "https://agenciabrasil.ebc.com.br/justica/noticia/2021-02/tse-arquiva-processos-que-pediam-cassacao-do-mandato-de-alcolumbre"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2017,
+     "desc": "Dois inquéritos no STF sobre supostos crimes eleitorais na campanha de 2014, abertos a partir de representação do PMDB do Amapá.",
+     "desfecho": "arquivados pelo STF em julho de 2019, a pedido da PGR, por falta de lastro probatório mínimo",
+     "defesa": "Negou os supostos crimes eleitorais.",
+     "fonte": "https://agenciabrasil.ebc.com.br/politica/noticia/2019-07/stf-arquiva-inqueritos-sobre-suposto-crime-eleitoral-de-alcolumbre"
+    }
+   ]
+  },
+  "5672": {
+   "verificadoEm": "2026-06-10",
+   "itens": []
+  },
+  "5982": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "pedido de investigação",
+     "ano": 2026,
+     "desc": "Gilmar Mendes pediu à PGR apuração por abuso de autoridade, após relatório da CPI do Crime Organizado pedir indiciamento de ministros do STF.",
+     "desfecho": "Em análise na PGR (2026)",
+     "defesa": "Afirma agir com imunidade parlamentar e rigor técnico como relator da CPI.",
+     "fonte": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-04/mendes-pede-pgr-investigacao-contra-senador-alessandro-vieira"
+    }
+   ]
+  },
+  "6358": {
+   "verificadoEm": "2026-06-10",
+   "itens": []
+  },
+  "5967": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "encerrado",
+     "tipo": "investigação",
+     "ano": 2017,
+     "desc": "Citado entre investigados pela PF em desdobramento da Operação Detalhes (funcionários da ALBA), quando presidia a Assembleia; caso com foro no STF.",
+     "desfecho": "Sem desfecho público divulgado; tramitação em segredo de justiça",
+     "defesa": "Não constam manifestações públicas do parlamentar sobre o caso.",
+     "fonte": "https://www.brasil247.com/geral/deputados-e-ex-deputados-baianos-sao-investigados-por-crimes-tributarios"
+    }
+   ]
+  },
+  "6009": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "encerrado",
+     "tipo": "investigação",
+     "ano": 2006,
+     "desc": "Apurado pelo Ministério Público Militar por exercício de atividade comercial quando oficial da ativa da Aeronáutica (palestras e produtos ligados à carreira).",
+     "desfecho": "Caso extinto no STF em 2018, por prescrição",
+     "fonte": "https://www.intercept.com.br/2018/11/06/astronauta-marcos-pontes-investigado-socio-empresa/"
+    }
+   ]
+  },
+  "6350": {
+   "verificadoEm": "2026-06-10",
+   "itens": []
+  },
+  "4639": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "ação eleitoral",
+     "ano": 2025,
+     "desc": "Mandato cassado pelo TRE-PA por compra de votos e abuso de poder econômico nas eleições de 2022 (caso Kapa Capital).",
+     "desfecho": "TSE anulou o julgamento em fev/2026 e devolveu o caso ao TRE-PA; mandato mantido",
+     "defesa": "Nega as acusações e recorre; afirma regularidade da campanha.",
+     "fonte": "https://www.cnnbrasil.com.br/politica/tre-pa-cassa-mandato-do-senador-beto-faro-por-corrupcao-e-compra-de-votos/"
+    }
+   ]
+  },
+  "6336": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "citação",
+     "tipo": "investigação",
+     "ano": 2019,
+     "desc": "Investigado, então governador, a partir de delação da J&F sobre doações de campanha e benefícios fiscais no Ceará; Justiça autorizou quebra de sigilos.",
+     "desfecho": "Sem informação pública de desfecho",
+     "defesa": "Negou as acusações.",
+     "fonte": "https://www.oantagonista.com/brasil/justica-autoriza-quebra-de-sigilo-de-cid-gomes-e-camilo-santana/"
+    }
+   ]
+  },
+  "6295": {
+   "verificadoEm": "2026-06-10",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "investigação TCU",
+     "ano": 2025,
+     "desc": "Auditoria do TCU apontou indícios de superfaturamento em repasses do Ministério da Agricultura, sob sua gestão, para estradas vicinais em Mato Grosso (2019–2023).",
+     "desfecho": "Em apuração; TCU determinou correções e apuração de convênios (2025)",
+     "fonte": "https://portal.tcu.gov.br/imprensa/noticias/obras-em-estradas-de-mato-grosso-tem-indicios-de-superfaturamento"
+    }
+   ]
+  },
+  "5936": {
+   "verificadoEm": "2026-06-10",
+   "itens": []
+  }
+ },
+ "_meta": {
+  "criterio": "ativos (réu/condenado/inquérito/denúncia pendente) + histórico relevante encerrado (arquivado/prescrito/absolvido), sempre com fonte; Câmara: varredura de históricos ainda parcial",
+  "fontesGerais": [
+   "https://noticias.stf.jus.br/postsnoticias/stf-condena-sete-reus-por-desvio-de-emendas-parlamentares-destinadas-a-municipio-do-maranhao/",
+   "https://www.gazetadopovo.com.br/vida-e-cidadania/4-a-cada-5-processos-contra-deputados-no-stf-miram-direita/",
+   "https://www.congressoemfoco.com.br/noticia/6992/pl-tem-35-deputados-reus-em-acao-penal-ou-investigados-um-terco-da-bancada",
+   "https://www.congressoemfoco.com.br/noticia/117341/1-turma-do-stf-condena-deputados-por-desvio-de-emendas-parlamentares",
+   "https://agenciabrasil.ebc.com.br/justica/noticia/2025-12/stf-encerra-julgamento-da-trama-golpista-com-29-condenados"
+  ],
+  "verificadoEm": "2026-06-09",
+  "limitacoes": "Método: cruzamento de compilações jornalísticas (Congresso em Foco 2024; levantamento de advogados da Câmara via Gazeta do Povo, jul/2025) com verificação caso a caso em fontes de 2024-2026; não houve consulta processual direta aos sistemas do STF/STJ. Levantamentos indicam ~34 deputados com processos/inquéritos no STF (muitos sob sigilo ou sem nomes publicados) — ausência neste arquivo NÃO significa ficha limpa, apenas 'nenhum registro encontrado nas fontes verificadas'. Casos EXCLUÍDOS por dúvida ou arquivamento: Izalci Lucas (condenação por peculato no TJDFT com decisões conflitantes no STJ; status atual incerto), Alberto Fraga (condenação de 1ª instância em 2018, absolvições posteriores em casos correlatos), André Fernandes e Clarissa Tércio (inquéritos do 8/1 com pedido de arquivamento da PGR/arquivados), Zé Trovão e General Girão (status atual dos inquéritos do 8/1 não confirmado), Mecias de Jesus (condenação por improbidade é cível; PF apenas pediu abertura de inquérito), Sérgio Petecão (sem confirmação atual), Bia Kicis/Nikolas Ferreira/Luiz Lima (menções a investigações sem confirmação de inquérito individual ativo), Daniela do Waguinho (investigações miram o marido). Absolvidos/arquivados e por isso NÃO marcados: Arthur Lira, Renan Calheiros, Flávio Bolsonaro, Vander Loubet, Irajá, Paulinho da Força (caso BNDES revertido pelo Plenário em 2023; mantido aqui apenas o inquérito de 2018). Fora das listas de exercício (cassados/licenciados/presos), não incluídos: Carla Zambelli, Alexandre Ramagem, Eduardo Bolsonaro, Chiquinho Brazão, Glauber Braga, Josimar Maranhãozinho. Casos antigos sem notícia recente (Aécio Neves 2021, Kajuru 2023, Jordy 2024) podem ter evoluído sem cobertura encontrada.",
+  "senado": {
+   "criterio": "ativos (réu/condenado/inquérito/denúncia) + histórico relevante arquivado/prescrito/absolvido",
+   "fontes": [
+    "portal.stf.jus.br / noticias.stf.jus.br",
+    "agenciabrasil.ebc.com.br",
+    "conjur.com.br",
+    "poder360.com.br",
+    "cnnbrasil.com.br",
+    "metropoles.com",
+    "cartacapital.com.br",
+    "tjdft.jus.br",
+    "portalamazonia.com",
+    "mpf.mp.br"
+   ],
+   "limitacoes": "Verificação por imprensa e portais oficiais em 09/06/2026; processos em segredo de justiça podem não constar. Zequinha Marinho e Carlos Viana: apurações no STF documentadas pela imprensa, sem número público de inquérito. Izalci Lucas: condenação de 2ª instância (2022) sem notícia posterior de trânsito em julgado ou reversão. Chico Rodrigues: arquivado no STF, mas desdobramentos sem foro seguem na JF-RR. Excluídos por falta de fonte sólida de caso formal: Davi Alcolumbre, Dr. Hiran, Jayme Campos, Veneziano Vital do Rêgo (28 processos arquivados em 2018, quando deputado), entre outros. Fernando Collor e Romero Jucá não integram a lista de senadores em exercício."
+  },
+  "v3_piloto": {
+   "politica": "Apenas fatos processuais com fonte; absolvições e arquivamentos têm o mesmo peso de inclusão que acusações; sem adjetivos ou juízo de valor; versão da defesa incluída quando publicada; identificação confirmada por mandato/cargo/UF.",
+   "duvidas": [
+    "Silvio Costa Filho consta na lista da Câmara (id 204425) embora licenciado para exercer o cargo de ministro de Portos e Aeroportos.",
+    "Citação do nome 'Silvio Costa' na CPI do Crime Organizado/Banco Master (2026) refere-se ao pai, Silvio Costa (ex-deputado) — NÃO incluída no registro do filho.",
+    "Desfecho da representação do MP-TCU (combustível, 2024) não localizado publicamente; mantida como 'ativo' por cautela.",
+    "Juscelino Filho (178886): não foi possível confirmar publicamente se a 1ª Turma do STF recebeu a denúncia da PGR (abr/2025); item mantido como denúncia 'em curso', sem afirmar condição de réu.",
+    "Arthur Lira (160541): buscas da PF de dez/2025 sobre emendas miraram ex-assessora; Lira registrado apenas como 'citação' porque não era alvo formal.",
+    "Ciro Nogueira (739): item da multa fiscal (Receita/CARF) classificado sob 'investigação TCE/TCU' por ausência de tipo específico para órgão administrativo-fiscal; denúncia rejeitada com Eduardo da Fonte tem ano (2021) inferido da notícia oficial do STF, sem data exata confirmada.",
+    "Davi Alcolumbre (3830): citações genéricas em reportagens e em relatório da Transparência Internacional sobre emendas (2025) NÃO incluídas como itens, por falta de inquérito formal confirmado contra o senador.",
+    "Renan Calheiros (70): o total 'cerca de 40 procedimentos arquivados' é estimativa da imprensa (ConJur); itens individuais não listados um a um por falta de fontes específicas para cada arquivamento.",
+    "Não incluídos por dúvida de identificação ou ausência de procedimento formal: episódios domésticos/pessoais sem ação penal confirmada e citações de homônimos."
+   ]
+  }
+ }
+}
