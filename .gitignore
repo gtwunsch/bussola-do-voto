@@ -1,0 +1,8 @@
+node_modules
+dist
+.vercel
+site/
+data/
+ceap_urls.txt
+ceap_missing.txt
+.claude/
