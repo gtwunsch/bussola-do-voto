@@ -30,10 +30,10 @@ Câmara: dadosabertos.camara.leg.br (votações, votos, despesas CEAP, lista). P
 5. Agentes de pesquisa: limitar escopo (≤10 itens por agente), salvar a cada item, reportar parciais.
 
 ## Roadmap
-- [ ] Fase 3a: login Google (aguarda cliques do usuário no Google Cloud + painel Supabase), respostas salvas/editáveis, tela "minhas respostas".
-- [ ] Fase 3b: +20-40 votações por tema (usar PROTOCOLO acima; proxy wintz para votos da Câmara), subtemas, blocos de perguntas por tema com pesos opcionais do usuário.
-- [ ] Comparador lado a lado (2-3 parlamentares), página/deep-link por parlamentar, "pautas que mais dividem" no onboarding, busca por nome no início (não só no resultado).
-- [ ] Atualização periódica automatizada (pg_cron mensal para CEAP/CEAPS; recoleta de presença; reverificação de registros judiciais com data).
+- [x] Fase 3a: conta por E-MAIL/SENHA (decisão: sem Google), respostas salvas/editáveis, sessão persistente, recuperação de senha. Pendente do usuário: Site URL no painel Supabase + (opcional) desativar Confirm email.
+- [x] Fase 3b (parcial): +27 votações por tema (Câmara 19, Senado 8; total 29+17), com tema/central/pergunta/argumentos embutidos em *_extra.json. Pendentes: subtemas, pesos por usuário, saúde no Senado (não há nominal aberta no período).
+- [x] Comparador lado a lado, deep-link #/p/{casa}/{id}, perguntas ordenadas por centrais+divisão, busca por nome na home.
+- [x] pg_cron mensal (dia 1: reset+recoleta CEAP 4h-7h UTC; CEAPS 7h30). Pendentes: recoleta de presença e reverificação periódica de registros judiciais.
 - [ ] Vereadores/dep. estaduais (SP primeiro), eleições: mapear candidatos↔histórico.
 
 ## Como retomar o trabalho
