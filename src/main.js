@@ -209,7 +209,7 @@ function compute() {
       if (pv) { cmp++; if (pv === ans) m++ }
       det.push({ v, ans, raw: raw === undefined ? 'não registrado' : raw, match: pv ? (pv === ans) : null })
     }
-    return { p, m, cmp, det, score: cmp > 0 ? m / cmp : 0 }
+    return { p, m, cmp, det, score: cmp > 0 ? m / cmp : 0, adj: (m + 2) / (cmp + 4) }
   })
 }
 
@@ -261,7 +261,7 @@ function results() {
   if (S.filtUF && S.uf) list = list.filter(r => r.p.uf === S.uf)
   if (S.filtP) list = list.filter(r => r.p.partido === S.filtP)
   if (S.filtQ) { const q = S.filtQ.toLowerCase(); list = list.filter(r => r.p.nome.toLowerCase().includes(q)) }
-  list.sort((a, b) => b.score - a.score || b.cmp - a.cmp || a.p.nome.localeCompare(b.p.nome))
+  list.sort((a, b) => b.adj - a.adj || b.cmp - a.cmp || a.p.nome.localeCompare(b.p.nome))
   const insuf = all.filter(r => r.cmp < MIN).length
   app.innerHTML = `
   <div class="fade">
@@ -285,7 +285,7 @@ function results() {
     ${insuf ? `<p style="color:var(--mut);font-size:13px;margin-top:14px">${insuf} parlamentar(es) fora do ranking por terem menos de ${MIN} votos comparáveis com suas respostas (ausências, licenças ou mandato recente).</p>` : ''}
     <div class="meth">
       <h3>Como funciona (metodologia e fontes)</h3>
-      <p>· Cada pergunta corresponde a uma votação nominal real em plenário. Sua resposta é comparada ao voto registrado de cada parlamentar — direto das APIs oficiais da <a href="https://dadosabertos.camara.leg.br" target="_blank" rel="noopener">Câmara</a> e do <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener">Senado</a>. Abstenções, obstruções e ausências não contam nem a favor nem contra.</p>
+      <p>· Cada pergunta corresponde a uma votação nominal real em plenário. Sua resposta é comparada ao voto registrado de cada parlamentar — direto das APIs oficiais da <a href="https://dadosabertos.camara.leg.br" target="_blank" rel="noopener">Câmara</a> e do <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener">Senado</a>. Abstenções, obstruções e ausências não contam nem a favor nem contra. Para evitar que pouca base infle o ranking (ex.: 3 de 3 acima de 7 de 8), a ORDEM usa ajuste bayesiano — (iguais+2)/(comparáveis+4), prior neutro de 50% — enquanto o % exibido é o real; menos de 5 votos comparáveis ganham o aviso "base pequena".</p>
       <p>· <b>Nota de uso da cota (0–10)</b>: dados oficiais de jun/2025 a mai/2026 (Câmara: CEAP via API oficial; Senado: CEAPS via CSV oficial de transparência). Fórmula nas duas Casas: nota = 10 − 5×percentil(gasto total entre colegas da Casa) − 5×percentil(gasto ABSOLUTO em categorias sensíveis — Câmara: combustíveis, divulgação, locações/fretamentos, hospedagem, táxi; Senado: divulgação + locomoção/hospedagem/combustíveis). Usamos valores absolutos comparados aos colegas, não frações: quem gasta pouco no total não é punido pela composição do pouco que gasta. O cartão mostra o comparativo com a mediana da Casa, categoria por categoria. Régua comparativa objetiva, não acusação: gastar a cota é legal.</p>
       <p>· <b>Presença</b>: Câmara = relatório oficial de presença em sessões deliberativas do plenário (Ato da Mesa 191/2017) somado de 2023 a 2026; o % considera ausências justificadas e não justificadas — licenças médicas e missões oficiais contam como justificadas. Senado = presença nas ${D.senado.votacoes.length} votações nominais analisadas (não há relatório oficial consolidado por API).</p>
       <p>· <b>Registros públicos</b>: ⚠️ = processo ATIVO (réu, condenação, denúncia pendente ou inquérito formal no STF/STJ), confirmado em fonte oficial ou grande imprensa citando o caso. ℹ️ = histórico relevante já ENCERRADO (arquivado, prescrito ou absolvição), com desfecho explícito — arquivamento também é fato público. ✅ = nada ativo encontrado nas fontes verificadas em 09/06/2026; não é atestado de idoneidade. No Senado a varredura cobre ativos e históricos; na Câmara, históricos ainda parcialmente. Este site não acusa ninguém: confira sempre a fonte primária.</p>
@@ -313,7 +313,7 @@ function card(r, i, cfg, c) {
       <span class="rank">${i + 1}º</span>
       <img class="ava" loading="lazy" src="${cfg.foto(r.p.id)}" alt="" onerror="this.outerHTML='<span class=ava>${ini}</span>'">
       <div class="pinfo"><div class="n">${esc(r.p.nome)}${reg ? '<span class="flag" title="há registro público ativo — abra o cartão">⚠️</span>' : ''}</div><div class="m">${esc(r.p.partido)} · ${esc(r.p.uf)}</div></div>
-      <div class="aff"><div class="v">${pct}%</div><div class="c">${r.m} de ${r.cmp} iguais</div><div class="affbar"><i style="width:${pct}%"></i></div></div>
+      <div class="aff"><div class="v">${pct}%</div><div class="c">${r.m} de ${r.cmp} iguais${r.cmp < 5 ? ' · base pequena' : ''}</div><div class="affbar"><i style="width:${pct}%"></i></div></div>
       <span class="chev">▾</span>
     </div>
     <div class="pbody">
