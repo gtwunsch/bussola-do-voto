@@ -1,10 +1,14 @@
 import './style.css'
+import { createClient } from '@supabase/supabase-js'
 
 // ---------- carga de dados ----------
 const SUPA = 'https://hiripppzlvlmoujlusey.supabase.co'
 let SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpcmlwcHB6bHZsbW91amx1c2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0OTk1MjYsImV4cCI6MjA2NjA3NTUyNn0.crVGxKs8mwGFP3LUPhMLRZjXxgw_p25TbsoExvNYiow' // injetada no build via env VITE_SUPABASE_ANON_KEY se disponível
 try { if (import.meta.env && import.meta.env.VITE_SUPABASE_ANON_KEY) SUPA_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY } catch (e) {}
 
+let sb = null, USER = null
+const ANS = JSON.parse(localStorage.getItem('bussola_ans') || '{"camara":{},"senado":{}}')
+const saveLocal = () => localStorage.setItem('bussola_ans', JSON.stringify(ANS))
 const D = { camara: {}, senado: {}, registros: { camara: {}, senado: {} }, presenca: { camara: {}, senado: {} }, ceap: null, ceaps: null }
 
 async function j(url) { const r = await fetch(url); if (!r.ok) throw new Error(url); return r.json() }
@@ -124,7 +128,7 @@ const voteN = v => v === 'Sim' ? 'S' : (v === 'Não' ? 'N' : null)
 window.S = S
 
 function home() {
-  S.casa = null; S.i = 0; S.ans = {}; S.shownBanner = false; S.shown = 30
+  S.casa = null; S.i = 0; S.shownBanner = false; S.shown = 30
   app.innerHTML = `
   <div class="hero fade">
     <h1>Vote em quem<br>vota como você.</h1>
@@ -147,9 +151,9 @@ function home() {
   </div>`
   document.getElementById('pk-camara').onclick = () => pick('camara')
   document.getElementById('pk-senado').onclick = () => pick('senado')
-  document.getElementById('start').onclick = () => { S.uf = document.getElementById('uf').value; S.i = 0; S.ans = {}; S.shownBanner = false; quiz(); scrollTo({ top: 0 }) }
+  document.getElementById('start').onclick = () => { S.uf = document.getElementById('uf').value; S.ans = ANS[S.casa]; const vs = D[S.casa].votacoes; S.i = vs.findIndex(v => !S.ans[v.id]); if (S.i < 0) S.i = vs.length; S.shownBanner = false; quiz(); scrollTo({ top: 0 }) }
 }
-function pick(c) { S.casa = c; document.querySelectorAll('.pick').forEach(b => b.classList.remove('sel')); document.getElementById('pk-' + c).classList.add('sel'); document.getElementById('start').disabled = false }
+function pick(c) { S.casa = c; S.ans = ANS[c]; document.querySelectorAll('.pick').forEach(b => b.classList.remove('sel')); document.getElementById('pk-' + c).classList.add('sel'); document.getElementById('start').disabled = false }
 
 function ctxHTML(v) {
   const a = v.arg || {}
@@ -166,7 +170,7 @@ function quiz() {
   const vs = D[S.casa].votacoes
   if (S.i >= vs.length) return results()
   const v = vs[S.i]
-  const n = Object.keys(S.ans).length
+  const n = Object.values(S.ans).filter(x => x === 'S' || x === 'N').length
   const showBanner = n >= 5 && !S.shownBanner
   app.innerHTML = `
   <div class="fade">
@@ -187,14 +191,22 @@ function quiz() {
   if (showBanner) document.getElementById('verAgora').onclick = () => { S.shownBanner = true; results() }
   document.getElementById('bN').onclick = () => answer('N')
   document.getElementById('bS').onclick = () => answer('S')
-  document.getElementById('bP').onclick = () => answer(null)
+  document.getElementById('bP').onclick = () => answer('A')
 }
 function answer(a) {
   const v = D[S.casa].votacoes[S.i]
-  if (a) S.ans[v.id] = a; else delete S.ans[v.id]
+  setAns(S.casa, v.id, a)
   S.i++
   if (S.i >= D[S.casa].votacoes.length) results(); else quiz()
   scrollTo({ top: 0, behavior: 'smooth' })
+}
+function setAns(casa, vid, val) {
+  if (val) ANS[casa][vid] = val; else delete ANS[casa][vid]
+  saveLocal()
+  if (USER && sb) {
+    if (val) sb.from('bussola_respostas').upsert({ user_id: USER.id, casa, votacao_id: vid, resposta: val, atualizado_em: new Date().toISOString() }).then(() => {})
+    else sb.from('bussola_respostas').delete().match({ user_id: USER.id, casa, votacao_id: vid }).then(() => {})
+  }
 }
 
 function compute() {
@@ -204,7 +216,7 @@ function compute() {
     for (const v of c.votacoes) {
       const raw = c.votos[v.id] ? c.votos[v.id][String(p.id)] : undefined
       const ans = S.ans[v.id]
-      if (!ans) continue
+      if (ans !== 'S' && ans !== 'N') continue
       const pv = raw === undefined ? null : voteN(raw)
       const w = v.central ? 2 : 1
       if (pv) { cmp++; wc += w; if (pv === ans) { m++; wm += w } }
@@ -249,7 +261,7 @@ function seloHTML(pid) {
 
 function results() {
   const c = D[S.casa], cfg = cfgs[S.casa]
-  const nAns = Object.keys(S.ans).length
+  const nAns = Object.values(S.ans).filter(x => x === 'S' || x === 'N').length
   if (nAns === 0) { app.innerHTML = `<div class="empty fade">Você não respondeu nenhuma pergunta.<br><br><button class="btn btn-p" id="re">Recomeçar</button></div>`; document.getElementById('re').onclick = home; return }
   const all = compute()
   const MIN = Math.min(3, nAns)
@@ -308,7 +320,7 @@ function results() {
   const fUF = document.getElementById('fUF'); if (fUF) fUF.onclick = () => { S.filtUF = !S.filtUF; S.shown = 30; results() }
   document.getElementById('fP').onchange = e => { S.filtP = e.target.value; S.shown = 30; results() }
   document.getElementById('fQ').oninput = e => { S.filtQ = e.target.value; S.shown = 30; renderList() }
-  document.getElementById('re2').onclick = home
+  document.getElementById('re2').onclick = resetCasa
 }
 
 function card(r, i, cfg, c) {
@@ -349,4 +361,105 @@ function card(r, i, cfg, c) {
 }
 
 document.getElementById('logo').onclick = () => home()
-carregar().then(home).catch(e => { app.innerHTML = `<div class="empty">Erro ao carregar dados (${esc(e.message)}). Recarregue a página.</div>` })
+carregar().then(() => { initAuth(); home() }).catch(e => { app.innerHTML = `<div class="empty">Erro ao carregar dados (${esc(e.message)}). Recarregue a página.</div>` })
+
+// ---------- conta (e-mail e senha) ----------
+function resetCasa() {
+  if (!confirm('Apagar todas as suas respostas de ' + cfgs[S.casa].nome + '?')) return
+  ANS[S.casa] = {}; S.ans = ANS[S.casa]; saveLocal()
+  if (USER && sb) sb.from('bussola_respostas').delete().match({ user_id: USER.id, casa: S.casa }).then(() => {})
+  home()
+}
+function initAuth() {
+  sb = createClient(SUPA, SUPA_KEY)
+  sb.auth.onAuthStateChange((event, session) => {
+    USER = session ? session.user : null
+    renderHeaderAuth()
+    if (event === 'PASSWORD_RECOVERY') abrirAuth('nova')
+    if (USER && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) syncRespostas()
+  })
+}
+function renderHeaderAuth() {
+  const el = document.getElementById('authbox'); if (!el) return
+  el.innerHTML = USER ? `<a href="#" id="lkMR">minhas respostas</a> · <a href="#" id="lkOut">sair</a>` : `<a href="#" id="lkIn">entrar / criar conta</a>`
+  const mr = document.getElementById('lkMR'); if (mr) mr.onclick = e => { e.preventDefault(); minhas() }
+  const out = document.getElementById('lkOut'); if (out) out.onclick = async e => { e.preventDefault(); await sb.auth.signOut(); home() }
+  const lin = document.getElementById('lkIn'); if (lin) lin.onclick = e => { e.preventDefault(); abrirAuth('entrar') }
+}
+async function syncRespostas() {
+  try {
+    for (const casa of ['camara', 'senado']) {
+      const ents = Object.entries(ANS[casa])
+      if (ents.length) await sb.from('bussola_respostas').upsert(ents.map(([vid, val]) => ({ user_id: USER.id, casa, votacao_id: vid, resposta: val, atualizado_em: new Date().toISOString() })))
+    }
+    const { data } = await sb.from('bussola_respostas').select('casa,votacao_id,resposta')
+    if (data) { for (const r of data) if (!ANS[r.casa][r.votacao_id]) ANS[r.casa][r.votacao_id] = r.resposta; saveLocal() }
+  } catch (e) { /* offline */ }
+}
+function fecharAuth() { const o = document.getElementById('ovl'); if (o) o.remove() }
+function abrirAuth(modo) {
+  fecharAuth()
+  const o = document.createElement('div'); o.className = 'ovl'; o.id = 'ovl'
+  const T = { entrar: 'Entrar', criar: 'Criar conta', esqueci: 'Recuperar senha', nova: 'Definir nova senha' }
+  o.innerHTML = `<div class="mbox"><h3>${T[modo]}</h3>
+    ${modo !== 'nova' ? '<input id="aEm" type="email" placeholder="seu e-mail" autocomplete="email">' : ''}
+    ${modo === 'entrar' || modo === 'criar' ? '<input id="aPw" type="password" placeholder="senha (mín. 6 caracteres)" autocomplete="' + (modo === 'criar' ? 'new-password' : 'current-password') + '">' : ''}
+    ${modo === 'nova' ? '<input id="aPw" type="password" placeholder="nova senha (mín. 6 caracteres)" autocomplete="new-password">' : ''}
+    <button class="btn btn-p" id="aGo">${T[modo]}</button>
+    <div class="msg" id="aMsg"></div>
+    <div class="alt">
+      ${modo === 'entrar' ? '<a href="#" id="aCr">criar conta</a> · <a href="#" id="aEs">esqueci a senha</a>' : ''}
+      ${modo === 'criar' ? '<a href="#" id="aEn">já tenho conta</a>' : ''}
+      ${modo === 'esqueci' ? '<a href="#" id="aEn">voltar</a>' : ''}
+      · <a href="#" id="aFe">fechar</a>
+    </div></div>`
+  document.body.appendChild(o)
+  o.onclick = e => { if (e.target === o) fecharAuth() }
+  const bind = (id, md) => { const a = document.getElementById(id); if (a) a.onclick = e => { e.preventDefault(); abrirAuth(md) } }
+  bind('aCr', 'criar'); bind('aEs', 'esqueci'); bind('aEn', 'entrar')
+  document.getElementById('aFe').onclick = e => { e.preventDefault(); fecharAuth() }
+  const msg = (t, err) => { const el = document.getElementById('aMsg'); el.textContent = t; el.className = 'msg' + (err ? ' err' : '') }
+  document.getElementById('aGo').onclick = async () => {
+    const em = (document.getElementById('aEm') || {}).value, pw = (document.getElementById('aPw') || {}).value
+    msg('aguarde…')
+    try {
+      if (modo === 'entrar') {
+        const { error } = await sb.auth.signInWithPassword({ email: em, password: pw })
+        if (error) return msg(error.message.includes('Invalid') ? 'e-mail ou senha incorretos' : error.message, 1)
+        fecharAuth()
+      } else if (modo === 'criar') {
+        const { data, error } = await sb.auth.signUp({ email: em, password: pw })
+        if (error) return msg(error.message, 1)
+        if (data.session) fecharAuth(); else msg('conta criada! confira seu e-mail para confirmar o cadastro.')
+      } else if (modo === 'esqueci') {
+        const { error } = await sb.auth.resetPasswordForEmail(em, { redirectTo: location.origin })
+        if (error) return msg(error.message, 1)
+        msg('enviamos um link de recuperação para o seu e-mail.')
+      } else if (modo === 'nova') {
+        const { error } = await sb.auth.updateUser({ password: pw })
+        if (error) return msg(error.message, 1)
+        msg('senha alterada!'); setTimeout(fecharAuth, 1200)
+      }
+    } catch (e) { msg('erro de conexão — tente de novo', 1) }
+  }
+}
+function minhas() {
+  if (!USER) { abrirAuth('entrar'); return }
+  scrollTo({ top: 0 })
+  const bloco = (casa) => {
+    const c = D[casa]; if (!c.votacoes) return ''
+    const temas = {}
+    for (const v of c.votacoes) { const t = v.tema || 'Geral'; (temas[t] = temas[t] || []).push(v) }
+    return `<div class="sec">${cfgs[casa].nome}</div>` + Object.entries(temas).map(([t, vs]) => `
+      <div class="pty" style="margin-bottom:12px"><div style="padding:10px 0 4px;color:var(--mut);font-weight:700;font-size:13px">${esc(t)}</div>
+      ${vs.map(v => { const a = ANS[casa][v.id]
+        return `<div class="pr" style="align-items:center;gap:10px"><span style="flex:1;font-size:13.5px">${esc(v.pergunta)}</span><span style="display:flex;gap:6px;flex-shrink:0">${[['S', '👍'], ['N', '👎'], ['A', '🤍']].map(([k, ic]) => `<button class="chip ${a === k ? 'on' : ''}" data-c="${casa}" data-v="${esc(v.id)}" data-r="${k}" title="${k === 'S' ? 'a favor' : k === 'N' ? 'contra' : 'abstenção'}">${ic}</button>`).join('')}<button class="chip" data-c="${casa}" data-v="${esc(v.id)}" data-r="" title="limpar">✕</button></span></div>` }).join('')}
+      </div>`).join('')
+  }
+  app.innerHTML = `<div class="fade" id="mrwrap"><div class="rhead"><h2>Minhas respostas</h2><p>${esc(USER.email)} · salvas na sua conta; mude quando quiser. 👍 a favor · 👎 contra · 🤍 abstenção · ✕ limpar.</p></div>${bloco('camara')}${bloco('senado')}<div class="row"><button class="btn btn-p" id="verRes">Ver meu resultado</button></div></div>`
+  document.getElementById('mrwrap').onclick = e => {
+    const vr = e.target.closest('#verRes'); if (vr) { if (!S.casa) S.casa = 'camara'; S.ans = ANS[S.casa]; S.i = D[S.casa].votacoes.length; results(); return }
+    const b = e.target.closest('button.chip[data-v]'); if (!b) return
+    setAns(b.dataset.c, b.dataset.v, b.dataset.r || null); minhas()
+  }
+}

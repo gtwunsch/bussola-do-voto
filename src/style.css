@@ -125,3 +125,12 @@ details.ctx .ctxbody{margin-top:10px;background:var(--bg);padding:16px 18px;bord
 .tcell.wide{grid-column:1/-1}
 .medrow{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:4px 0;border-top:1px dashed var(--line)}
 .secmini{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-bottom:10px}
+
+.ovl{position:fixed;inset:0;background:rgba(20,25,24,.45);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px}
+.mbox{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:28px;width:100%;max-width:380px}
+.mbox h3{font-family:'Fraunces',serif;margin-bottom:14px}
+.mbox input{width:100%;font:inherit;padding:12px;border:1.5px solid var(--line);border-radius:10px;margin-bottom:10px;box-sizing:border-box}
+.mbox .btn{width:100%;justify-content:center}
+.mbox .alt{font-size:13px;color:var(--mut);margin-top:12px;text-align:center}
+.msg{font-size:13px;margin-top:8px;color:var(--teal-d);min-height:16px} .msg.err{color:var(--warm)}
+#authbox{font-size:13px} #authbox a{font-weight:600;text-decoration:none}
