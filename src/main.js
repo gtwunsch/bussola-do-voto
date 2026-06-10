@@ -16,8 +16,8 @@ async function carregar() {
     j('/dados/senado_senadores.json'), j('/dados/senado_votacoes.json'), j('/dados/senado_votos.json'),
     j('/dados/senado_argumentos.json'), j('/dados/senado_presenca.json'), j('/dados/registros_judiciais.json'),
   ])
-  D.camara = { parlamentares: cd, votacoes: PERG.camara.map(p => ({ ...cv.find(v => v.id === p.id), pergunta: p.q, arg: ca[p.id] })), votos: cvo }
-  D.senado = { parlamentares: sd, votacoes: PERG.senado.map(p => ({ ...sv.find(v => v.id === p.id), pergunta: p.q, arg: sa[p.id] })), votos: svo }
+  D.camara = { parlamentares: cd, votacoes: PERG.camara.map(p => ({ ...cv.find(v => v.id === p.id), pergunta: p.q, tema: p.t, central: !!p.c, arg: ca[p.id] })), votos: cvo }
+  D.senado = { parlamentares: sd, votacoes: PERG.senado.map(p => ({ ...sv.find(v => v.id === p.id), pergunta: p.q, tema: p.t, central: !!p.c, arg: sa[p.id] })), votos: svo }
   D.presenca.camara = cp; D.presenca.senado = sp
   D.registros = reg
   // CEAP (dinâmico — pode ainda estar em coleta)
@@ -32,27 +32,27 @@ async function carregar() {
 // perguntas curadas (ordem cronológica)
 const PERG = {
   camara: [
-    { id: '2357053-47', q: 'Você é a favor do arcabouço fiscal — as regras que limitam o crescimento dos gastos públicos?' },
-    { id: '345311-270', q: 'Você é a favor do marco temporal, que limita a demarcação de terras indígenas às áreas ocupadas em 1988?' },
-    { id: '2196833-373', q: 'Você é a favor da Reforma Tributária que unificou os impostos sobre o consumo (criando CBS e IBS)?' },
-    { id: '2374400-110', q: 'Você é a favor da legalização e regulamentação das apostas online (bets), com taxação do setor?' },
-    { id: '2383019-54', q: 'Você é a favor de aumentar o número de deputados federais de 513 para 531?' },
-    { id: '2515648-44', q: 'Você é a favor de derrubar o decreto do governo que aumentava o IOF (imposto sobre operações financeiras)?' },
-    { id: '257161-454', q: 'Você é a favor de simplificar e flexibilizar as regras de licenciamento ambiental para obras e empreendimentos?' },
-    { id: '2270800-135', q: "Você é a favor de exigir aval prévio do próprio Congresso para que parlamentares sejam processados criminalmente (a chamada 'PEC da Blindagem')?" },
-    { id: '2562149-7', q: 'Você é a favor de dar urgência ao projeto de anistia aos envolvidos nos atos de 8 de janeiro de 2023?' },
-    { id: '2579832-62', q: 'Você é a favor do PL Antifacção, que endurece penas contra facções criminosas (na versão alterada pelo relator)?' },
+    { id: '2357053-47', t: 'Economia e impostos', c: 1, q: 'Você é a favor do arcabouço fiscal — as regras que limitam o crescimento dos gastos públicos?' },
+    { id: '345311-270', t: 'Meio ambiente e povos indígenas', c: 1, q: 'Você é a favor do marco temporal, que limita a demarcação de terras indígenas às áreas ocupadas em 1988?' },
+    { id: '2196833-373', t: 'Economia e impostos', c: 1, q: 'Você é a favor da Reforma Tributária que unificou os impostos sobre o consumo (criando CBS e IBS)?' },
+    { id: '2374400-110', t: 'Economia e impostos', c: 0, q: 'Você é a favor da legalização e regulamentação das apostas online (bets), com taxação do setor?' },
+    { id: '2383019-54', t: 'Política e Congresso', c: 0, q: 'Você é a favor de aumentar o número de deputados federais de 513 para 531?' },
+    { id: '2515648-44', t: 'Economia e impostos', c: 1, q: 'Você é a favor de derrubar o decreto do governo que aumentava o IOF (imposto sobre operações financeiras)?' },
+    { id: '257161-454', t: 'Meio ambiente e povos indígenas', c: 1, q: 'Você é a favor de simplificar e flexibilizar as regras de licenciamento ambiental para obras e empreendimentos?' },
+    { id: '2270800-135', t: 'Justiça e instituições', c: 1, q: "Você é a favor de exigir aval prévio do próprio Congresso para que parlamentares sejam processados criminalmente (a chamada 'PEC da Blindagem')?" },
+    { id: '2562149-7', t: 'Justiça e instituições', c: 1, q: 'Você é a favor de dar urgência ao projeto de anistia aos envolvidos nos atos de 8 de janeiro de 2023?' },
+    { id: '2579832-62', t: 'Segurança pública', c: 1, q: 'Você é a favor do PL Antifacção, que endurece penas contra facções criminosas (na versão alterada pelo relator)?' },
   ],
   senado: [
-    { id: '6714', q: 'Você é a favor do arcabouço fiscal — as regras que limitam o crescimento dos gastos públicos?' },
-    { id: '6756', q: 'Você é a favor do marco temporal, que limita a demarcação de terras indígenas às áreas ocupadas em 1988?' },
-    { id: '6773', q: 'Você é a favor da Reforma Tributária que unificou os impostos sobre o consumo (criando CBS e IBS)?' },
-    { id: '6781', q: 'Você é a favor de limitar as decisões individuais (monocráticas) de ministros do STF?' },
-    { id: '6824', q: 'Você é a favor de colocar na Constituição a criminalização do porte de drogas, mesmo para consumo pessoal?' },
-    { id: '6935', q: 'Você é a favor de simplificar e flexibilizar as regras de licenciamento ambiental para obras e empreendimentos?' },
-    { id: '6951', q: 'Você é a favor de aumentar o número de deputados federais de 513 para 531?' },
-    { id: '7007', q: 'Você é a favor de unificar em 8 anos — e mudar a contagem — dos prazos de inelegibilidade da Lei da Ficha Limpa?' },
-    { id: '7032', q: 'Você é a favor de incluir o marco temporal das terras indígenas na Constituição?' },
+    { id: '6714', t: 'Economia e impostos', c: 1, q: 'Você é a favor do arcabouço fiscal — as regras que limitam o crescimento dos gastos públicos?' },
+    { id: '6756', t: 'Meio ambiente e povos indígenas', c: 1, q: 'Você é a favor do marco temporal, que limita a demarcação de terras indígenas às áreas ocupadas em 1988?' },
+    { id: '6773', t: 'Economia e impostos', c: 1, q: 'Você é a favor da Reforma Tributária que unificou os impostos sobre o consumo (criando CBS e IBS)?' },
+    { id: '6781', t: 'Justiça e instituições', c: 1, q: 'Você é a favor de limitar as decisões individuais (monocráticas) de ministros do STF?' },
+    { id: '6824', t: 'Segurança pública', c: 1, q: 'Você é a favor de colocar na Constituição a criminalização do porte de drogas, mesmo para consumo pessoal?' },
+    { id: '6935', t: 'Meio ambiente e povos indígenas', c: 1, q: 'Você é a favor de simplificar e flexibilizar as regras de licenciamento ambiental para obras e empreendimentos?' },
+    { id: '6951', t: 'Política e Congresso', c: 0, q: 'Você é a favor de aumentar o número de deputados federais de 513 para 531?' },
+    { id: '7007', t: 'Justiça e instituições', c: 1, q: 'Você é a favor de unificar em 8 anos — e mudar a contagem — dos prazos de inelegibilidade da Lei da Ficha Limpa?' },
+    { id: '7032', t: 'Meio ambiente e povos indígenas', c: 1, q: 'Você é a favor de incluir o marco temporal das terras indígenas na Constituição?' },
   ],
 }
 
@@ -174,14 +174,14 @@ function quiz() {
     <div class="bar"><i style="width:${(S.i / vs.length) * 100}%"></i></div>
     ${showBanner ? `<div class="banner"><span><b>Você já pode ver seu resultado.</b> Mais respostas = match mais preciso.</span><button class="btn btn-o" id="verAgora" style="padding:9px 16px;font-size:13.5px">Ver resultados agora</button></div>` : ''}
     <div class="qcard">
-      <span class="tag">📋 ${esc(v.proposicao)} · votada em ${v.data.split('-').reverse().join('/')}</span>
+      <span class="tag">📋 ${esc(v.proposicao)} · ${v.data.split('-').reverse().join('/')}</span> <span class="tag">${esc(v.tema || 'Geral')}${v.central ? ' · tema central' : ''}</span>
       <div class="q">${esc(v.pergunta)}</div>
       <details class="ctx"><summary>Entenda o que estava em jogo</summary>${ctxHTML(v)}</details>
       <div class="ans">
         <button class="btn btn-g" id="bN">👎 Não, sou contra</button>
         <button class="btn btn-p" id="bS">👍 Sim, sou a favor</button>
       </div>
-      <button class="btn btn-t skip" id="bP">Me abster neste tema →</button>
+      <button class="btn btn-t skip" id="bP">🤍 Me abster nesta votação</button>
     </div>
   </div>`
   if (showBanner) document.getElementById('verAgora').onclick = () => { S.shownBanner = true; results() }
@@ -200,16 +200,17 @@ function answer(a) {
 function compute() {
   const c = D[S.casa]
   return c.parlamentares.map(p => {
-    let m = 0, cmp = 0; const det = []
+    let m = 0, cmp = 0, wm = 0, wc = 0; const det = []
     for (const v of c.votacoes) {
       const raw = c.votos[v.id] ? c.votos[v.id][String(p.id)] : undefined
       const ans = S.ans[v.id]
       if (!ans) continue
       const pv = raw === undefined ? null : voteN(raw)
-      if (pv) { cmp++; if (pv === ans) m++ }
+      const w = v.central ? 2 : 1
+      if (pv) { cmp++; wc += w; if (pv === ans) { m++; wm += w } }
       det.push({ v, ans, raw: raw === undefined ? 'não registrado' : raw, match: pv ? (pv === ans) : null })
     }
-    return { p, m, cmp, det, score: cmp > 0 ? m / cmp : 0, adj: (m + 2) / (cmp + 4) }
+    return { p, m, cmp, det, score: wc > 0 ? wm / wc : 0, adj: (wm + 2) / (wc + 4) }
   })
 }
 
@@ -230,13 +231,12 @@ function ceapHTML(p) {
   const cc = senado ? ceapsLookup(p.nome) : ceapCalc[String(p.id)]
   const med = senado ? ceapsMed : ceapMed
   const lbl = senado ? LBLS : (k => CAT[k] || k)
-  if (!cc) return `<div class="tcell wide"><b class="lbl">Uso da cota (jun/2025–mai/2026)</b><div class="big">—</div><div class="sm">${senado ? 'sem despesas CEAPS registradas no período (licença, posse recente) — confira no perfil oficial' : 'dados em coleta — recarregue em instantes'}</div></div>`
-  const cls = cc.nota >= 7 ? 'good' : cc.nota >= 4 ? 'mid' : 'bad'
-  return `<div class="tcell wide"><b class="lbl">Uso da cota — nota comparativa (jun/2025–mai/2026)</b>
-    <div class="big ${cls}">${String(cc.nota).replace('.', ',')}/10</div>
-    <div class="sm" style="margin:4px 0 8px"><b>Por que ${String(cc.nota).replace('.', ',')}?</b> Gastou <b>${brl(cc.total)}</b> — mais que ${cc.rT}% dos colegas (mediana da Casa: ${brl(med._t)}) · <b>${cc.sens}%</b> foi em categorias sensíveis — fatia maior que a de ${cc.rS}% dos colegas${cc.fl ? ' · combustível acima do percentil 90 (−2 pontos)' : ''}. Fórmula: 10 − ${senado ? '5' : '4'}×percentil(gasto total) − ${senado ? '5' : '4'}×percentil(% sensíveis)${senado ? '' : ' − 2×(combustível>p90)'}.</div>
-    ${cc.top.map(t => `<div class="medrow"><span>${esc(lbl(t[0]))}</span><span><b>${brl(t[1])}</b> <span style="color:var(--mut)">· mediana da Casa ${brl(med[t[0]] || 0)}</span></span></div>`).join('')}
-    <div class="sm" style="margin-top:8px">Categorias sensíveis: ${senado ? 'divulgação e locomoção/hospedagem/combustíveis' : 'combustíveis, divulgação, locações/fretamentos, hospedagem e táxi'}. Fonte: ${senado ? 'CSV oficial CEAPS do Senado' : 'API oficial de despesas da Câmara'}. Usar a cota é legal — a nota apenas compara padrões entre colegas da mesma Casa.</div>
+  if (!cc) return `<div class="tcell wide"><b class="lbl">Gastos da cota (jun/2025–mai/2026)</b><div class="big">—</div><div class="sm">${senado ? 'sem despesas CEAPS registradas no período (licença, posse recente) — confira no perfil oficial' : 'dados em coleta — recarregue em instantes'}</div></div>`
+  return `<div class="tcell wide"><b class="lbl">Gastos da cota — comparativo com a Casa (jun/2025–mai/2026)</b>
+    <div class="big">${brl(cc.total)}</div>
+    <div class="sm" style="margin:2px 0 8px">mediana da Casa: ${brl(med._t)} · gastou mais que ${cc.rT}% dos colegas</div>
+    ${cc.top.map(t => `<div class="medrow"><span>${esc(lbl(t[0]))}</span><span><b>${brl(t[1])}</b> <span style="color:var(--mut)">· mediana ${brl(med[t[0]] || 0)}</span></span></div>`).join('')}
+    <div class="sm" style="margin-top:8px">Sem nota, de propósito: gasto maior pode significar atuação intensa (estado distante, escritórios, viagens), não desperdício — e gasto baixo não compensa votos contrários ao que você defende. Compare e tire suas conclusões. Fonte: ${senado ? 'CSV oficial CEAPS do Senado' : 'API oficial de despesas da Câmara'}.</div>
   </div>`
 }
 const GLOSS = { 'réu': 'réu = a Justiça aceitou a denúncia e há ação penal em curso; não é condenação.', 'condenado': 'condenado = há decisão judicial condenatória; veja a instância e os recursos na descrição.', 'inquérito': 'inquérito = investigação formal em andamento; não é acusação nem condenação.', 'denúncia pendente': 'a PGR apresentou acusação; a Justiça ainda não decidiu se aceita.' }
@@ -257,11 +257,14 @@ function results() {
   for (const r of all) { if (r.cmp === 0) continue; const k = r.p.partido; pt[k] = pt[k] || { m: 0, c: 0, n: 0 }; pt[k].m += r.m; pt[k].c += r.cmp; pt[k].n++ }
   const ptArr = Object.entries(pt).filter(([k, v]) => v.c >= MIN * 3).map(([k, v]) => ({ sigla: k, pct: v.m / v.c, n: v.n })).sort((a, b) => b.pct - a.pct)
   const partidos = [...new Set(c.parlamentares.map(p => p.partido))].sort()
-  let list = all.filter(r => r.cmp >= MIN)
-  if (S.filtUF && S.uf) list = list.filter(r => r.p.uf === S.uf)
-  if (S.filtP) list = list.filter(r => r.p.partido === S.filtP)
-  if (S.filtQ) { const q = S.filtQ.toLowerCase(); list = list.filter(r => r.p.nome.toLowerCase().includes(q)) }
-  list.sort((a, b) => b.adj - a.adj || b.cmp - a.cmp || a.p.nome.localeCompare(b.p.nome))
+  const filtra = () => {
+    let l = all.filter(r => r.cmp >= MIN)
+    if (S.filtUF && S.uf) l = l.filter(r => r.p.uf === S.uf)
+    if (S.filtP) l = l.filter(r => r.p.partido === S.filtP)
+    if (S.filtQ) { const q = S.filtQ.toLowerCase(); l = l.filter(r => r.p.nome.toLowerCase().includes(q)) }
+    l.sort((a, b) => b.adj - a.adj || b.cmp - a.cmp || a.p.nome.localeCompare(b.p.nome))
+    return l
+  }
   const insuf = all.filter(r => r.cmp < MIN).length
   app.innerHTML = `
   <div class="fade">
@@ -280,26 +283,32 @@ function results() {
       <select id="fP"><option value="">Todos os partidos</option>${partidos.map(p => `<option ${S.filtP === p ? 'selected' : ''}>${esc(p)}</option>`).join('')}</select>
       <input id="fQ" placeholder="Buscar por nome…" value="${esc(S.filtQ)}">
     </div>
-    <div class="plist" id="plist">${list.slice(0, S.shown).map((r, i) => card(r, i, cfg, c)).join('') || `<div class="empty">Nenhum parlamentar encontrado com esses filtros.</div>`}</div>
-    ${list.length > S.shown ? `<button class="btn btn-o more" id="mais">Mostrar mais (${list.length - S.shown} restantes)</button>` : ''}
+    <div id="listwrap"></div>
     ${insuf ? `<p style="color:var(--mut);font-size:13px;margin-top:14px">${insuf} parlamentar(es) fora do ranking por terem menos de ${MIN} votos comparáveis com suas respostas (ausências, licenças ou mandato recente).</p>` : ''}
     <div class="meth">
       <h3>Como funciona (metodologia e fontes)</h3>
-      <p>· Cada pergunta corresponde a uma votação nominal real em plenário. Sua resposta é comparada ao voto registrado de cada parlamentar — direto das APIs oficiais da <a href="https://dadosabertos.camara.leg.br" target="_blank" rel="noopener">Câmara</a> e do <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener">Senado</a>. Abstenções, obstruções e ausências não contam nem a favor nem contra. Para evitar que pouca base infle o ranking (ex.: 3 de 3 acima de 7 de 8), a ORDEM usa ajuste bayesiano — (iguais+2)/(comparáveis+4), prior neutro de 50% — enquanto o % exibido é o real; menos de 5 votos comparáveis ganham o aviso "base pequena".</p>
-      <p>· <b>Nota de uso da cota (0–10)</b>: dados oficiais de jun/2025 a mai/2026 (Câmara: CEAP via API oficial; Senado: CEAPS via CSV oficial de transparência). Fórmula nas duas Casas: nota = 10 − 5×percentil(gasto total entre colegas da Casa) − 5×percentil(gasto ABSOLUTO em categorias sensíveis — Câmara: combustíveis, divulgação, locações/fretamentos, hospedagem, táxi; Senado: divulgação + locomoção/hospedagem/combustíveis). Usamos valores absolutos comparados aos colegas, não frações: quem gasta pouco no total não é punido pela composição do pouco que gasta. O cartão mostra o comparativo com a mediana da Casa, categoria por categoria. Régua comparativa objetiva, não acusação: gastar a cota é legal.</p>
+      <p>· Cada pergunta corresponde a uma votação nominal real em plenário. Sua resposta é comparada ao voto registrado de cada parlamentar — direto das APIs oficiais da <a href="https://dadosabertos.camara.leg.br" target="_blank" rel="noopener">Câmara</a> e do <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener">Senado</a>. Abstenções, obstruções e ausências não contam nem a favor nem contra. Para evitar que pouca base infle o ranking (ex.: 3 de 3 acima de 7 de 8), a ORDEM usa ajuste bayesiano — (iguais+2)/(comparáveis+4), prior neutro de 50% — enquanto o % exibido é o real; menos de 5 votos comparáveis ganham o aviso "base pequena". Votações de temas centrais de projeto de país (marcadas no questionário) pesam 2× as demais no índice.</p>
+      <p>· <b>Gastos da cota</b>: dados oficiais de jun/2025 a mai/2026 (Câmara: CEAP via API; Senado: CEAPS via CSV de transparência), apresentados como comparativo factual com a mediana da Casa, categoria por categoria. Decidimos não dar nota: gasto maior pode refletir atuação intensa (estados distantes, escritórios, viagens), não desperdício — e nenhuma economia compensa votos contrários ao que você defende. O foco do site é o voto.</p>
       <p>· <b>Presença</b>: Câmara = relatório oficial de presença em sessões deliberativas do plenário (Ato da Mesa 191/2017) somado de 2023 a 2026; o % considera ausências justificadas e não justificadas — licenças médicas e missões oficiais contam como justificadas. Senado = presença nas ${D.senado.votacoes.length} votações nominais analisadas (não há relatório oficial consolidado por API).</p>
       <p>· <b>Registros públicos</b>: ⚠️ = processo ATIVO (réu, condenação, denúncia pendente ou inquérito formal no STF/STJ), confirmado em fonte oficial ou grande imprensa citando o caso. ℹ️ = histórico relevante já ENCERRADO (arquivado, prescrito ou absolvição), com desfecho explícito — arquivamento também é fato público. ✅ = nada ativo encontrado nas fontes verificadas em 09/06/2026; não é atestado de idoneidade. No Senado a varredura cobre ativos e históricos; na Câmara, históricos ainda parcialmente. Este site não acusa ninguém: confira sempre a fonte primária.</p>
       <p>· Votações usadas: ${c.votacoes.map(v => `<a href="${esc(v.linkFonte)}" target="_blank" rel="noopener">${esc(v.proposicao)}</a>`).join(' · ')}.</p>
     </div>
     <div class="row" style="justify-content:center"><button class="btn btn-o" id="re2">↺ Recomeçar do zero</button></div>
   </div>`
+  const renderList = () => {
+    const l = filtra()
+    document.getElementById('listwrap').innerHTML = `<div class="plist">${l.slice(0, S.shown).map((r, i) => card(r, i, cfg, c)).join('') || '<div class="empty">Nenhum parlamentar encontrado com esses filtros.</div>'}</div>` + (l.length > S.shown ? `<button class="btn btn-o more" id="mais">Mostrar mais (${l.length - S.shown} restantes)</button>` : '')
+  }
+  renderList()
+  document.getElementById('listwrap').onclick = e => {
+    const mb = e.target.closest('#mais'); if (mb) { S.shown += 30; renderList(); return }
+    const h = e.target.closest('.phead'); if (h) h.parentElement.classList.toggle('open')
+  }
   const cont = document.getElementById('cont'); if (cont) cont.onclick = quiz
   const fUF = document.getElementById('fUF'); if (fUF) fUF.onclick = () => { S.filtUF = !S.filtUF; S.shown = 30; results() }
   document.getElementById('fP').onchange = e => { S.filtP = e.target.value; S.shown = 30; results() }
-  document.getElementById('fQ').oninput = e => { S.filtQ = e.target.value; S.shown = 30; results() }
-  const mais = document.getElementById('mais'); if (mais) mais.onclick = () => { S.shown += 30; results() }
+  document.getElementById('fQ').oninput = e => { S.filtQ = e.target.value; S.shown = 30; renderList() }
   document.getElementById('re2').onclick = home
-  document.getElementById('plist').onclick = e => { const h = e.target.closest('.phead'); if (h) h.parentElement.classList.toggle('open') }
 }
 
 function card(r, i, cfg, c) {
