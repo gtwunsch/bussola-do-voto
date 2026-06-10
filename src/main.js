@@ -2,8 +2,8 @@ import './style.css'
 import { createClient } from '@supabase/supabase-js'
 
 // ---------- carga de dados ----------
-const SUPA = 'https://hiripppzlvlmoujlusey.supabase.co'
-let SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpcmlwcHB6bHZsbW91amx1c2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0OTk1MjYsImV4cCI6MjA2NjA3NTUyNn0.crVGxKs8mwGFP3LUPhMLRZjXxgw_p25TbsoExvNYiow' // injetada no build via env VITE_SUPABASE_ANON_KEY se disponível
+const SUPA = 'https://psxqsmjopeyzydruafub.supabase.co'
+let SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzeHFzbWpvcGV5enlkcnVhZnViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwOTk2MTEsImV4cCI6MjA5NjY3NTYxMX0.Z9QkaB773NGOH1_LI4XH1-3exLcyOZTOsqqOxJu32yw' // injetada no build via env VITE_SUPABASE_ANON_KEY se disponível
 try { if (import.meta.env && import.meta.env.VITE_SUPABASE_ANON_KEY) SUPA_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY } catch (e) {}
 
 let sb = null, USER = null

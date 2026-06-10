@@ -7,8 +7,8 @@ Match eleitoral 100% baseado em votações nominais reais do Congresso (dados ab
 ## Arquitetura
 - **Front**: Vite vanilla JS, neste repositório. Deploy automático: push na `main` → Vercel (https://bussola-do-voto.vercel.app).
 - **Dados estáticos**: `public/dados/*.json` (votações, votos individuais, parlamentares, argumentos, presença, registros judiciais).
-- **Dados dinâmicos**: tabela `bussola_dados` (chave→jsonb) no Supabase projeto Cartana `hiripppzlvlmoujlusey` — chaves `ceap` (gastos deputados), `ceaps` (gastos senadores), `ceap_ids`. Lidas pelo front via REST com anon key.
-- **Coletor**: Edge Function `bussola-coletor` (Cartana): `/ceap-next` (lote incremental, foi guiado por pg_cron job "bussola-ceap", hoje desligado), `/ceaps` (CSV oficial do Senado, roda em background), `/status`.
+- **Dados dinâmicos**: tabela `bussola_dados` (chave→jsonb) no Supabase projeto DEDICADO `psxqsmjopeyzydruafub` (org gratuita `bussola` — isolado dos outros apps; antes era compartilhado com o Cartana, migrado em 10/06/2026) — chaves `ceap` (gastos deputados), `ceaps` (gastos senadores), `ceap_ids`. Lidas pelo front via REST com anon key.
+- **Coletor**: Edge Function `bussola-coletor` (projeto Bussola): `/ceap-next` (lote incremental, foi guiado por pg_cron job "bussola-ceap", hoje desligado), `/ceaps` (CSV oficial do Senado, roda em background), `/status`.
 - **Auxiliares no projeto wintz** `ecnqcsnbcdpaqvoxexjs` (podem ser apagadas ou reusadas): `camara-votos-compact` (proxy para votos nominais sem truncamento), `coleta-presenca` (presença oficial por deputado/ano).
 - **Auth (fase 3, em andamento)**: tabela `bussola_respostas` (user_id, casa, votacao_id, resposta S/N/A) com RLS por usuário — criada, aguardando front + Google OAuth (usuário precisa criar OAuth Client e habilitar no painel Supabase).
 
