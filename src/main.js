@@ -160,7 +160,8 @@ function home() {
       <select id="uf"><option value="">Seu estado (opcional)</option>${UFS.map(u => `<option ${S.uf === u ? 'selected' : ''}>${u}</option>`).join('')}</select>
       <button class="btn btn-p" id="start" disabled>Começar →</button>
     </div>
-    <div class="sec" style="margin-top:38px">Ou veja direto um parlamentar</div>
+    <div class="row" style="margin-top:30px"><button class="btn btn-o" id="expVot">📊 Explorar votações — veja como cada bancada votou</button></div>
+    <div class="sec" style="margin-top:30px">Ou veja direto um parlamentar</div>
     <input id="busca" placeholder="Busque pelo nome do deputado ou senador…" style="font:inherit;width:100%;max-width:420px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line)">
     <div id="bres" class="plist" style="margin-top:10px;max-width:420px"></div>
     <div class="note">ℹ️ Deputados federais e senadores são eleitos por estado, mas votam leis que valem para o país inteiro — vale a pena conhecê-los. Vereadores e deputados estaduais chegam numa próxima versão.</div>
@@ -175,6 +176,7 @@ function home() {
     }
     out.innerHTML = hits.map(h => `<div class="pcard"><div class="phead" onclick="location.hash='#/p/${h.casa}/${h.p.id}'"><img class="ava" src="${cfgs[h.casa].foto(h.p.id)}" onerror="this.style.visibility='hidden'"><div class="pinfo"><div class="n">${esc(h.p.nome)}</div><div class="m">${esc(h.p.partido)} · ${esc(h.p.uf)} · ${h.casa === 'camara' ? 'deputado' : 'senador'}</div></div><span class="chev">→</span></div></div>`).join('')
   }
+  document.getElementById('expVot').onclick = () => { location.hash = '#/votacoes' }
   document.getElementById('pk-camara').onclick = () => pick('camara')
   document.getElementById('pk-senado').onclick = () => pick('senado')
   document.getElementById('start').onclick = () => { S.uf = document.getElementById('uf').value; S.ans = ANS[S.casa]; const vs = D[S.casa].votacoes; S.i = vs.findIndex(v => !S.ans[v.id]); if (S.i < 0) S.i = vs.length; S.shownBanner = false; quiz(); scrollTo({ top: 0 }) }
@@ -524,6 +526,9 @@ function minhas() {
 function rota() {
   const mm = location.hash.match(/^#\/p\/(camara|senado)\/(\d+)$/)
   if (mm) { paginaParlamentar(mm[1], mm[2]); return true }
+  const mv = location.hash.match(/^#\/v\/(camara|senado)\/([\w.-]+)$/)
+  if (mv) { paginaVotacao(mv[1], decodeURIComponent(mv[2])); return true }
+  if (location.hash === '#/votacoes') { listaVotacoes(); return true }
   return false
 }
 const VOTOICO = v => v === 'Sim' ? '👍 Sim' : v === 'Não' ? '👎 Não' : v === undefined ? '— sem registro' : '○ ' + v
@@ -576,4 +581,101 @@ function comparar() {
     <div class="rhead"><h2>Comparação lado a lado</h2><p>👍 a favor · 👎 contra · ○ abstenção/obstrução · — ausente/sem registro · fundo verde = votou como você · ★ tema central. </p></div>
     <div style="overflow-x:auto;background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:10px"><table class="cmptab">${cab}${linhas}</table></div></div>`
   document.getElementById('volt2').onclick = results
+}
+
+// ---------- explorador de votações ----------
+const VF = { casa: 'camara', q: '', tema: '' }
+function listaVotacoes() {
+  scrollTo({ top: 0 })
+  const temas = [...new Set([...D.camara.votacoes, ...D.senado.votacoes].map(v => v.tema || 'Geral'))].sort()
+  const render = () => {
+    let vs = D[VF.casa].votacoes.slice()
+    if (VF.tema) vs = vs.filter(v => (v.tema || 'Geral') === VF.tema)
+    if (VF.q) { const q = VF.q.toLowerCase(); vs = vs.filter(v => (v.titulo + ' ' + v.proposicao + ' ' + (v.resumo || '')).toLowerCase().includes(q)) }
+    vs.sort((a, b) => b.data.localeCompare(a.data))
+    document.getElementById('vlist').innerHTML = vs.map(v => `
+      <div class="pcard"><div class="phead" onclick="location.hash='#/v/${VF.casa}/${encodeURIComponent(v.id)}'">
+        <div class="pinfo"><div class="n" style="white-space:normal">${esc(v.titulo)}${v.central ? ' <span style="color:var(--amber)" title="tema central">★</span>' : ''}</div>
+        <div class="m">${esc(v.tema || 'Geral')} · ${esc(v.proposicao)} · ${v.data.split('-').reverse().join('/')} · ${esc(v.resultado)} ${esc(v.placar)}</div></div>
+        <span class="chev">→</span></div></div>`).join('') || '<div class="empty">Nenhuma votação encontrada.</div>'
+  }
+  app.innerHTML = `<div class="fade">
+    <div class="rhead"><h2>Votações</h2><p>Escolha uma matéria para ver como votou cada bancada e cada parlamentar.</p></div>
+    <div class="filters">
+      <button class="chip ${VF.casa === 'camara' ? 'on' : ''}" id="vfc">Câmara</button>
+      <button class="chip ${VF.casa === 'senado' ? 'on' : ''}" id="vfs">Senado</button>
+      <select id="vft"><option value="">Todos os temas</option>${temas.map(t => `<option ${VF.tema === t ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select>
+      <input id="vfq" placeholder="Buscar votação… (ex.: ficha limpa)" value="${esc(VF.q)}">
+    </div>
+    <div class="plist" id="vlist"></div>
+    <div class="row" style="justify-content:center;margin-top:20px"><button class="btn btn-o" onclick="location.hash='';home()">← Início</button></div>
+  </div>`
+  document.getElementById('vfc').onclick = () => { VF.casa = 'camara'; listaVotacoes() }
+  document.getElementById('vfs').onclick = () => { VF.casa = 'senado'; listaVotacoes() }
+  document.getElementById('vft').onchange = e => { VF.tema = e.target.value; render() }
+  document.getElementById('vfq').oninput = e => { VF.q = e.target.value; render() }
+  render()
+}
+const PV = { q: '', voto: '' }
+function paginaVotacao(casa, vid) {
+  const c = D[casa], cfg = cfgs[casa]
+  const v = c.votacoes.find(x => x.id === vid)
+  if (!v) { listaVotacoes(); return }
+  scrollTo({ top: 0 })
+  const vmap = c.votos[v.id] || {}
+  // por bancada
+  const bancadas = {}
+  let identificados = 0
+  const indiv = []
+  for (const p of c.parlamentares) {
+    const raw = vmap[String(p.id)]
+    if (raw !== undefined) identificados++
+    const b = bancadas[p.partido] = bancadas[p.partido] || { sim: 0, nao: 0, outros: 0, aus: 0, n: 0 }
+    b.n++
+    if (raw === 'Sim') b.sim++; else if (raw === 'Não') b.nao++; else if (raw !== undefined) b.outros++; else b.aus++
+    indiv.push({ p, raw })
+  }
+  const foraExercicio = Object.keys(vmap).length - identificados
+  const brows = Object.entries(bancadas).filter(([k, b]) => b.sim + b.nao + b.outros > 0)
+    .sort((a, b) => (b[1].sim / Math.max(1, b[1].sim + b[1].nao)) - (a[1].sim / Math.max(1, a[1].sim + a[1].nao)) || b[1].n - a[1].n)
+    .map(([sig, b]) => {
+      const tot = Math.max(1, b.sim + b.nao + b.outros)
+      const ps = Math.round(100 * b.sim / tot), pn = Math.round(100 * b.nao / tot)
+      return `<div class="pr"><span class="nm">${esc(sig)}</span>
+        <span class="tr" style="display:flex;overflow:hidden"><i style="width:${ps}%;background:var(--teal)"></i><i style="width:${pn}%;background:var(--warm)"></i><i style="width:${100 - ps - pn}%;background:#b6b1a4"></i></span>
+        <span class="ct" style="width:170px">👍${b.sim} 👎${b.nao}${b.outros ? ' ○' + b.outros : ''}${b.aus ? ' —' + b.aus : ''}</span></div>`
+    }).join('')
+  const a = v.arg || {}
+  const renderIndiv = () => {
+    let l = indiv
+    if (PV.voto === 'S') l = l.filter(x => x.raw === 'Sim'); else if (PV.voto === 'N') l = l.filter(x => x.raw === 'Não')
+    else if (PV.voto === 'O') l = l.filter(x => x.raw !== undefined && x.raw !== 'Sim' && x.raw !== 'Não')
+    else if (PV.voto === 'A') l = l.filter(x => x.raw === undefined)
+    if (PV.q) { const q = PV.q.toLowerCase(); l = l.filter(x => (x.p.nome + ' ' + x.p.partido + ' ' + x.p.uf).toLowerCase().includes(q)) }
+    l = l.slice().sort((x, y) => x.p.nome.localeCompare(y.p.nome))
+    document.getElementById('ilist').innerHTML = l.map(x => `<div class="ci" style="cursor:pointer" onclick="location.hash='#/p/${casa}/${x.p.id}'">
+      <span class="ic ${x.raw === 'Sim' ? 'ok' : x.raw === 'Não' ? 'no' : 'nn'}">${x.raw === 'Sim' ? '👍' : x.raw === 'Não' ? '👎' : x.raw === undefined ? '—' : '○'}</span>
+      <div><div class="tt">${esc(x.p.nome)}</div><div class="dd">${esc(x.p.partido)} · ${esc(x.p.uf)} · ${esc(x.raw === undefined ? 'ausente/sem registro' : x.raw)}</div></div></div>`).join('') || '<div class="empty">Ninguém com esses filtros.</div>'
+  }
+  app.innerHTML = `<div class="fade">
+    <div class="row" style="margin-top:20px"><button class="btn btn-o" onclick="location.hash='#/votacoes'">← Votações</button><button class="btn btn-o" id="copiaV">🔗 Copiar link</button></div>
+    <div class="qcard" style="margin-top:16px">
+      <span class="tag">📋 ${esc(v.proposicao)} · ${v.data.split('-').reverse().join('/')}</span> <span class="tag">${esc(v.tema || 'Geral')}${v.central ? ' · tema central' : ''}</span>
+      <div class="q" style="font-size:22px">${esc(v.titulo)}</div>
+      <div class="sm" style="color:var(--mut);margin-top:10px">${esc(a.oQueMuda || v.resumo)} · <b>${esc(v.resultado)} ${esc(v.placar)}</b> · ${[v.linkFonte, ...((a.fontes) || [])].filter(Boolean).slice(0, 2).map((f, i) => `<a href="${esc(f)}" target="_blank" rel="noopener">${i === 0 ? 'fonte oficial' : 'cobertura'} ↗</a>`).join(' · ')}</div>
+    </div>
+    <div class="sec">Como votou cada bancada (${cfg.nome.toLowerCase()} em exercício)</div>
+    <div class="pty">${brows}</div>
+    ${foraExercicio > 0 ? `<p style="color:var(--mut);font-size:12.5px;margin-top:8px">+ ${foraExercicio} voto(s) de parlamentares fora do exercício atual (suplentes/afastados), contados no placar oficial mas não listados abaixo.</p>` : ''}
+    <div class="sec">Voto a voto</div>
+    <div class="filters">
+      ${[['', 'Todos'], ['S', '👍 Sim'], ['N', '👎 Não'], ['O', '○ Abst./obstr.'], ['A', '— Ausentes']].map(([k, lb]) => `<button class="chip ${PV.voto === k ? 'on' : ''}" data-pv="${k}">${lb}</button>`).join('')}
+      <input id="pvq" placeholder="Buscar nome, partido ou UF…" value="${esc(PV.q)}">
+    </div>
+    <div class="cmp" id="ilist"></div>
+  </div>`
+  document.getElementById('copiaV').onclick = async () => { try { await navigator.clipboard.writeText(location.origin + '/#/v/' + casa + '/' + encodeURIComponent(v.id)); document.getElementById('copiaV').textContent = '✓ copiado!' } catch (e) {} }
+  document.querySelectorAll('[data-pv]').forEach(b => b.onclick = () => { PV.voto = b.dataset.pv; paginaVotacao(casa, vid) })
+  document.getElementById('pvq').oninput = e => { PV.q = e.target.value; renderIndiv() }
+  renderIndiv()
 }
