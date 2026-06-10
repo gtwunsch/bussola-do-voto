@@ -314,11 +314,16 @@ function results() {
     return l
   }
   const insuf = all.filter(r => r.cmp < MIN).length
+  const temReg = (pid) => (D.registros[S.casa] || {})[pid]
+  const ehAtivo = (g) => g && (Array.isArray(g.itens) ? g.itens.some(x => x.st === 'ativo') : g.status !== 'histórico')
+  const top10 = filtra().slice(0, 10)
+  const nAtv = top10.filter(r => ehAtivo(temReg(r.p.id))).length
+  const nHis = top10.filter(r => { const g = temReg(r.p.id); return g && !ehAtivo(g) }).length
   app.innerHTML = `
   <div class="fade">
     <div class="rhead">
       <h2>Seu resultado · ${cfg.nome}</h2>
-      <p>Comparamos suas ${nAns} resposta${nAns > 1 ? 's' : ''} com os votos registrados em plenário. Afinidade = % de votações em que o parlamentar votou igual a você (entre as comparáveis).</p>
+      <p>Comparamos suas ${nAns} resposta${nAns > 1 ? 's' : ''} com os votos registrados em plenário. Afinidade = % de votações em que o parlamentar votou igual a você (entre as comparáveis).${nAtv + nHis > 0 ? ` Entre seus 10 mais afins: ${nAtv ? `<b>${nAtv} com processo ativo ⚠️</b>` : ''}${nAtv && nHis ? ' e ' : ''}${nHis ? `${nHis} com histórico processual encerrado ℹ️` : ''} — abra os cartões para os detalhes com fontes.` : ''}</p>
     </div>
     ${S.i < c.votacoes.length ? `<div class="banner"><span><b>Quer um match mais preciso?</b> Ainda há perguntas sem resposta.</span><button class="btn btn-o" id="cont" style="padding:9px 16px;font-size:13.5px">Continuar respondendo</button></div>` : ''}
     <div class="sec">Partidos mais alinhados a você</div>
@@ -376,7 +381,7 @@ function card(r, i, cfg, c) {
     <div class="phead">
       <span class="rank">${i + 1}º</span>
       <img class="ava" loading="lazy" src="${cfg.foto(r.p.id)}" alt="" onerror="this.outerHTML='<span class=ava>${ini}</span>'">
-      <div class="pinfo"><div class="n">${esc(r.p.nome)}${reg ? '<span class="flag" title="há registro público ativo — abra o cartão">⚠️</span>' : ''}</div><div class="m">${esc(r.p.partido)} · ${esc(r.p.uf)}</div></div>
+      <div class="pinfo"><div class="n">${esc(r.p.nome)}${reg ? '<span class="flag" title="há processo ativo — abra o cartão">⚠️</span>' : (regAll ? '<span class="flag" title="histórico processual encerrado — abra o cartão" style="opacity:.55">ℹ️</span>' : '')}</div><div class="m">${esc(r.p.partido)} · ${esc(r.p.uf)}</div></div>
       <div class="aff"><div class="v">${pct}%</div><div class="c">${r.m} de ${r.cmp} iguais${r.cmp < 5 ? ' · base pequena' : ''}</div><div class="affbar"><i style="width:${pct}%"></i></div></div>
       <span class="chev">▾</span>
     </div>
