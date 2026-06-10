@@ -5,7 +5,7 @@ const SUPA = 'https://hiripppzlvlmoujlusey.supabase.co'
 let SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpcmlwcHB6bHZsbW91amx1c2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0OTk1MjYsImV4cCI6MjA2NjA3NTUyNn0.crVGxKs8mwGFP3LUPhMLRZjXxgw_p25TbsoExvNYiow' // injetada no build via env VITE_SUPABASE_ANON_KEY se disponível
 try { if (import.meta.env && import.meta.env.VITE_SUPABASE_ANON_KEY) SUPA_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY } catch (e) {}
 
-const D = { camara: {}, senado: {}, registros: { camara: {}, senado: {} }, presenca: { camara: {}, senado: {} }, ceap: null }
+const D = { camara: {}, senado: {}, registros: { camara: {}, senado: {} }, presenca: { camara: {}, senado: {} }, ceap: null, ceaps: null }
 
 async function j(url) { const r = await fetch(url); if (!r.ok) throw new Error(url); return r.json() }
 
@@ -22,10 +22,11 @@ async function carregar() {
   D.registros = reg
   // CEAP (dinâmico — pode ainda estar em coleta)
   try {
-    const r = await fetch(SUPA + '/rest/v1/bussola_dados?chave=eq.ceap&select=valor', { headers: { apikey: SUPA_KEY, Authorization: 'Bearer ' + SUPA_KEY } })
-    if (r.ok) { const rows = await r.json(); if (rows.length) D.ceap = rows[0].valor }
-  } catch (e) { /* segue sem ceap */ }
+    const r = await fetch(SUPA + '/rest/v1/bussola_dados?chave=in.(ceap,ceaps)&select=chave,valor', { headers: { apikey: SUPA_KEY, Authorization: 'Bearer ' + SUPA_KEY } })
+    if (r.ok) { const rows = await r.json(); for (const row of rows) D[row.chave] = row.valor }
+  } catch (e) { /* segue sem gastos */ }
   if (D.ceap) prepCeap()
+  if (D.ceaps) prepCeaps()
 }
 
 // perguntas curadas (ordem cronológica)
@@ -58,21 +59,58 @@ const PERG = {
 // ---------- CEAP ----------
 const CAT = { '1': 'Escritório de apoio', '2': 'Locomoção/alim./hosp.', '3': 'Combustíveis', '4': 'Consultorias', '5': 'Divulgação do mandato', '6': 'Material de escritório', '7': 'Software/postais/assin.', '8': 'Segurança', '9': 'Passagem aérea (reemb.)', '10': 'Telefonia', '11': 'Serviços postais', '12': 'Assinaturas', '13': 'Alimentação', '14': 'Hospedagem', '15': 'Locação de veículos', '119': 'Fretamento de aeronaves', '120': 'Locação de veículos', '121': 'Fretamento de embarcações', '122': 'Táxi/pedágio/estac.', '123': 'Passagens terrestres', '137': 'Cursos e eventos', '145': 'Certificados digitais', '998': 'Passagem aérea (SIGEPA)', '999': 'Passagem aérea (RPA)' }
 const SENSIVEIS = ['3', '5', '14', '15', '119', '120', '121', '122']
-const ceapCalc = {}
+const LBLS = (k) => {
+  if (!k) return 'Não classificado'
+  if (k.startsWith('Contratação')) return 'Consultorias e assessorias'
+  if (k.startsWith('Locomoção')) return 'Locomoção, hosped., alim. e combustíveis'
+  if (k.startsWith('Divulgação')) return 'Divulgação do mandato'
+  if (k.startsWith('Aluguel')) return 'Aluguel de escritório'
+  if (k.startsWith('Passagens')) return 'Passagens'
+  if (k.startsWith('Aquisição')) return 'Material de escritório/software'
+  if (k.toLowerCase().includes('segurança')) return 'Segurança privada'
+  return k.slice(0, 40)
+}
+const sensS = k => /^(Divulgação|Locomoção)/.test(k || '')
+const norm = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().trim()
+const ceapCalc = {}, ceapsCalc = {}
+let ceapMed = {}, ceapsMed = {}
+function median(arr) { if (!arr.length) return 0; const s = [...arr].sort((a, b) => a - b); const md = Math.floor(s.length / 2); return s.length % 2 ? s[md] : (s[md - 1] + s[md]) / 2 }
+function shareSens(d, senado) { let s = 0; for (const k of Object.keys(d.c)) if (senado ? sensS(k) : SENSIVEIS.includes(k)) s += d.c[k]; return d.t > 0 ? s / d.t : 0 }
+const prank = (arr, v) => arr.length > 1 ? arr.filter(x => x <= v).length / arr.length : 0.5
 function prepCeap() {
   const ids = Object.keys(D.ceap).filter(k => !k.startsWith('_') && D.ceap[k] && typeof D.ceap[k].t === 'number')
   const tot = ids.map(id => D.ceap[id].t).sort((a, b) => a - b)
-  const shr = ids.map(id => shareSens(D.ceap[id])).sort((a, b) => a - b)
+  const shr = ids.map(id => shareSens(D.ceap[id], false)).sort((a, b) => a - b)
   const comb = ids.map(id => (D.ceap[id].c['3'] || 0)).sort((a, b) => a - b)
-  const p90comb = comb[Math.floor(0.9 * (comb.length - 1))]
-  const rank = (arr, v) => arr.length > 1 ? arr.filter(x => x <= v).length / arr.length : 0.5
+  const p90comb = comb[Math.floor(0.9 * (comb.length - 1))] || 0
+  const cats = new Set(); ids.forEach(id => Object.keys(D.ceap[id].c).forEach(c => cats.add(c)))
+  ceapMed = { _t: median(tot) }
+  for (const c of cats) ceapMed[c] = median(ids.map(id => D.ceap[id].c[c] || 0))
   for (const id of ids) {
-    const d = D.ceap[id]
-    const nota = Math.max(0, Math.min(10, 10 - 4 * rank(tot, d.t) - 4 * rank(shr, shareSens(d)) - 2 * ((d.c['3'] || 0) > p90comb ? 1 : 0)))
-    ceapCalc[id] = { nota: Math.round(nota * 10) / 10, total: d.t, sens: Math.round(shareSens(d) * 100), top: Object.entries(d.c).sort((a, b) => b[1] - a[1]).slice(0, 3) }
+    const d = D.ceap[id], rT = prank(tot, d.t), sh = shareSens(d, false), rS = prank(shr, sh), fl = (d.c['3'] || 0) > p90comb
+    const nota = Math.max(0, Math.min(10, 10 - 4 * rT - 4 * rS - 2 * (fl ? 1 : 0)))
+    ceapCalc[id] = { nota: Math.round(nota * 10) / 10, total: d.t, rT: Math.round(rT * 100), sens: Math.round(sh * 100), rS: Math.round(rS * 100), fl, top: Object.entries(d.c).sort((a, b) => b[1] - a[1]).slice(0, 4) }
   }
 }
-function shareSens(d) { let s = 0; for (const k of SENSIVEIS) s += d.c[k] || 0; return d.t > 0 ? s / d.t : 0 }
+function prepCeaps() {
+  const ks = Object.keys(D.ceaps).filter(k => !k.startsWith('_') && D.ceaps[k] && typeof D.ceaps[k].t === 'number')
+  const tot = ks.map(k => D.ceaps[k].t).sort((a, b) => a - b)
+  const shr = ks.map(k => shareSens(D.ceaps[k], true)).sort((a, b) => a - b)
+  const cats = new Set(); ks.forEach(k => Object.keys(D.ceaps[k].c).forEach(c => cats.add(c)))
+  ceapsMed = { _t: median(tot) }
+  for (const c of cats) ceapsMed[c] = median(ks.map(k => D.ceaps[k].c[c] || 0))
+  for (const k of ks) {
+    const d = D.ceaps[k], rT = prank(tot, d.t), sh = shareSens(d, true), rS = prank(shr, sh)
+    const nota = Math.max(0, Math.min(10, 10 - 5 * rT - 5 * rS))
+    ceapsCalc[norm(k)] = { nota: Math.round(nota * 10) / 10, total: d.t, rT: Math.round(rT * 100), sens: Math.round(sh * 100), rS: Math.round(rS * 100), fl: false, top: Object.entries(d.c).sort((a, b) => b[1] - a[1]).slice(0, 4) }
+  }
+}
+function ceapsLookup(nome) {
+  const n = norm(nome)
+  if (ceapsCalc[n]) return ceapsCalc[n]
+  const hits = Object.keys(ceapsCalc).filter(k => k.startsWith(n + ' ') || n.startsWith(k + ' '))
+  return hits.length === 1 ? ceapsCalc[hits[0]] : null
+}
 const brl = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR')
 
 // ---------- app ----------
@@ -189,18 +227,26 @@ function presHTML(pid) {
   const cls = pr.pct >= 85 ? 'good' : pr.pct >= 70 ? 'mid' : 'bad'
   return `<div class="tcell"><b class="lbl">Presença nas ${pr.tot} votações analisadas</b><div class="big ${cls}">${String(pr.pct).replace('.', ',')}%</div><div class="sm">presente em ${pr.pres} de ${pr.tot} votações nominais</div></div>`
 }
-function ceapHTML(pid) {
-  if (S.casa !== 'camara') return `<div class="tcell"><b class="lbl">Cota parlamentar</b><div class="big">—</div><div class="sm">nota de gastos do Senado (CEAPS) na próxima versão; veja no perfil oficial</div></div>`
-  const cc = ceapCalc[pid]
-  if (!cc) return `<div class="tcell"><b class="lbl">Cota parlamentar (12 meses)</b><div class="big">…</div><div class="sm">dados em coleta — recarregue em alguns minutos</div></div>`
+function ceapHTML(p) {
+  const senado = S.casa === 'senado'
+  const cc = senado ? ceapsLookup(p.nome) : ceapCalc[String(p.id)]
+  const med = senado ? ceapsMed : ceapMed
+  const lbl = senado ? LBLS : (k => CAT[k] || k)
+  if (!cc) return `<div class="tcell wide"><b class="lbl">Uso da cota (jun/2025–mai/2026)</b><div class="big">—</div><div class="sm">${senado ? 'sem despesas CEAPS registradas no período (licença, posse recente) — confira no perfil oficial' : 'dados em coleta — recarregue em instantes'}</div></div>`
   const cls = cc.nota >= 7 ? 'good' : cc.nota >= 4 ? 'mid' : 'bad'
-  return `<div class="tcell"><b class="lbl">Uso da cota — nota objetiva (12 meses)</b><div class="big ${cls}">${String(cc.nota).replace('.', ',')}/10</div><div class="sm">${brl(cc.total)} no total · ${cc.sens}% em categorias sensíveis · maiores: ${cc.top.map(t => `${CAT[t[0]] || t[0]} ${brl(t[1])}`).join(', ')}</div></div>`
+  return `<div class="tcell wide"><b class="lbl">Uso da cota — nota comparativa (jun/2025–mai/2026)</b>
+    <div class="big ${cls}">${String(cc.nota).replace('.', ',')}/10</div>
+    <div class="sm" style="margin:4px 0 8px"><b>Por que ${String(cc.nota).replace('.', ',')}?</b> Gastou <b>${brl(cc.total)}</b> — mais que ${cc.rT}% dos colegas (mediana da Casa: ${brl(med._t)}) · <b>${cc.sens}%</b> foi em categorias sensíveis — fatia maior que a de ${cc.rS}% dos colegas${cc.fl ? ' · combustível acima do percentil 90 (−2 pontos)' : ''}. Fórmula: 10 − ${senado ? '5' : '4'}×percentil(gasto total) − ${senado ? '5' : '4'}×percentil(% sensíveis)${senado ? '' : ' − 2×(combustível>p90)'}.</div>
+    ${cc.top.map(t => `<div class="medrow"><span>${esc(lbl(t[0]))}</span><span><b>${brl(t[1])}</b> <span style="color:var(--mut)">· mediana da Casa ${brl(med[t[0]] || 0)}</span></span></div>`).join('')}
+    <div class="sm" style="margin-top:8px">Categorias sensíveis: ${senado ? 'divulgação e locomoção/hospedagem/combustíveis' : 'combustíveis, divulgação, locações/fretamentos, hospedagem e táxi'}. Fonte: ${senado ? 'CSV oficial CEAPS do Senado' : 'API oficial de despesas da Câmara'}. Usar a cota é legal — a nota apenas compara padrões entre colegas da mesma Casa.</div>
+  </div>`
 }
+const GLOSS = { 'réu': 'réu = a Justiça aceitou a denúncia e há ação penal em curso; não é condenação.', 'condenado': 'condenado = há decisão judicial condenatória; veja a instância e os recursos na descrição.', 'inquérito': 'inquérito = investigação formal em andamento; não é acusação nem condenação.', 'denúncia pendente': 'a PGR apresentou acusação; a Justiça ainda não decidiu se aceita.' }
 function seloHTML(pid) {
   const reg = (D.registros[S.casa] || {})[pid]
-  if (reg && reg.status === 'histórico') return `<div class="tcell"><b class="lbl">Registros públicos (verificado em ${esc(reg.verificadoEm.split('-').reverse().join('/'))})</b><span class="selo info">ℹ️ histórico — casos encerrados</span><div class="sm" style="margin-top:6px">${esc(reg.desc)} · <a href="${esc(reg.fonte)}" target="_blank" rel="noopener">fonte ↗</a></div></div>`
-  if (reg) return `<div class="tcell"><b class="lbl">Registros públicos (verificado em ${esc(reg.verificadoEm.split('-').reverse().join('/'))})</b><span class="selo alerta">⚠️ ${esc(reg.status)}</span><div class="sm" style="margin-top:6px">${esc(reg.desc)} · <a href="${esc(reg.fonte)}" target="_blank" rel="noopener">fonte ↗</a></div></div>`
-  return `<div class="tcell"><b class="lbl">Registros públicos (verificado em 09/06/2026)</b><span class="selo ok">✅ sem processos ativos encontrados</span><div class="sm" style="margin-top:6px">nas fontes verificadas (réu, condenação, denúncia ou inquérito no STF/STJ); não é atestado de idoneidade — confira sempre as fontes oficiais</div></div>`
+  if (reg && reg.status === 'histórico') return `<div class="tcell"><b class="lbl">Registros públicos (verificado em ${esc(reg.verificadoEm.split('-').reverse().join('/'))})</b><span class="selo info">ℹ️ histórico — casos encerrados</span><div class="sm" style="margin-top:6px">${esc(reg.desc)}</div><div class="sm" style="margin-top:4px">Casos encerrados (arquivamento, prescrição ou absolvição) também são fatos públicos — o desfecho está descrito acima. <a href="${esc(reg.fonte)}" target="_blank" rel="noopener">fonte ↗</a></div></div>`
+  if (reg) return `<div class="tcell"><b class="lbl">Registros públicos (verificado em ${esc(reg.verificadoEm.split('-').reverse().join('/'))})</b><span class="selo alerta">⚠️ ${esc(reg.status)}</span><div class="sm" style="margin-top:6px">${esc(reg.desc)}</div><div class="sm" style="margin-top:4px;color:var(--mut)">${GLOSS[reg.status] || ''} <a href="${esc(reg.fonte)}" target="_blank" rel="noopener">fonte ↗</a></div></div>`
+  return `<div class="tcell"><b class="lbl">Registros públicos (verificado em 09/06/2026)</b><span class="selo ok">✅ sem processos ativos encontrados</span><div class="sm" style="margin-top:6px">nas fontes verificadas (réu, condenação, denúncia ou inquérito no STF/STJ); não é atestado de idoneidade — processos sob sigilo não aparecem. Confira sempre as fontes oficiais.</div></div>`
 }
 
 function results() {
@@ -242,7 +288,7 @@ function results() {
     <div class="meth">
       <h3>Como funciona (metodologia e fontes)</h3>
       <p>· Cada pergunta corresponde a uma votação nominal real em plenário. Sua resposta é comparada ao voto registrado de cada parlamentar — direto das APIs oficiais da <a href="https://dadosabertos.camara.leg.br" target="_blank" rel="noopener">Câmara</a> e do <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener">Senado</a>. Abstenções, obstruções e ausências não contam nem a favor nem contra.</p>
-      <p>· <b>Nota de uso da cota (0–10)</b>: calculada só com dados oficiais de despesas CEAP (jun/2025–mai/2026): nota = 10 − 4×(percentil do gasto total entre os deputados) − 4×(percentil do % gasto em categorias sensíveis: combustíveis, divulgação do mandato, locações/fretamentos, hospedagem, táxi) − 2×(se combustível acima do percentil 90). É uma régua comparativa objetiva, não uma acusação: gastar a cota é legal; a nota apenas compara padrões.</p>
+      <p>· <b>Nota de uso da cota (0–10)</b>: dados oficiais de jun/2025 a mai/2026. Câmara (CEAP, via API oficial): nota = 10 − 4×percentil(gasto total) − 4×percentil(% em categorias sensíveis: combustíveis, divulgação, locações/fretamentos, hospedagem, táxi) − 2×(combustível acima do percentil 90). Senado (CEAPS, via CSV oficial de transparência): nota = 10 − 5×percentil(gasto total) − 5×percentil(% em divulgação + locomoção/hospedagem/combustíveis). O cartão de cada parlamentar mostra o comparativo com a mediana da Casa por categoria. É régua comparativa objetiva, não acusação: gastar a cota é legal.</p>
       <p>· <b>Presença</b>: Câmara = relatório oficial de presença em sessões deliberativas do plenário (Ato da Mesa 191/2017) somado de 2023 a 2026; o % considera ausências justificadas e não justificadas — licenças médicas e missões oficiais contam como justificadas. Senado = presença nas ${D.senado.votacoes.length} votações nominais analisadas (não há relatório oficial consolidado por API).</p>
       <p>· <b>Registros públicos</b>: ⚠️ = processo ATIVO (réu, condenação, denúncia pendente ou inquérito formal no STF/STJ), confirmado em fonte oficial ou grande imprensa citando o caso. ℹ️ = histórico relevante já ENCERRADO (arquivado, prescrito ou absolvição), com desfecho explícito — arquivamento também é fato público. ✅ = nada ativo encontrado nas fontes verificadas em 09/06/2026; não é atestado de idoneidade. No Senado a varredura cobre ativos e históricos; na Câmara, históricos ainda parcialmente. Este site não acusa ninguém: confira sempre a fonte primária.</p>
       <p>· Votações usadas: ${c.votacoes.map(v => `<a href="${esc(v.linkFonte)}" target="_blank" rel="noopener">${esc(v.proposicao)}</a>`).join(' · ')}.</p>
@@ -268,27 +314,29 @@ function card(r, i, cfg, c) {
     <div class="phead">
       <span class="rank">${i + 1}º</span>
       <img class="ava" loading="lazy" src="${cfg.foto(r.p.id)}" alt="" onerror="this.outerHTML='<span class=ava>${ini}</span>'">
-      <div class="pinfo"><div class="n">${esc(r.p.nome)}${reg ? '<span class="flag" title="há registro público — abra o cartão">⚠️</span>' : ''}</div><div class="m">${esc(r.p.partido)} · ${esc(r.p.uf)}</div></div>
+      <div class="pinfo"><div class="n">${esc(r.p.nome)}${reg ? '<span class="flag" title="há registro público ativo — abra o cartão">⚠️</span>' : ''}</div><div class="m">${esc(r.p.partido)} · ${esc(r.p.uf)}</div></div>
       <div class="aff"><div class="v">${pct}%</div><div class="c">${r.m} de ${r.cmp} iguais</div><div class="affbar"><i style="width:${pct}%"></i></div></div>
       <span class="chev">▾</span>
     </div>
     <div class="pbody">
+      <div class="secmini">🔎 Transparência</div>
+      <div class="tgrid" style="margin-top:0">
+        ${ceapHTML(r.p)}
+        ${presHTML(String(r.p.id))}
+        ${seloHTML(String(r.p.id))}
+        <div class="tcell wide"><b class="lbl">Confira na fonte</b>
+          <div class="links" style="display:flex;gap:18px;flex-wrap:wrap;margin-top:4px">
+            <a href="${cfg.perfil(r.p.id)}" target="_blank" rel="noopener">🏛️ ${cfg.perfilLabel} ↗</a>
+            <a href="https://portal.stf.jus.br/processos/" target="_blank" rel="noopener">⚖️ Processos no STF ↗</a>
+            <a href="https://news.google.com/search?q=${newsQ}" target="_blank" rel="noopener">📰 Notícias ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="secmini" style="margin-top:18px">🗳️ Voto a voto nas pautas que você respondeu</div>
       <div class="cmp">${r.det.map(d => {
         const ic = d.match === true ? '<span class="ic ok">✓</span>' : d.match === false ? '<span class="ic no">✕</span>' : '<span class="ic nn">—</span>'
         return `<div class="ci">${ic}<div><div class="tt">${esc(d.v.titulo)}</div><div class="dd">Você: ${d.ans === 'S' ? 'a favor' : 'contra'} · ${esc(r.p.nome.split(' ')[0])}: ${esc(d.raw)} · <a href="${esc(d.v.linkFonte)}" target="_blank" rel="noopener">fonte ↗</a></div></div></div>`
       }).join('')}</div>
-      <div class="tgrid">
-        ${presHTML(String(r.p.id))}
-        ${ceapHTML(String(r.p.id))}
-        ${seloHTML(String(r.p.id))}
-        <div class="tcell"><b class="lbl">Confira na fonte</b>
-          <div class="links" style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
-            <a href="${cfg.perfil(r.p.id)}" target="_blank" rel="noopener">🏛️ ${cfg.perfilLabel} ↗</a>
-            <a href="https://portal.stf.jus.br/processos/" target="_blank" rel="noopener">⚖️ Consultar processos no STF ↗</a>
-            <a href="https://news.google.com/search?q=${newsQ}" target="_blank" rel="noopener">📰 Notícias recentes ↗</a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>`
 }

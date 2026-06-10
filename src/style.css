@@ -121,3 +121,7 @@ details.ctx .ctxbody{margin-top:10px;background:var(--bg);padding:16px 18px;bord
 .meth p{margin-bottom:8px}
 .fade{animation:fa .35s ease}
 @keyframes fa{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.tcell.wide{grid-column:1/-1}
+.medrow{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:4px 0;border-top:1px dashed var(--line)}
+.secmini{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-bottom:10px}
