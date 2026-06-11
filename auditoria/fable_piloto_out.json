@@ -1,0 +1,362 @@
+{
+ "camara": {
+  "204570": {
+   "verificadoEm": "2026-06-11",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "condenação",
+     "ano": 2026,
+     "desc": "STF condenou Pastor Gil (AP 2670) por corrupção passiva: propina de R$ 1,6 mi por R$ 6,6 mi em emendas a São José de Ribamar.",
+     "desfecho": "Condenado pela 1ª Turma do STF em 17/03/2026 a 5 anos e 6 meses em regime semiaberto; absolvido da acusação de organização criminosa; embargos pendentes, sem trânsito em julgado.",
+     "defesa": "Defesa sustentou ilegalidade das provas obtidas na investigação e classificou a denúncia como baseada em hipóteses e conjecturas.",
+     "fonte": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-03/supremo-condena-deputados-do-pl-por-corrupcao-passiva",
+     "status_maquina": "condenado_nao_transitado",
+     "numero_processo": "AP 2670",
+     "capacidade": "reu_original",
+     "crimes_dispositivo": ["corrupção passiva"],
+     "crimes_afastados": ["organização criminosa"],
+     "confianca": "fonte_primaria",
+     "fonte_primaria_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-03/supremo-condena-deputados-do-pl-por-corrupcao-passiva"
+    }
+   ],
+   "auditoria": {
+    "afirmacoes": [
+     {"texto": "Pastor Gil foi condenado na AP 2670 pela 1ª Turma do STF em 17/03/2026", "veredito": "confirmado", "correcao": null, "fonte_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-03/supremo-condena-deputados-do-pl-por-corrupcao-passiva"},
+     {"texto": "Condenado por corrupção passiva", "veredito": "confirmado", "correcao": null, "fonte_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-03/supremo-condena-deputados-do-pl-por-corrupcao-passiva"},
+     {"texto": "Condenado por organização criminosa", "veredito": "refutado", "correcao": "A 1ª Turma absolveu os réus da acusação de organização criminosa; condenação somente por corrupção passiva.", "fonte_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-03/supremo-condena-deputados-do-pl-por-corrupcao-passiva"},
+     {"texto": "Pena de 5 anos e 6 meses em regime semiaberto", "veredito": "confirmado", "correcao": null, "fonte_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-03/saiba-quais-sao-penas-dos-deputados-do-pl-condenados-por-corrupcao"},
+     {"texto": "Propina de R$ 1,6 mi para liberar R$ 6,6 mi em emendas a São José de Ribamar (MA)", "veredito": "confirmado", "correcao": null, "fonte_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-03/supremo-condena-deputados-do-pl-por-corrupcao-passiva"},
+     {"texto": "Caso encerrado (st=encerrado)", "veredito": "refutado", "correcao": "Sem trânsito em julgado: embargos dos condenados pendentes, com manifestação da PGR em 03/06/2026; processo segue ativo.", "fonte_url": "https://m.imirante.com/noticias/brasil/2026/06/03/ipolitica-pgr-rebate-tentativa-de-josimar-e-pastor-gil-de-reverter-sentenca-sobre-desvio-de-emendas-no-stf"},
+     {"texto": "Primeira condenação parlamentar por desvio de emendas na história do STF", "veredito": "nao_verificavel", "correcao": "Superlativo editorial proibido e não confirmado em fonte primária; removido.", "fonte_url": null},
+     {"texto": "Inelegível pela Lei da Ficha Limpa", "veredito": "nao_verificavel", "correcao": "Conclusão jurídica proibida pelas regras; removida.", "fonte_url": null},
+     {"texto": "Defesa alegou ausência de provas de que Pastor Gil teria solicitado pagamento irregular", "veredito": "refutado", "correcao": "Conforme a fonte, a defesa de Pastor Gil sustentou a ilegalidade das provas e denúncia baseada em 'hipóteses e conjecturas'.", "fonte_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-03/stf-julga-deputados-do-pl-por-suspeita-de-propina-em-emendas"}
+    ],
+    "omissoes_suspeitas": [],
+    "resultado_card": "corrigido",
+    "buscas_realizadas": [
+     "Pastor Gil deputado STF AP 2670 condenado emendas São José de Ribamar",
+     "\"Pastor Gil\" STF processo condenado 2026",
+     "STF condena Pastor Gil corrupção passiva organização criminosa absolvido site:agenciabrasil.ebc.com.br OR site:stf.jus.br"
+    ]
+   }
+  },
+  "178908": {
+   "verificadoEm": "2026-06-11",
+   "itens": [
+    {
+     "st": "encerrado",
+     "tipo": "condenação",
+     "ano": 2020,
+     "desc": "STF (1ª Turma, AP 1021) condenou Éder Mauro por difamação agravada contra ex-deputado Jean Wyllys por vídeo adulterado publicado no Facebook.",
+     "desfecho": "condenado pelo STF em agosto de 2020 a 1 ano de detenção (regime aberto) + 36 dias-multa; pena privativa substituída por pagamento de 30 salários mínimos ao ofendido; embargos rejeitados em maio de 2021",
+     "defesa": "não localizada em fonte consultada",
+     "fonte": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=449809&ori=1",
+     "status_maquina": "condenado_nao_transitado",
+     "numero_processo": "AP 1021",
+     "capacidade": "reu_original",
+     "crimes_dispositivo": ["difamação agravada"],
+     "crimes_afastados": [],
+     "confianca": "fonte_primaria",
+     "fonte_primaria_url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=449809&ori=1"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "ação penal",
+     "ano": 2016,
+     "desc": "STF (2ª Turma) julgou Éder Mauro por suposta participação por omissão em tortura praticada por agentes sob seu comando na Polícia Civil do PA (2008).",
+     "desfecho": "absolvido por unanimidade pelo STF por falta de provas em dezembro de 2016",
+     "defesa": "não localizada em fonte consultada",
+     "fonte": "https://noticias.stf.jus.br/postsnoticias/segunda-turma-absolve-deputado-eder-mauro-psd-pa-por-falta-de-provas/",
+     "status_maquina": "absolvido",
+     "numero_processo": null,
+     "capacidade": "reu_original",
+     "crimes_dispositivo": [],
+     "crimes_afastados": ["tortura (participação por omissão)"],
+     "confianca": "fonte_primaria",
+     "fonte_primaria_url": "https://noticias.stf.jus.br/postsnoticias/segunda-turma-absolve-deputado-eder-mauro-psd-pa-por-falta-de-provas/"
+    }
+   ],
+   "auditoria": {
+    "afirmacoes": [
+     {"texto": "STF (1ª Turma) condenou Éder Mauro por difamação agravada contra Jean Wyllys por vídeo adulterado no Facebook (AP 1021)", "veredito": "confirmado", "correcao": null, "fonte_url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=449809&ori=1"},
+     {"texto": "Condenação em agosto de 2020", "veredito": "confirmado", "correcao": null, "fonte_url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=449809&ori=1"},
+     {"texto": "Pena de 1 ano de reclusão", "veredito": "refutado", "correcao": "A pena fixada foi de 1 ano de DETENÇÃO em regime aberto, não reclusão.", "fonte_url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=449809&ori=1"},
+     {"texto": "Multa aplicada (36 dias-multa)", "veredito": "confirmado", "correcao": null, "fonte_url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=449809&ori=1"},
+     {"texto": "Pena privativa substituída por pagamento de 30 salários mínimos ao ofendido", "veredito": "confirmado", "correcao": null, "fonte_url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=449809&ori=1"},
+     {"texto": "Caso encerrado com trânsito em julgado", "veredito": "nao_verificavel", "correcao": "Trânsito em julgado não localizado em fonte primária; imprensa registra rejeição definitiva de embargos pela 1ª Turma em maio de 2021.", "fonte_url": "https://revistaforum.com.br/politica/2021/5/18/1-turma-do-stf-condena-definitivamente-eder-mauro-por-difamao-contra-jean-wyllys-97284.html"},
+     {"texto": "STF (2ª Turma) absolveu Éder Mauro, por unanimidade e por falta de provas, em dezembro de 2016, da acusação de participação por omissão em tortura (Polícia Civil do PA, 2008)", "veredito": "confirmado", "correcao": null, "fonte_url": "https://noticias.stf.jus.br/postsnoticias/segunda-turma-absolve-deputado-eder-mauro-psd-pa-por-falta-de-provas/"}
+    ],
+    "omissoes_suspeitas": [
+     {"caso": "Segundo inquérito por tortura contra Éder Mauro remetido pelo STF (decisão do min. Celso de Mello, 2018) à Justiça do Pará — não consta no rascunho", "indicio_url": "https://www.conjur.com.br/2018-mai-08/celso-mello-tira-stf-inquerito-deputado-acusado-tortura/", "acao": "regenerar_do_zero"}
+    ],
+    "resultado_card": "corrigido",
+    "buscas_realizadas": [
+     "\"Éder Mauro\" STF condenado Jean Wyllys difamação pena",
+     "\"Éder Mauro\" deputado STF réu processo 2025 2026",
+     "\"Éder Mauro\" difamação trânsito em julgado embargos AP 1021",
+     "\"Éder Mauro\" \"AP 1021\" extinção da pena OR trânsito em julgado",
+     "STF Segunda Turma absolve Éder Mauro tortura delegado 2016 ação penal falta de provas dezembro"
+    ]
+   }
+  },
+  "220633": {
+   "verificadoEm": "2026-06-11",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "réu",
+     "ano": 2023,
+     "desc": "Réu (AP 2705, Operação Akuanduba) por facilitação de contrabando de produtos florestais, associação criminosa, advocacia administrativa e obstrução à fiscalização ambiental.",
+     "desfecho": "denúncia recebida em agosto de 2023 na Justiça Federal do Pará; STF fixou competência e confirmou condição de réu em setembro de 2025 (rel. Alexandre de Moraes); interrogatórios concluídos em dezembro de 2025",
+     "defesa": "Defesa nega irregularidades na gestão do Ministério do Meio Ambiente.",
+     "fonte": "https://noticias.stf.jus.br/postsnoticias/stf-vai-julgar-ricardo-salles-por-suposto-esquema-de-facilitacao-de-contrabando-de-produtos-florestais/",
+     "status_maquina": "reu",
+     "numero_processo": "AP 2705 (antes Pet 8975)",
+     "capacidade": "reu_original",
+     "crimes_dispositivo": [],
+     "crimes_afastados": [],
+     "confianca": "fonte_primaria",
+     "fonte_primaria_url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7354561"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "réu",
+     "ano": 2016,
+     "desc": "Ação de improbidade do MP-SP sobre alterações no plano de manejo da Várzea do Tietê quando secretário estadual de Meio Ambiente.",
+     "desfecho": "condenado em 1ª instância em dezembro de 2018; absolvido pelo TJ-SP em março de 2021, por 4 votos a 1",
+     "defesa": "Sustentou que as alterações tiveram fundamento técnico e científico.",
+     "fonte": "https://www.conjur.com.br/2021-mar-04/ministro-absolvido-tj-sp-acao-improbidade-administrativa/",
+     "status_maquina": "absolvido",
+     "numero_processo": null,
+     "capacidade": "reu_original",
+     "crimes_dispositivo": [],
+     "crimes_afastados": ["improbidade administrativa (ação civil)"],
+     "confianca": "grande_imprensa",
+     "fonte_primaria_url": null
+    }
+   ],
+   "auditoria": {
+    "afirmacoes": [
+     {"texto": "Salles é réu em ação penal no STF originada da Operação Akuanduba (madeira), rel. Alexandre de Moraes", "veredito": "confirmado", "correcao": null, "fonte_url": "https://noticias.stf.jus.br/postsnoticias/stf-vai-julgar-ricardo-salles-por-suposto-esquema-de-facilitacao-de-contrabando-de-produtos-florestais/"},
+     {"texto": "Réu por corrupção passiva, crimes contra a flora e organização criminosa", "veredito": "refutado", "correcao": "Conforme STF/denúncia da PGR (ago/2023), Salles responde por associação criminosa, facilitação ao contrabando de produtos florestais, advocacia administrativa e obstrução à fiscalização ambiental; corrupção passiva não consta.", "fonte_url": "https://www.conjur.com.br/2025-set-02/stf-julgara-ricardo-salles-por-facilitacao-de-contrabando-de-madeira/"},
+     {"texto": "Condição de réu confirmada no STF em setembro de 2025", "veredito": "confirmado", "correcao": "Decisão de Moraes na Pet 8975, autuada como AP 2705, fixou a competência do STF em setembro de 2025.", "fonte_url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7354561"},
+     {"texto": "Defesa questiona o acesso da defesa às provas", "veredito": "nao_verificavel", "correcao": "Não localizado em fonte verificável; removido.", "fonte_url": null},
+     {"texto": "Ação de improbidade do MP-SP sobre plano de manejo da Várzea do Tietê (secretário estadual)", "veredito": "confirmado", "correcao": null, "fonte_url": "https://www.conjur.com.br/2021-mar-04/ministro-absolvido-tj-sp-acao-improbidade-administrativa/"},
+     {"texto": "Condenado em 1ª instância em 2018", "veredito": "confirmado", "correcao": "Condenação em dezembro de 2018.", "fonte_url": "https://www.conjur.com.br/2021-mar-04/ministro-absolvido-tj-sp-acao-improbidade-administrativa/"},
+     {"texto": "Absolvido pelo TJ-SP em março de 2021 por 4 votos a 1", "veredito": "confirmado", "correcao": null, "fonte_url": "https://www.conjur.com.br/2021-mar-04/ministro-absolvido-tj-sp-acao-improbidade-administrativa/"}
+    ],
+    "omissoes_suspeitas": [],
+    "resultado_card": "corrigido",
+    "buscas_realizadas": [
+     "Ricardo Salles STF réu Akuanduba madeira denúncia recebida relator",
+     "Ricardo Salles réu STF setembro 2025 quais crimes",
+     "Ricardo Salles TJ-SP improbidade Várzea do Tietê absolvido 2021",
+     "MPF denúncia Akuanduba Salles 22 denunciados Altamira site:mpf.mp.br",
+     "\"Ricardo Salles\" deputado processo investigação 2026 STF"
+    ]
+   }
+  },
+  "74646": {
+   "verificadoEm": "2026-06-11",
+   "itens": [
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2024,
+     "desc": "Inquérito sobre suposta propina da construtora OAS em Minas Gerais, aberto a partir de delação de Léo Pinheiro.",
+     "desfecho": "arquivado pela 2ª Turma do STF em fevereiro de 2024, por 4 votos a 1, por ausência de elementos mínimos",
+     "defesa": "Negou recebimento de qualquer vantagem indevida.",
+     "fonte": "https://www.conjur.com.br/2024-fev-27/stf-arquiva-investigacao-contra-aecio-neves-por-suposta-propina-da-oas/",
+     "status_maquina": "arquivado",
+     "numero_processo": null,
+     "capacidade": "investigado",
+     "crimes_dispositivo": [],
+     "crimes_afastados": [],
+     "confianca": "grande_imprensa",
+     "fonte_primaria_url": null
+    },
+    {
+     "st": "encerrado",
+     "tipo": "ação penal",
+     "ano": 2018,
+     "desc": "Ação penal do caso JBS: acusado de solicitar R$ 2 milhões a Joesley Batista; denúncia recebida pelo STF em 2018 e caso remetido à Justiça Federal de SP.",
+     "desfecho": "absolvido pela 7ª Vara Criminal Federal de São Paulo em março de 2022; TRF-3 (11ª Turma) manteve a absolvição por unanimidade em julho de 2023",
+     "defesa": "Sustentou que o valor envolvia negócio privado (venda de apartamento para pagar honorários), sem relação com a função pública.",
+     "fonte": "https://web.trf3.jus.br/noticias/Noticiar/ExibirNoticia/425021-decima-primeira-turma-mantem-sentenca-que-absolveu",
+     "status_maquina": "absolvido",
+     "numero_processo": "0008456-05.2017.4.03.6181",
+     "capacidade": "reu_original",
+     "crimes_dispositivo": [],
+     "crimes_afastados": ["corrupção passiva", "obstrução de justiça"],
+     "confianca": "fonte_primaria",
+     "fonte_primaria_url": "https://web.trf3.jus.br/noticias/Noticiar/ExibirNoticia/425021-decima-primeira-turma-mantem-sentenca-que-absolveu"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "citação em delação",
+     "ano": 2017,
+     "desc": "Citado em delações da Odebrecht por suposto repasse de R$ 21 milhões na campanha presidencial de 2014; inquérito aberto em 2017.",
+     "desfecho": "inquérito arquivado pela 2ª Turma do STF em agosto de 2021, por excesso de prazo sem provas para denúncia",
+     "defesa": "Defesa classificou as acusações como 'falsas narrativas feitas sem provas' por delatores.",
+     "fonte": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=472155&ori=1",
+     "status_maquina": "arquivado",
+     "numero_processo": null,
+     "capacidade": "investigado",
+     "crimes_dispositivo": [],
+     "crimes_afastados": [],
+     "confianca": "fonte_primaria",
+     "fonte_primaria_url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=472155&ori=1"
+    },
+    {
+     "st": "encerrado",
+     "tipo": "inquérito",
+     "ano": 2016,
+     "desc": "Inquéritos sobre supostos desvios de recursos de Furnas, abertos com base em delação de Delcídio do Amaral.",
+     "desfecho": "arquivados por decisões do relator no STF em junho de 2018 e março de 2021, por falta de corroboração das delações",
+     "defesa": "Sempre negou envolvimento com desvios em Furnas.",
+     "fonte": "https://www.conjur.com.br/2021-mar-22/stf-arquiva-investigacao-aecio-neves-furnas/",
+     "status_maquina": "arquivado",
+     "numero_processo": null,
+     "capacidade": "investigado",
+     "crimes_dispositivo": [],
+     "crimes_afastados": [],
+     "confianca": "grande_imprensa",
+     "fonte_primaria_url": null
+    }
+   ],
+   "auditoria": {
+    "afirmacoes": [
+     {"texto": "Inquérito OAS arquivado pela 2ª Turma do STF em fevereiro de 2024 por ausência de elementos mínimos", "veredito": "confirmado", "correcao": "Placar de 4 a 1 (divergência de Fachin).", "fonte_url": "https://www.conjur.com.br/2024-fev-27/stf-arquiva-investigacao-contra-aecio-neves-por-suposta-propina-da-oas/"},
+     {"texto": "Inquérito OAS aberto a partir de delação de Léo Pinheiro", "veredito": "confirmado", "correcao": null, "fonte_url": "https://exame.com/brasil/apos-4-anos-stf-arquiva-inquerito-que-mirava-aecio-por-supostas-propinas-da-oas/"},
+     {"texto": "Réu por corrupção passiva e obstrução de Justiça no caso JBS (R$ 2 milhões a Joesley Batista)", "veredito": "confirmado", "correcao": null, "fonte_url": "https://www.conjur.com.br/2019-jul-05/juiz-recebe-denuncia-aecio-neves-torna-reu-corrupcao/"},
+     {"texto": "Denúncia do caso JBS recebida em 2021", "veredito": "refutado", "correcao": "Denúncia recebida pela 1ª Turma do STF em 17/04/2018; recebimento ratificado pela Justiça Federal de SP em julho de 2019.", "fonte_url": "https://www.conjur.com.br/2019-jul-05/juiz-recebe-denuncia-aecio-neves-torna-reu-corrupcao/"},
+     {"texto": "Ação penal do caso JBS em curso (st=ativo)", "veredito": "refutado", "correcao": "Aécio foi absolvido em 1ª instância (7ª Vara Criminal Federal de SP) em março de 2022 e o TRF-3 manteve a absolvição, por unanimidade, em 27/07/2023.", "fonte_url": "https://web.trf3.jus.br/noticias/Noticiar/ExibirNoticia/425021-decima-primeira-turma-mantem-sentenca-que-absolveu"},
+     {"texto": "Defesa sustentou que o valor era empréstimo pessoal, não propina", "veredito": "refutado", "correcao": "Nos autos, a tese acolhida descreve negócio privado (venda de apartamento da família para pagar honorários advocatícios), sem relação com a função pública.", "fonte_url": "https://www.conjur.com.br/2022-mar-10/juiz-absolve-aecio-andrea-neves-acusacao-corrupcao-passiva/"},
+     {"texto": "Citado em delações da Odebrecht por R$ 21 milhões na campanha de 2014; inquérito aberto em 2017", "veredito": "confirmado", "correcao": null, "fonte_url": "https://www.poder360.com.br/justica/stf-arquiva-inquerito-sobre-supostas-propinas-da-odebrecht-a-aecio-neves/"},
+     {"texto": "Inquérito Odebrecht arquivado pela 2ª Turma do STF em agosto de 2021 por falta de provas e excesso de prazo", "veredito": "confirmado", "correcao": "Arquivado em 31/08/2021; fundamento principal foi o excesso de prazo (mais de 4 anos) sem provas para denúncia.", "fonte_url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=472155&ori=1"},
+     {"texto": "Inquéritos de Furnas abertos com base em delação de Delcídio do Amaral", "veredito": "confirmado", "correcao": null, "fonte_url": "https://www.conjur.com.br/2021-mar-22/stf-arquiva-investigacao-aecio-neves-furnas/"},
+     {"texto": "Inquéritos de Furnas arquivados pelo STF em 2018 e 2021", "veredito": "confirmado", "correcao": "Arquivamentos em junho de 2018 e março de 2021, por decisões do relator Gilmar Mendes.", "fonte_url": "https://www.conjur.com.br/2021-mar-22/stf-arquiva-investigacao-aecio-neves-furnas/"}
+    ],
+    "omissoes_suspeitas": [
+     {"caso": "Inquérito sobre o programa Luz Para Todos arquivado pelo STF (2024) — não consta no rascunho", "indicio_url": "https://www.migalhas.com.br/quentes/402506/programa-luz-para-todos-stf-arquiva-inquerito-contra-aecio-neves", "acao": "regenerar_do_zero"}
+    ],
+    "resultado_card": "corrigido",
+    "buscas_realizadas": [
+     "Aécio Neves réu caso JBS denúncia recebida STF 2018 corrupção obstrução",
+     "\"Aécio Neves\" vira réu JBS STF Primeira Turma abril 2018",
+     "\"Aécio Neves\" STF processo 2025 2026 ação penal JBS situação atual",
+     "STF arquiva inquérito Aécio Neves OAS fevereiro 2024 Segunda Turma",
+     "STF arquiva inquérito Aécio Neves Odebrecht agosto 2021 Furnas Delcídio arquivamento",
+     "poder360 STF arquiva inquérito Odebrecht Aécio Neves campanha 2014 valor",
+     "Aécio Neves TRF-3 apelação MPF absolvição JBS julgamento mantida"
+    ]
+   }
+  },
+  "178854": {
+   "verificadoEm": "2026-06-11",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "inquérito",
+     "ano": 2024,
+     "desc": "Inquérito no STF (Operação Overclean) sobre suposto desvio de emendas e fraudes em licitações ligadas a Campo Formoso (BA).",
+     "desfecho": "em curso no STF (rel. Nunes Marques, desde janeiro de 2025); buscas da PF em jul/2025 em endereços ligados ao esquema, sem o deputado como alvo direto; ministro negou pedidos de busca, bloqueio de bens e afastamento, após a PGR apontar elementos circunstanciais",
+     "defesa": "Defesa nega qualquer envolvimento e afirma que não há provas consistentes.",
+     "fonte": "https://www.metropoles.com/brasil/pf-ve-possivel-envolvimento-de-elmar-nascimento-em-esquema-de-fraudes",
+     "status_maquina": "investigado",
+     "numero_processo": null,
+     "capacidade": "investigado",
+     "crimes_dispositivo": [],
+     "crimes_afastados": [],
+     "confianca": "grande_imprensa",
+     "fonte_primaria_url": null
+    }
+   ],
+   "auditoria": {
+    "afirmacoes": [
+     {"texto": "Inquérito no STF (Operação Overclean) sobre suposto desvio de emendas e fraudes em licitações ligadas a Campo Formoso (BA)", "veredito": "confirmado", "correcao": null, "fonte_url": "https://www.metropoles.com/brasil/pf-ve-possivel-envolvimento-de-elmar-nascimento-em-esquema-de-fraudes"},
+     {"texto": "Relator Nunes Marques", "veredito": "confirmado", "correcao": "Nunes Marques assumiu a relatoria em janeiro de 2025, quando o caso subiu ao STF.", "fonte_url": "https://istoedinheiro.com.br/operacao-overclean-pf-faz-buscas-em-18-enderecos-e-mira-elmar-nascimento-por-desvio-de-emendas"},
+     {"texto": "Buscas da PF em julho de 2025", "veredito": "confirmado", "correcao": "Buscas em 17/07/2025 (5ª fase, 18 endereços); o deputado foi citado mas não foi alvo direto dos mandados.", "fonte_url": "https://istoedinheiro.com.br/operacao-overclean-pf-faz-buscas-em-18-enderecos-e-mira-elmar-nascimento-por-desvio-de-emendas"},
+     {"texto": "Ministro rejeitou pedidos de medidas contra o deputado por considerar frágeis os elementos", "veredito": "confirmado", "correcao": "Nunes Marques negou busca na residência, bloqueio de bens e afastamento do prefeito Elmo Nascimento; a PGR avaliou os elementos como circunstanciais.", "fonte_url": "https://www.jornalopcao.com.br/policia/pf-aponta-envolvimento-de-elmar-nascimento-em-esquema-investigado-pela-operacao-overclean-745453/"},
+     {"texto": "Fonte original do item (dgabc.com.br) sustenta o conteúdo", "veredito": "confirmado", "correcao": "Conteúdo correto, mas fonte fraca (replicação regional de agência); substituída por veículo de grande imprensa com a mesma apuração.", "fonte_url": "https://www.metropoles.com/brasil/pf-ve-possivel-envolvimento-de-elmar-nascimento-em-esquema-de-fraudes"}
+    ],
+    "omissoes_suspeitas": [],
+    "resultado_card": "corrigido",
+    "buscas_realizadas": [
+     "Elmar Nascimento Operação Overclean STF inquérito Nunes Marques buscas PF",
+     "\"Elmar Nascimento\" STF 2026 denúncia PGR Overclean investigado"
+    ]
+   }
+  },
+  "204460": {
+   "verificadoEm": "2026-06-11",
+   "itens": [
+    {
+     "st": "ativo",
+     "tipo": "inquérito",
+     "ano": 2024,
+     "desc": "PF investiga Jordy e Sóstenes Cavalcante (Operação Galho Fraco) por suspeita de desvio de cota parlamentar; R$ 469,7 mil apreendidos em espécie.",
+     "desfecho": "em curso (inquérito no STF; buscas autorizadas pelo ministro Flávio Dino cumpridas em 19/12/2025)",
+     "defesa": "Jordy nega irregularidades.",
+     "fonte": "https://agenciabrasil.ebc.com.br/justica/noticia/2025-12/pf-mira-deputados-emoperacao-que-apura-desvio-de-cotas-parlamentares",
+     "status_maquina": "investigado",
+     "numero_processo": null,
+     "capacidade": "investigado",
+     "crimes_dispositivo": [],
+     "crimes_afastados": [],
+     "confianca": "fonte_primaria",
+     "fonte_primaria_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2025-12/pf-mira-deputados-emoperacao-que-apura-desvio-de-cotas-parlamentares"
+    },
+    {
+     "st": "ativo",
+     "tipo": "inquérito",
+     "ano": 2024,
+     "desc": "STF investiga Jordy por suposta participação no núcleo de instigadores dos atos antidemocráticos de 8 de janeiro de 2023.",
+     "desfecho": "em curso no STF (rel. Alexandre de Moraes); busca e apreensão e quebra de sigilos autorizadas em janeiro de 2024; sem desfecho público localizado até 11/06/2026",
+     "defesa": "Jordy nega envolvimento e qualquer incentivo aos atos.",
+     "fonte": "https://noticias.stf.jus.br/postsnoticias/a-pedido-da-pf-e-com-parecer-favoravel-da-pgr-stf-autoriza-operacao-contra-investigados-por-atos-antidemocraticos/",
+     "status_maquina": "investigado",
+     "numero_processo": null,
+     "capacidade": "investigado",
+     "crimes_dispositivo": [],
+     "crimes_afastados": [],
+     "confianca": "fonte_primaria",
+     "fonte_primaria_url": "https://noticias.stf.jus.br/postsnoticias/a-pedido-da-pf-e-com-parecer-favoravel-da-pgr-stf-autoriza-operacao-contra-investigados-por-atos-antidemocraticos/"
+    },
+    {
+     "st": "ativo",
+     "tipo": "investigação",
+     "ano": 2022,
+     "desc": "Acusação de ameaça contra vereador de Niterói em 2022 (Pet 13289); STF negou foro especial e remeteu o caso à Justiça estadual.",
+     "desfecho": "remetido ao TJ-RJ em maio de 2025 por decisão do ministro Nunes Marques, por ausência de relação com o mandato; em andamento na 1ª instância",
+     "defesa": "não localizada em fonte consultada",
+     "fonte": "https://noticias.stf.jus.br/postsnoticias/stf-manda-investigacao-contra-deputado-carlos-jordy-para-a-1a-instancia/",
+     "status_maquina": "remetido",
+     "numero_processo": "Pet 13289",
+     "capacidade": "investigado",
+     "crimes_dispositivo": [],
+     "crimes_afastados": [],
+     "confianca": "fonte_primaria",
+     "fonte_primaria_url": "https://noticias.stf.jus.br/postsnoticias/stf-manda-investigacao-contra-deputado-carlos-jordy-para-a-1a-instancia/"
+    }
+   ],
+   "auditoria": {
+    "afirmacoes": [
+     {"texto": "PF investiga Jordy e Sóstenes Cavalcante por suspeita de desvio de cota parlamentar (inquérito no STF, dezembro de 2025)", "veredito": "confirmado", "correcao": "Operação Galho Fraco, 19/12/2025; mandados expedidos pelo ministro Flávio Dino.", "fonte_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2025-12/pf-mira-deputados-emoperacao-que-apura-desvio-de-cotas-parlamentares"},
+     {"texto": "R$ 469,7 mil apreendidos em espécie", "veredito": "confirmado", "correcao": null, "fonte_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2025-12/pf-mira-deputados-emoperacao-que-apura-desvio-de-cotas-parlamentares"},
+     {"texto": "STF investigou Jordy por suposta participação no núcleo de instigadores do 8 de janeiro", "veredito": "confirmado", "correcao": "Inquérito dos instigadores, rel. Alexandre de Moraes; busca e apreensão autorizada em janeiro de 2024.", "fonte_url": "https://noticias.stf.jus.br/postsnoticias/a-pedido-da-pf-e-com-parecer-favoravel-da-pgr-stf-autoriza-operacao-contra-investigados-por-atos-antidemocraticos/"},
+     {"texto": "Inquérito do 8 de janeiro remetido à 1ª instância pelo STF (perda de foro)", "veredito": "refutado", "correcao": "Fusão de casos distintos: o que foi remetido à 1ª instância (TJ-RJ, maio de 2025, decisão de Nunes Marques) foi a Pet 13289, sobre ameaça a vereador de Niterói em 2022; o inquérito do 8/1 (rel. Moraes) segue no STF.", "fonte_url": "https://noticias.stf.jus.br/postsnoticias/stf-manda-investigacao-contra-deputado-carlos-jordy-para-a-1a-instancia/"},
+     {"texto": "Item do 8 de janeiro com st=encerrado", "veredito": "refutado", "correcao": "Nenhum dos dois casos está encerrado: o inquérito do 8/1 segue no STF e a Pet 13289 prossegue no TJ-RJ.", "fonte_url": "https://noticias.stf.jus.br/postsnoticias/stf-manda-investigacao-contra-deputado-carlos-jordy-para-a-1a-instancia/"}
+    ],
+    "omissoes_suspeitas": [],
+    "resultado_card": "corrigido",
+    "buscas_realizadas": [
+     "PF operação Sóstenes Cavalcante Carlos Jordy cota parlamentar dezembro 2025 dinheiro apreendido",
+     "Carlos Jordy STF Pet 13289 primeira instância 8 de janeiro inquérito instigadores Moraes",
+     "Carlos Jordy inquérito 8 de janeiro instigação STF status denúncia arquivado 2025"
+    ]
+   }
+  }
+ },
+ "senado": 
